@@ -1,3 +1,11 @@
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/jdxcode/fancy-mocha/compare/268d5d6992642395870df2a9a43aac8b1fcac21c...v0.0.3) (2018-01-21)
+
+
+### Bug Fixes
+
+* added typedoc ([dfa1fd8](https://github.com/jdxcode/fancy-mocha/commit/dfa1fd8))
+
 <a name="0.0.2"></a>
 ## [0.0.2](https://github.com/jdxcode/fancy-mocha/compare/0f7f56660c1d190ca1ff57564b03435392c46f44...v0.0.2) (2018-01-21)
 
