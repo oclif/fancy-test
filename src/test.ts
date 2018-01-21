@@ -4,7 +4,7 @@ import env from './env'
 import mock from './mock'
 import {stderr, stdout} from './stdmock'
 
-export type Extension<O extends object, A1, A2, A3, A4> = (a1: A1, a2: A2, a3: A3, a4: A4) => Filters<O>
+export type Extension<O extends object, A1 = void, A2 = void, A3 = void, A4 = void> = (a1: A1, a2: A2, a3: A3, a4: A4) => Filters<O>
 export interface Filters<C extends object> {
   before?(input: any): Promise<C> | C | void
   after?(context: C): Promise<any> | any
@@ -62,10 +62,10 @@ export interface TestBase<E extends Extensions, C = {}> {
    *  }
    * })
    */
-  extend<K extends string, O extends object>(key: K, filter: Extension<O, void, void, void, void>): Test<AddExtension0<E, K, O>, C>
-  extend<K extends string, O extends object, A1>(key: K, filter: Extension<O, A1, void, void, void>): Test<AddExtension1<E, K, O, A1>, C>
-  extend<K extends string, O extends object, A1, A2>(key: K, filter: Extension<O, A1, A2, void, void>): Test<AddExtension2<E, K, O, A1, A2>, C>
-  extend<K extends string, O extends object, A1, A2, A3>(key: K, filter: Extension<O, A1, A2, A3, void>): Test<AddExtension3<E, K, O, A1, A2, A3>, C>
+  extend<K extends string, O extends object>(key: K, filter: Extension<O>): Test<AddExtension0<E, K, O>, C>
+  extend<K extends string, O extends object, A1>(key: K, filter: Extension<O, A1>): Test<AddExtension1<E, K, O, A1>, C>
+  extend<K extends string, O extends object, A1, A2>(key: K, filter: Extension<O, A1, A2>): Test<AddExtension2<E, K, O, A1, A2>, C>
+  extend<K extends string, O extends object, A1, A2, A3>(key: K, filter: Extension<O, A1, A2, A3>): Test<AddExtension3<E, K, O, A1, A2, A3>, C>
   extend<K extends string, O extends object, A1, A2, A3, A4>(key: K, filter: Extension<O, A1, A2, A3, A4>): Test<AddExtension4<E, K, O, A1, A2, A3, A4>, C>
 }
 export type Test<E extends Extensions, C> = TestBase<E, C> &
