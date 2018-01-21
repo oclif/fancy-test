@@ -13,7 +13,7 @@
     "sourceMap": true,
     "strict": true,
     "strictFunctionTypes": false,
-    "target": "es2017"
+    "target": "esnext"
   },
   "include": [
     "src/**/*"

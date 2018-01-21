@@ -4,11 +4,19 @@
   "version": "0.0.1",
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/jdxcode/fancy-mocha/issues",
-  "dependencies": {},
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "lodash": "^4.17.4",
+    "stdout-stderr": "^0.1.4"
+  },
   "devDependencies": {
     "@dxcli/dev-semantic-release": "^0.1.0",
-    "@dxcli/dev-test": "^0.7.0",
     "@dxcli/dev-tslint": "^0.0.15",
+    "@types/chai": "^4.1.1",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/lodash": "^4.14.93",
+    "@types/mocha": "^2.2.46",
     "@types/node": "^9.3.0",
     "eslint": "^4.16.0",
     "eslint-config-dxcli": "^1.1.4",

@@ -1,1 +1,5 @@
-export const add = (a: number, b: number) => a + b
+export * from './chai'
+
+import test from './test'
+export {test}
+export default test
