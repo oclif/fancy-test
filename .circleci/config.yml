@@ -40,7 +40,7 @@ jobs:
 
 workflows:
   version: 2
-  "test-plugin-typescript-semantic-release-mocha":
+  "fancy-mocha":
     jobs:
       - node-latest
       - node-8
