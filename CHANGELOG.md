@@ -1,3 +1,11 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/jdxcode/fancy-mocha/compare/ec27d0bb680041df3f0353eb4182f3123e807e5b...v0.0.5) (2018-01-21)
+
+
+### Bug Fixes
+
+* move chai to non-required ([692f325](https://github.com/jdxcode/fancy-mocha/commit/692f325))
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/jdxcode/fancy-mocha/compare/dfa1fd83dee8e38302cd2e969d0233ea37525b59...v0.0.4) (2018-01-21)
 
