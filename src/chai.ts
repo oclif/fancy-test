@@ -1,5 +1,15 @@
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
-chai.use(chaiAsPromised)
+// tslint:disable no-unused
 
-export const {expect} = chai
+const tryRequire = (module: string) => {
+  try {
+    return require(module)
+  } catch (_) {
+  }
+}
+
+const chai: Chai.ChaiStatic = tryRequire('chai')
+
+const chaiAsPromised = tryRequire('chai-as-promised')
+if (chai && chaiAsPromised) chai.use(chaiAsPromised)
+
+export const expect = chai && chai.expect
