@@ -22,15 +22,15 @@ export type DescribeCallback = TestCallback <mocha.ISuiteCallbackContext, {}, vo
 export type Extensions = [{[k: string]: object}, {[k: string]: [object, any]}]
 
 export interface It<C> {
-  (expectation: string, cb: ItCallback<C>): mocha.ITest
-  only(expectation: string, cb: ItCallback<C>): mocha.ITest
-  skip(expectation: string, cb: ItCallback<C>): void
+  (expectation: string, cb?: ItCallback<C>): mocha.ITest
+  only(expectation: string, cb?: ItCallback<C>): mocha.ITest
+  skip(expectation: string, cb?: ItCallback<C>): void
 }
 
 export interface Describe {
   (expectation: string, cb: DescribeCallback): mocha.ISuite
   only(expectation: string, cb: DescribeCallback): mocha.ISuite
-  skip(expectation: string, cb: (this: mocha.ISuiteCallbackContext) => void): void
+  skip(expectation: string, cb?: (this: mocha.ISuiteCallbackContext) => void): void
 }
 
 export interface TestBase<E extends Extensions, C = {}> {
@@ -119,9 +119,14 @@ const test = <F extends Extensions = [{}, {}]>(previous?: Test<any, any>): TestB
     return context
   }
   const _catch = async (err: Error, context?: object) => {
+    let handled = false
     for (let f of filters) {
-      if (f.catch) await f.catch(context, err)
+      if (f.catch) {
+        await f.catch(context, err)
+        handled = true
+      }
     }
+    return handled
   }
   const _finally = async (context?: object) => {
     for (let f of filters) {
@@ -142,7 +147,9 @@ const test = <F extends Extensions = [{}, {}]>(previous?: Test<any, any>): TestB
       await after(context)
     } catch (err) {
       error = err
-      await _catch(err)
+      if (await _catch(err)) {
+        error = false
+      }
     } finally {
       await _finally()
     }

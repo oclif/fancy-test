@@ -1,5 +1,10 @@
 export * from './chai'
 
-import test from './test'
-export {test}
+import test, {Test, TestBase} from './test'
+
+export {
+  Test,
+  TestBase,
+  test,
+}
 export default test
