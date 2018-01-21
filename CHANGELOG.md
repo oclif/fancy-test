@@ -1,3 +1,11 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/jdxcode/fancy-mocha/compare/692f325f92d3bcad00a159f3ab60e3542d8783b5...v0.0.6) (2018-01-21)
+
+
+### Bug Fixes
+
+* minor tweaks ([939fb4a](https://github.com/jdxcode/fancy-mocha/commit/939fb4a))
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/jdxcode/fancy-mocha/compare/ec27d0bb680041df3f0353eb4182f3123e807e5b...v0.0.5) (2018-01-21)
 

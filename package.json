@@ -1,7 +1,7 @@
 {
   "name": "fancy-mocha",
   "description": "extends mocha with helpful extensions",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/jdxcode/fancy-mocha/issues",
   "dependencies": {
