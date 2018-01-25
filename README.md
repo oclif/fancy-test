@@ -17,7 +17,7 @@ Table of Contents
 
 * [Why](#why)
 * [Usage](#usage)
-* [Stdout/Stderr Mocking](#stdout-stderr-mocking)
+* [Stdout/Stderr Mocking](#stdoutstderr-mocking)
 * [Environment Variables](#environment-variables)
 * [Run](#run)
 * [Catch](#catch)
