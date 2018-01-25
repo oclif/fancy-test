@@ -126,7 +126,7 @@ Nock
 
 (not to be confused with [mock](#mock))
 
-Uses [nock](https://github.com/node-nock/nock) to mock out HTTP calls to external APIs.
+Uses [nock](https://github.com/node-nock/nock) to mock out HTTP calls to external APIs. You'll need to also install nock in your `devDependencies`.
 Automatically calls `done()` to ensure the calls were made and `cleanAll()` to remove any pending requests.
 
 ```js
