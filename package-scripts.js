@@ -33,10 +33,13 @@ module.exports = {
       series: script(series.nps('lint', 'test.mocha'), 'lint and run all tests in series'),
       mocha: {
         default: script('mocha --forbid-only "test/**/*.test.ts"', 'run all mocha tests'),
-        coverage: hidden(series.nps('test.mocha.nyc nps test.mocha')),
+        coverage: {
+          default: hidden(series.nps('test.mocha.nyc nps test.mocha', 'test.mocha.coverage.report')),
+          report: hidden(series('nps \'test.mocha.nyc report --reporter text-lcov\' > coverage.lcov')),
+        },
         junit: hidden(series(
           crossEnv('MOCHA_FILE="reports/mocha.xml" ') + series.nps('test.mocha.nyc nps \\"test.mocha --reporter mocha-junit-reporter\\"'),
-          series.nps('test.mocha.nyc report text-lcov > coverage.lcov'),
+          series.nps('test.mocha.coverage.report'),
         )),
         nyc: hidden('nyc --nycrc-path node_modules/@dxcli/dev-nyc-config/.nycrc'),
       },
