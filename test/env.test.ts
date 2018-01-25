@@ -1,12 +1,12 @@
 // tslint:disable no-console
 
-import {expect, test} from '../src'
+import {expect, fancy} from '../src'
 
-describe('stdout', () => {
-  test
+describe('env', () => {
+  fancy()
   .env({foo: 'BARBAZ'})
   .stdout()
-  .it('logs', output => {
+  .it('mocks', output => {
     console.log(process.env.foo)
     expect(output.stdout).to.equal('BARBAZ\n')
   })

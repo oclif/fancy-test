@@ -1,19 +1,18 @@
 // tslint:disable no-console
 
-import {expect, test} from '../src'
+import {expect, fancy} from '../src'
 
 describe('stdout', () => {
-  test
+  fancy()
   .stderr()
   .stdout()
   .it('logs', output => {
-    console.error('about to write')
     console.log('foo')
     console.error('written')
     expect(output.stdout).to.equal('foo\n')
   })
 
-  test
+  fancy()
   .stdout()
   .it('logs twice', output => {
     console.log('foo')
@@ -22,14 +21,14 @@ describe('stdout', () => {
     expect(output.stdout).to.equal('foo\nbar\n')
   })
 
-  test
+  fancy()
   .stderr()
   .it('writes to stderr', output => {
     console.error('foo')
     expect(output.stderr).to.equal('foo\n')
   })
 
-  test
+  fancy()
   .stdout()
   .stderr()
   .it('writes to both', output => {

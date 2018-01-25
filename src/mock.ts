@@ -1,17 +1,16 @@
 import * as _ from 'lodash'
 
+import {Next} from './base'
+
 /**
  * mocks an object's property
  */
-export default (object: any, path: string, value: any) => {
+export default async (next: Next<{}>, __: any, object: any, path: string, value: any) => {
   let original = _.get(object, path)
-  return {
-    before() {
-      original = _.get(object, path)
-      _.set(object, path, value)
-    },
-    finally() {
-      _.set(object, path, original)
-    }
+  try {
+    _.set(object, path, value)
+    await next({})
+  } finally {
+    _.set(object, path, original)
   }
 }

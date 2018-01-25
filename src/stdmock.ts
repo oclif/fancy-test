@@ -1,38 +1,21 @@
 import * as mock from 'stdout-stderr'
 
-export interface Stdout {
-  before(): {stdout: string}
-  after(): void
-  catch(): void
-  finally(): void
+import {Plugin} from './base'
+
+export type Return<T extends 'stdout' | 'stderr'> = {
+  readonly [P in T]: string
 }
 
-export interface Stderr {
-  before(): {stderr: string}
-  after(): void
-  catch(): void
-  finally(): void
-}
-
-const create = <T extends 'stdout' | 'stderr'>(std: T) => () => {
-  const _finally = () => mock[std].stop()
-  return {
-    before() {
-      mock[std].start()
-      if (std === 'stdout') {
-        return {
-          get stdout() { return mock.stdout.output }
-        }
-      }
-      return {
-        get stderr() { return mock.stderr.output }
-      }
-    },
-    after: _finally,
-    catch: _finally,
-    finally: _finally,
+const create = <T extends 'stdout' | 'stderr'>(std: T) => (async next => {
+  mock[std].start()
+  try {
+    await next({
+      get [std]() { return mock[std].output }
+    } as Return<T>)
+  } finally {
+    mock[std].stop()
   }
-}
+}) as Plugin<Return<T>>
 
-export const stdout = create('stdout') as () => Stdout
-export const stderr = create('stderr') as () => Stderr
+export const stdout = create('stdout')
+export const stderr = create('stderr')
