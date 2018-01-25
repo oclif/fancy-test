@@ -12,28 +12,29 @@ extends mocha with helpful, chainable extensions
 [![Downloads/week](https://img.shields.io/npm/dw/fancy-mocha.svg)](https://npmjs.org/package/fancy-mocha)
 [![License](https://img.shields.io/npm/l/fancy-mocha.svg)](https://github.com/jdxcode/fancy-mocha/blob/master/package.json)
 
-Table of Contents
------------------
+<!-- toc -->
 
-* [Why](#why)
-* [Usage](#usage)
-* [Stdout/Stderr Mocking](#stdoutstderr-mocking)
-* [Environment Variables](#environment-variables)
-* [Nock](#nock)
-* [Run](#run)
-* [Mock](#mock)
-* [Catch](#catch)
-* [Chai](#chai)
-* [Chaining](#chaining)
-* [Custom Plugins](#custom-plugins)
+- [Why](#why)
+- [Usage](#usage)
+  * [Mock](#mock)
+  * [Catch](#catch)
+  * [Nock](#nock)
+  * [Environment Variables](#environment-variables)
+  * [Run](#run)
+  * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
+  * [Chai](#chai)
+- [Chaining](#chaining)
+- [Custom Plugins](#custom-plugins)
+
+<!-- tocstop -->
 
 Why
----
+===
 
-Mocha out of the box often requires a lot of setup and teardown code in beforeEach/afterEach filters. Using this library, you can get rid of those entirely and build your tests declaratively and easily share the setup and teardown logic as well as common matchers and really anything you might do in a test. It will greatly reduce the amount of repetition in your codebase.
+Mocha out of the box often requires a lot of setup and teardown code in `beforeEach`/`afterEach` filters. Using this library, you can get rid of those entirely and build your tests declaratively by chaining functionality together. Using the builtin plugins and your own, you create bits of functionality and chain them together with a concise syntax. It will greatly reduce the amount of repetition in your codebase.
 
 Usage
------
+=====
 
 Setup is pretty easy, just install mocha and fancy-mocha, then you can use any of the examples below.
 
@@ -44,43 +45,79 @@ import {fancy} from 'fancy-mocha'
 import {expect} from 'chai'
 ```
 
-Stdout/Stderr Mocking
----------------------
+Mock
+----
 
-This is used for tests that ensure that certain stdout/stderr messages are made.
-By default this also trims the output from the screen.
+(not to be confused with [nock](#nock))
 
-You can use the library [stdout-stderr](https://npm.im/stdout-stderr) directly for doing this, but you have to be careful to always reset it after the tests run. We do that work for you so you don't have to worry about mocha's output being hidden.
-
+Mock any object. Like all fancy plugins, it ensures that it is reset to normal after the test runs.
 ```js
-import chalk from 'chalk'
+import * as os from 'os'
 
-describe('stdmock tests', () => {
+describe('mock tests', () => {
   fancy()
-  .stdout()
-  .it('mocks stdout', output => {
-    console.log('foobar')
-    expect(output.stdout).to.equal('foobar\n')
+  .mock(os, 'platform', () => 'foobar')
+  .it('sets os', () => {
+    expect(os.platform()).to.equal('foobar')
   })
 
   fancy()
-  .stderr()
-  .it('mocks stderr', output => {
-    console.error('foobar')
-    expect(output.stderr).to.equal('foobar\n')
-  })
-
-  fancy()
-  .stdout()
-  .stderr()
-  .it('mocks stdout and stderr', output => {
-    console.log('foo')
-    console.error('bar')
-    expect(output.stdout).to.equal('foo\n')
-    expect(output.stderr).to.equal('bar\n')
+  .mock(os, 'platform', sinon.stub().returns('foobar'))
+  .it('uses sinon', () => {
+    expect(os.platform()).to.equal('foobar')
+    expect(os.platform.called).to.equal(true)
   })
 })
 ```
+
+Catch
+-----
+
+catch errors in a declarative way. By default, ensures they are actually thrown as well.
+
+```js
+describe('catch', () => {
+  fancy()
+  .catch(/foo/)
+  .it('uses regex', () => {
+    throw new Error('foobar')
+  })
+
+  fancy()
+  .catch('foobar')
+  .it('uses string', () => {
+    throw new Error('foobar')
+  })
+
+  fancy()
+  .catch(err => {
+    expect(err.message).to.match(/foo/)
+  })
+  .it('uses function', () => {
+    throw new Error('foobar')
+  })
+
+  fancy()
+  .catch('foobar', {raiseIfNotThrown: false})
+  .it('do not error if not thrown', () => {
+    // this would raise because there is no error being thrown
+  })
+})
+```
+
+Without fancy, you could check an error like this:
+
+```js
+it('dont do this', () => {
+  try {
+    myfunc()
+  } catch (err) {
+    expect(err.message).to.match(/my custom errorr/)
+  }
+})
+```
+
+But this has a common flaw, if the test does not error, the test will still pass. Chai and other assertion libraries have helpers for this, but they still end up with somewhat messy code.
 
 Nock
 ----
@@ -153,62 +190,40 @@ describe('run', () => {
 })
 ```
 
-Mock
-----
+Stdout/Stderr Mocking
+---------------------
 
-(not to be confused with [nock](#nock))
+This is used for tests that ensure that certain stdout/stderr messages are made.
+By default this also trims the output from the screen.
 
-Mock any object. Like all fancy plugins, it ensures that it is reset to normal after the test runs.
-```js
-import * as os from 'os'
-
-describe('mock tests', () => {
-  fancy()
-  .mock(os, 'platform', () => 'foobar')
-  .it('sets os', () => {
-    expect(os.platform()).to.equal('foobar')
-  })
-
-  fancy()
-  .mock(os, 'platform', sinon.stub().returns('foobar'))
-  .it('uses sinon', () => {
-    expect(os.platform()).to.equal('foobar')
-    expect(os.platform.called).to.equal(true)
-  })
-})
-```
-
-Catch
------
-
-catch errors in a declarative way. By default, ensures they are actually thrown as well.
+You can use the library [stdout-stderr](https://npm.im/stdout-stderr) directly for doing this, but you have to be careful to always reset it after the tests run. We do that work for you so you don't have to worry about mocha's output being hidden.
 
 ```js
-describe('catch', () => {
+import chalk from 'chalk'
+
+describe('stdmock tests', () => {
   fancy()
-  .catch(/foo/)
-  .it('uses regex', () => {
-    throw new Error('foobar')
+  .stdout()
+  .it('mocks stdout', output => {
+    console.log('foobar')
+    expect(output.stdout).to.equal('foobar\n')
   })
 
   fancy()
-  .catch('foobar')
-  .it('uses string', () => {
-    throw new Error('foobar')
+  .stderr()
+  .it('mocks stderr', output => {
+    console.error('foobar')
+    expect(output.stderr).to.equal('foobar\n')
   })
 
   fancy()
-  .catch(err => {
-    expect(err.message).to.match(/foo/)
-  })
-  .it('uses function', () => {
-    throw new Error('foobar')
-  })
-
-  fancy()
-  .catch('foobar', {raiseIfNotThrown: false})
-  .it('do not error if not thrown', () => {
-    // this would raise because there is no error being thrown
+  .stdout()
+  .stderr()
+  .it('mocks stdout and stderr', output => {
+    console.log('foo')
+    console.error('bar')
+    expect(output.stdout).to.equal('foo\n')
+    expect(output.stderr).to.equal('bar\n')
   })
 })
 ```
@@ -231,7 +246,7 @@ describe('has chai', () => {
 ```
 
 Chaining
---------
+========
 
 Everything here is chainable. You can also store parts of a chain to re-use later on.
 
@@ -282,7 +297,7 @@ describe('my suite', () => {
 ```
 
 Custom Plugins
---------------
+==============
 
 It's easy to create your own plugins to extend fancy. In [dxcli](https://github.com/dxcli/dxcli) we use fancy to create [custom command testers](https://github.com/dxcli/example-multi-cli-typescript/blob/master/test/commands/hello.test.ts).
 
