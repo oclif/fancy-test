@@ -1,3 +1,11 @@
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/jdxcode/fancy-mocha/compare/2ac92c3b7bdcd95a0af033ad580dfe8b258ee628...v0.3.3) (2018-01-25)
+
+
+### Bug Fixes
+
+* pass key to add ([2958628](https://github.com/jdxcode/fancy-mocha/commit/2958628))
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/jdxcode/fancy-mocha/compare/5c40945e00e15e93c383e04c9124115d9f7fed59...v0.3.2) (2018-01-25)
 
