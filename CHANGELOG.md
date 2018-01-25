@@ -1,3 +1,11 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/jdxcode/fancy-mocha/compare/5c40945e00e15e93c383e04c9124115d9f7fed59...v0.3.2) (2018-01-25)
+
+
+### Bug Fixes
+
+* improve catch handling ([2ac92c3](https://github.com/jdxcode/fancy-mocha/commit/2ac92c3))
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/jdxcode/fancy-mocha/compare/2d0f27d787b5ea4e1b0997ffd82009f76d17711e...v0.3.1) (2018-01-25)
 
