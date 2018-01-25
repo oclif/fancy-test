@@ -35,7 +35,7 @@ module.exports = {
         default: script('mocha --forbid-only "test/**/*.test.ts"', 'run all mocha tests'),
         coverage: {
           default: hidden(series.nps('test.mocha.nyc nps test.mocha', 'test.mocha.coverage.report')),
-          report: hidden(series('nps \'test.mocha.nyc report --reporter text-lcov\' > coverage.lcov')),
+          report: hidden(series('nps "test.mocha.nyc report --reporter text-lcov" > coverage.lcov')),
         },
         junit: hidden(series(
           crossEnv('MOCHA_FILE="reports/mocha.xml" ') + series.nps('test.mocha.nyc nps \\"test.mocha --reporter mocha-junit-reporter\\"'),
