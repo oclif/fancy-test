@@ -62,7 +62,7 @@ const fancy = <I extends object, T extends Plugins>(plugins: any, chain: Chain =
         cb = opts
         opts = {}
       }
-      return fancy(plugins, [...chain, [async (input: any, next: any) => {
+      return fancy(plugins, [...chain, [async (next: any, input: any) => {
         let output = await cb(input)
         if (opts.addToContext) next(output)
         else next()

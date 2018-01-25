@@ -3,9 +3,14 @@ import * as _ from 'lodash'
 import {Plugin} from '.'
 import {expect} from './chai'
 
-export default (async (next, __, arg) => {
+export interface CatchOptions {
+  raiseIfNotThrown?: boolean
+}
+
+export default (async (next, __, arg, opts: CatchOptions = {}) => {
   try {
     await next({})
+    if (opts.raiseIfNotThrown !== false) throw new Error('expected error to be thrown')
   } catch (err) {
     if (_.isRegExp(arg)) {
       expect(err.message).to.match(arg)
@@ -17,4 +22,4 @@ export default (async (next, __, arg) => {
       throw new Error('no arg provided to catch')
     }
   }
-}) as Plugin<{}, RegExp | string | ((err: Error) => any)>
+}) as Plugin<{}, RegExp | string | ((err: Error) => any), CatchOptions>

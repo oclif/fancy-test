@@ -3,6 +3,7 @@
 import {expect, fancy} from '../src'
 
 describe('catch', () => {
+  // from readme
   fancy()
   .catch(/foo/)
   .it('uses regex', () => {
@@ -21,5 +22,11 @@ describe('catch', () => {
   })
   .it('uses function', () => {
     throw new Error('foobar')
+  })
+
+  fancy()
+  .catch('foobar', {raiseIfNotThrown: false})
+  .it('do not error if not thrown', () => {
+    // this would raise because there is no error being thrown
   })
 })

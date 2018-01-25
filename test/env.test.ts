@@ -3,11 +3,25 @@
 import {expect, fancy} from '../src'
 
 describe('env', () => {
+  // from readme
   fancy()
-  .env({foo: 'BARBAZ'})
+  .env({FOO: 'BAR'})
+  .it('mocks FOO', () => {
+    expect(process.env.FOO).to.equal('BAR')
+    expect(process.env).to.not.deep.equal({FOO: 'BAR'})
+  })
+
+  fancy()
+  .env({FOO: 'BAR'}, {clear: true})
+  .it('clears all env vars', () => {
+    expect(process.env).to.deep.equal({FOO: 'BAR'})
+  })
+
+  fancy()
+  .env({FOO: 'BAR'})
   .stdout()
-  .it('mocks', output => {
-    console.log(process.env.foo)
-    expect(output.stdout).to.equal('BARBAZ\n')
+  .it('works with stdout', output => {
+    console.log(process.env.FOO)
+    expect(output.stdout).to.equal('BAR\n')
   })
 })
