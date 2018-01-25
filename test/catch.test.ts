@@ -25,16 +25,22 @@ describe('catch', () => {
     throw new Error('foobar')
   })
 
+  fancy()
+  .catch('foobar', {raiseIfNotThrown: false})
+  .it('do not error if not thrown', () => {
+    // this would raise because there is no error being thrown
+  })
+  // from readme
+
+  fancy()
+  .catch('no arg provided to catch')
+  .catch()
+  .it('errors if nothing passed')
+
   it('errors if not thrown', async () => {
     // have to test this outside
     await expect(_catch(async () => {}, {}, err => {
       throw err
     })).to.eventually.be.rejectedWith(/expected error to be thrown/)
-  })
-
-  fancy()
-  .catch('foobar', {raiseIfNotThrown: false})
-  .it('do not error if not thrown', () => {
-    // this would raise because there is no error being thrown
   })
 })
