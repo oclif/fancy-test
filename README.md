@@ -25,6 +25,7 @@ Table of Contents
 * [Catch](#catch)
 * [Chai](#chai)
 * [Chaining](#chaining)
+* [Custom Plugins](#custom-plugins)
 
 Why
 ---
@@ -277,5 +278,49 @@ describe('my suite', () => {
 
   testMyApp({info: 'test run b'})
   .it('tests b')
+})
+```
+
+Custom Plugins
+--------------
+
+It's easy to create your own plugins to extend fancy. In [dxcli](https://github.com/dxcli/dxcli) we use fancy to create [custom command testers](https://github.com/dxcli/example-multi-cli-typescript/blob/master/test/commands/hello.test.ts).
+
+A plugin is a function that receives a `next` callback that it must call to execute the next plugin in the chain.
+
+Here is an example that creates a counter that could be used to label each test run. See the [actual test](https://github.com/jdxcode/fancy-mocha/blob/master/test/base.test.ts) to see the TypeScript types needed.
+
+```js
+import {expect, fancy} from '../src'
+
+let count = 0
+
+// next is the callback. It's useful to wrap it in a try/finally for cleanup tasks or try/catch to handle exceptions.
+// context is the result of running Object.assign() on all the previously ran plugins. Used to pass data between plugins.
+// prefix is the first argument passed from the test run
+// we call next() with an object we want extended onto the new context. In this case, it will be: {...context, count: number, testLabel: string}
+const counter = async (next, context, prefix) => {
+  count++
+  await next({count, testLabel: `${prefix}${count}`})
+}
+
+// note that .register() MUST be called on a non-instantiated fancy object.
+const myFancy = fancy
+.register('count', counter)
+
+describe('register', () => {
+  myFancy()
+  .count('test-')
+  .it('is test #1', context => {
+    expect(context.count).to.equal(1)
+    expect(context.testLabel).to.equal('test-1')
+  })
+
+  myFancy()
+  .count('test-')
+  .it('is test #2', context => {
+    expect(context.count).to.equal(2)
+    expect(context.testLabel).to.equal('test-2')
+  })
 })
 ```
