@@ -1,6 +1,7 @@
 // tslint:disable no-console
 
 import {expect, fancy} from '../src'
+import _catch from '../src/catch'
 
 describe('catch', () => {
   // from readme
@@ -22,6 +23,13 @@ describe('catch', () => {
   })
   .it('uses function', () => {
     throw new Error('foobar')
+  })
+
+  it('errors if not thrown', async () => {
+    // have to test this outside
+    await expect(_catch(async () => {}, {}, err => {
+      throw err
+    })).to.eventually.be.rejectedWith(/expected error to be thrown/)
   })
 
   fancy()
