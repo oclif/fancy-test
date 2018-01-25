@@ -6,21 +6,21 @@ describe('env', () => {
   // from readme
   fancy()
   .env({FOO: 'BAR'})
-  .it('mocks FOO', () => {
+  .end('mocks FOO', () => {
     expect(process.env.FOO).to.equal('BAR')
     expect(process.env).to.not.deep.equal({FOO: 'BAR'})
   })
 
   fancy()
   .env({FOO: 'BAR'}, {clear: true})
-  .it('clears all env vars', () => {
+  .end('clears all env vars', () => {
     expect(process.env).to.deep.equal({FOO: 'BAR'})
   })
 
   fancy()
   .env({FOO: 'BAR'})
   .stdout()
-  .it('works with stdout', output => {
+  .end('works with stdout', output => {
     console.log(process.env.FOO)
     expect(output.stdout).to.equal('BAR\n')
   })

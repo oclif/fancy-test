@@ -11,13 +11,13 @@ describe('mock', () => {
   // from readme
   fancy()
   .mock(os, 'platform', () => 'foobar')
-  .it('sets os', () => {
+  .end('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
   fancy()
   .mock(os, 'platform', sinon.stub().returns('foobar'))
-  .it('uses sinon', () => {
+  .end('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
     expect(os.platform.called).to.equal(true)
   })
@@ -25,7 +25,7 @@ describe('mock', () => {
 
   fancy()
   .stdout()
-  .it('resets os', output => {
+  .end('resets os', output => {
     console.log(os.platform())
     expect(output.stdout).to.equal(`${platform}\n`)
   })

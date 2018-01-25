@@ -11,18 +11,20 @@ export interface StdmockOptions {
   stripColor?: boolean
 }
 
-const create = <T extends 'stdout' | 'stderr'>(std: T) => (async (next, _, opts: StdmockOptions = {}) => {
-  mock[std].start()
-  mock[std].print = opts.print === true
-  mock[std].stripColor = opts.stripColor !== false
-  try {
-    await next({
+const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: StdmockOptions = {}) => {
+  const plugin = (async () => {
+    mock[std].start()
+    mock[std].print = opts.print === true
+    mock[std].stripColor = opts.stripColor !== false
+    return {
       get [std]() { return mock[std].output }
-    } as Return<T>)
-  } finally {
+    } as Return<T>
+  }) as Plugin<Return<T>>
+  plugin.finally = () => {
     mock[std].stop()
   }
-}) as Plugin<Return<T>, StdmockOptions>
+  return plugin
+}
 
 export const stdout = create('stdout')
 export const stderr = create('stderr')

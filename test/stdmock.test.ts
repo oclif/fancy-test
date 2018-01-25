@@ -8,7 +8,7 @@ describe('stdout', () => {
   fancy()
   .stderr()
   .stdout()
-  .it('logs', output => {
+  .end('logs', output => {
     console.log('foo')
     console.error('written')
     expect(output.stdout).to.equal('foo\n')
@@ -16,7 +16,7 @@ describe('stdout', () => {
 
   fancy()
   .stdout()
-  .it('logs twice', output => {
+  .end('logs twice', output => {
     console.log('foo')
     expect(output.stdout).to.equal('foo\n')
     console.log('bar')
@@ -25,7 +25,7 @@ describe('stdout', () => {
 
   fancy()
   .stderr()
-  .it('writes to stderr', output => {
+  .end('writes to stderr', output => {
     console.error('foo')
     expect(output.stderr).to.equal('foo\n')
   })
@@ -33,7 +33,7 @@ describe('stdout', () => {
   fancy()
   .stdout()
   .stderr()
-  .it('writes to both', output => {
+  .end('writes to both', output => {
     console.error('foo')
     console.log('bar')
     expect(output.stderr).to.equal('foo\n')
@@ -42,7 +42,7 @@ describe('stdout', () => {
 
   fancy()
   .stdout()
-  .it('strips colors by default', output => {
+  .end('strips colors by default', output => {
     console.log(chalk.red('foobar'))
     expect(output.stdout).to.equal('foobar\n')
   })
@@ -50,21 +50,21 @@ describe('stdout', () => {
   // from readme
   fancy()
   .stdout()
-  .it('mocks stdout', output => {
+  .end('mocks stdout', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
   fancy()
   .stdout({print: true})
-  .it('mocks stdout but also prints to screen', output => {
+  .end('mocks stdout but also prints to screen', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
   fancy()
   .stderr()
-  .it('mocks stderr', output => {
+  .end('mocks stderr', output => {
     console.error('foobar')
     expect(output.stderr).to.equal('foobar\n')
   })
@@ -72,7 +72,7 @@ describe('stdout', () => {
   fancy()
   .stdout()
   .stderr()
-  .it('mocks stdout and stderr', output => {
+  .end('mocks stdout and stderr', output => {
     console.log('foo')
     console.error('bar')
     expect(output.stdout).to.equal('foo\n')
@@ -81,7 +81,7 @@ describe('stdout', () => {
 
   fancy()
   .stdout({stripColor: false})
-  .it('mocks stdout but does not strip the color codes', output => {
+  .end('mocks stdout but does not strip the color codes', output => {
     console.log(chalk.red('foobar'))
     expect(output.stdout).to.contain(chalk.red('foobar'))
   })

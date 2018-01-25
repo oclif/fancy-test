@@ -4,13 +4,14 @@ export interface EnvOptions {
   clear?: boolean
 }
 
-export default (async (next, _, env, opts = {}) => {
+export default (env: {[k: string]: string | undefined}, opts: EnvOptions = {}) => {
   const original = process.env
-  if (opts.clear) process.env = {...env}
-  else process.env = {...original, ...env}
-  try {
-    await next({})
-  } finally {
+  const plugin = (() => {
+    if (opts.clear) process.env = {...env}
+    else process.env = {...original, ...env}
+  }) as Plugin
+  plugin.finally = () => {
     process.env = original
   }
-}) as Plugin<{}, {[k: string]: string}, EnvOptions>
+  return plugin
+}

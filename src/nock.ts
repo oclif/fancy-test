@@ -1,20 +1,23 @@
 import * as Nock from 'nock'
 
-import {Next} from './base'
+import {Plugin} from './base'
 
 export type NockCallback = (nock: Nock.Scope) => any
 
-export default async (next: Next<{nock: number}>, ctx: any, host: string, cb: NockCallback) => {
-  const count = (ctx.nock as number || 0) + 1
+export default (host: string, cb: NockCallback) => {
   const nock: typeof Nock = require('nock')
   const intercepter = nock(host)
-  await cb(intercepter)
-  try {
-    await next({nock: count})
-    intercepter.done()
-  } finally {
-    if (count === 1) nock.cleanAll()
+  const plugin = (async ctx => {
+    await cb(intercepter)
+    const count = (ctx.nock as number || 0) + 1
+    return {nock: count}
+  }) as Plugin<{nock: number}>
+  plugin.finally = ctx => {
+    if (!ctx.error) intercepter.done()
+    ctx.nock--
+    if (ctx.nock === 0) nock.cleanAll()
   }
+  return plugin
 }
 
 export {Scope as NockScope} from 'nock'

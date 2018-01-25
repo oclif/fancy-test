@@ -1,46 +1,47 @@
 // tslint:disable no-console
 
 import {expect, fancy} from '../src'
-import _catch from '../src/catch'
 
 describe('catch', () => {
   // from readme
   fancy()
+  .run(() => { throw new Error('foobar') })
   .catch(/foo/)
-  .it('uses regex', () => {
-    throw new Error('foobar')
-  })
+  .end('uses regex')
 
   fancy()
+  .run(() => { throw new Error('foobar') })
   .catch('foobar')
-  .it('uses string', () => {
-    throw new Error('foobar')
-  })
+  .end('uses string')
 
   fancy()
-  .catch(err => {
-    expect(err.message).to.match(/foo/)
-  })
-  .it('uses function', () => {
-    throw new Error('foobar')
-  })
+  .run(() => { throw new Error('foobar') })
+  .catch(err => expect(err.message).to.match(/foo/))
+  .end('uses function')
 
   fancy()
+  // this would normally raise because there is no error being thrown
   .catch('foobar', {raiseIfNotThrown: false})
-  .it('do not error if not thrown', () => {
-    // this would raise because there is no error being thrown
-  })
+  .end('do not error if not thrown')
   // from readme
 
   fancy()
-  .catch('no arg provided to catch')
+  .run(() => { throw new Error('foobar') })
   .catch()
-  .it('errors if nothing passed')
+  .catch('no arg provided to catch')
+  .end('errors if no args passed')
 
-  it('errors if not thrown', async () => {
-    // have to test this outside
-    await expect(_catch(async () => {}, {}, err => {
-      throw err
-    })).to.eventually.be.rejectedWith(/expected error to be thrown/)
+  fancy()
+  .catch()
+  .catch('expected error to be thrown')
+  .end('errors if no error thrown')
+
+  fancy()
+  .stdout()
+  .run(() => { throw new Error('x') })
+  .catch('x')
+  .run(() => console.log('foobar'))
+  .end('continues running', ctx => {
+    expect(ctx.stdout).to.equal('foobar\n')
   })
 })

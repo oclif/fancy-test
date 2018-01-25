@@ -1,21 +1,28 @@
 // tslint:disable callable-types
 // tslint:disable no-unused
 
+import * as _ from 'lodash'
 import * as mocha from 'mocha'
 
 export interface Next<O> {
   (output: O): Promise<void>
 }
 
-export interface Plugin<O, A1 = undefined, A2 = undefined, A3 = undefined, A4 = undefined> {
-  (next: Next<O>, input: any, arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4): Promise<any>
+export interface PluginBuilder<O, InitO, A1 = undefined, A2 = undefined, A3 = undefined, A4 = undefined> {
+  (arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4): Plugin<O, InitO>
+}
+export interface Plugin<O = {}, InitO = {}> {
+  (context: any): Promise<O> | O | void
+  init?(context: any): InitO
+  finally?(context: any): any
+  catch?(context: any): any
 }
 
 export interface Plugins {[k: string]: [object]}
 
 export interface Base<T extends Plugins> {
-  (): Fancy<{}, T>
-  register<K extends string, O, A1, A2, A3, A4>(k: K, v: Plugin<O, A1, A2, A3, A4>): Base<T & {[P in K]: [O, A1, A2, A3, A4]}>
+  (): Fancy<{ test: typeof it, error?: Error }, T>
+  register<K extends string, O, InitO, A1, A2, A3, A4>(k: K, v: PluginBuilder<O, InitO, A1, A2, A3, A4>): Base<T & {[P in K]: [O, InitO, A1, A2, A3, A4]}>
 }
 
 export interface Callback<T, U> {
@@ -24,61 +31,80 @@ export interface Callback<T, U> {
 export interface MochaCallback<U> extends Callback<mocha.ITestCallbackContext, U> {}
 
 export type Fancy<I extends object, T extends Plugins> = {
-  it: {
-    (expectation: string, callback?: MochaCallback<I>): mocha.ITest
-    only(expectation: string, callback?: MochaCallback<I>): mocha.ITest
-    skip(expectation: string, callback?: MochaCallback<I>): void
-  }
-  run<O extends object>(opts: {addToContext: true}, cb: (context: I) => Promise<O> | O): Fancy<I & O, T>
+  end(expectation: string, cb?: (context: I) => any): void
+  end(cb?: (context: I) => any): void
+  add<O extends object>(cb: (context: I) => Promise<O> | O): Fancy<I & O, T>
   run(cb: (context: I) => any): Fancy<I, T>
-} & {[P in keyof T]: (arg1?: T[P][1], arg2?: T[P][2], arg3?: T[P][3], arg4?: T[P][4]) => Fancy<I & T[P][0], T>}
+} & {[P in keyof T]: (arg1?: T[P][2], arg2?: T[P][3], arg3?: T[P][4], arg4?: T[P][5]) => Fancy<I & T[P][0], T>}
 
-const fancy = <I extends object, T extends Plugins>(plugins: any, chain: Chain = []): Fancy<I, T> => {
-  const __it = (fn: typeof it) => (expectation: string, callback: MochaCallback<I>): any => {
-    return fn(expectation, async function () {
-      let ctx = {plugins}
-      const run = (extra = {}): any => {
-        ctx = assignWithProps({}, ctx, extra)
-        const [next, args] = chain.shift() || [null, null]
-        if (next) return next(run, ctx, ...args as any[])
-        if (callback) return callback.call(this, ctx)
-      }
-      await run()
-    })
-  }
-  const _it = __it(it) as Fancy<I, T>['it']
-  _it.only = __it(it.only as any)
-  _it.skip = __it(it.skip as any)
+const fancy = <I extends object, T extends Plugins>(context: any, plugins: any, chain: Plugin<any, any>[] = []): Fancy<I, T> => {
   return {
     ...Object.entries(plugins)
     .reduce((fns, [k, v]) => {
       fns[k] = (...args: any[]) => {
-        return fancy(plugins, [...chain, [v, args]])
+        const plugin = v(...args)
+        if (plugin.init) context = assignWithProps({}, context, v.init(context))
+        return fancy(context, plugins, [...chain, plugin])
       }
       return fns
     }, {} as any),
-    run(opts: any, cb: any) {
-      if (!cb) {
-        cb = opts
-        opts = {}
-      }
-      return fancy(plugins, [...chain, [async (next: any, input: any) => {
-        let output = await cb(input)
-        if (opts.addToContext) next(output)
-        else next()
-      }, []]])
+    run(cb) {
+      return fancy(context, plugins, [...chain, async (input: any) => {
+        await cb(input)
+      }])
     },
-    it: _it,
+    add(cb) {
+      return fancy(context, plugins, [...chain, (input: any) => cb(input)])
+    },
+    end(arg1: any, cb: any) {
+      if (_.isFunction(arg1)) {
+        cb = arg1
+        arg1 = undefined
+      }
+      if (!arg1) arg1 = context.expectation || 'test'
+      if (cb) {
+        chain = [...chain, async (input: any) => {
+          await cb(input)
+        }]
+      }
+      return context.test(arg1, async function () {
+        for (let i = 0; i < chain.length; i++) {
+          const handleError = async (err: Error): Promise<boolean> => {
+            context.error = err
+            i++
+            const handler = chain[i]
+            if (!handler || !handler.catch) return false
+            try {
+              await handler.catch(context)
+              delete context.error
+              return true
+            } catch (err) {
+              return handleError(err)
+            }
+          }
+          const next = chain[i]
+          try {
+            context = assignWithProps({}, context, await next(context))
+          } catch (err) {
+            if (!await handleError(err)) break
+          }
+        }
+        for (let p of chain.reverse()) {
+          if (p.finally) await p.finally(context)
+        }
+        if (context.error) throw context.error
+      })
+    },
   }
 }
 
 function base<T extends Plugins>(plugins: any): Base<T> {
-  const f = (() => fancy(plugins)) as any
+  const f = (() => fancy({
+    test: it,
+  }, plugins)) as any
   f.register = (k: string, v: any) => base({...plugins as any, [k]: v})
   return f
 }
-
-export type Chain = [Plugin<any, any, any, any, any>, any[]][]
 
 function assignWithProps(target: any, ...sources: any[]) {
   sources.forEach(source => {
@@ -100,3 +126,13 @@ function assignWithProps(target: any, ...sources: any[]) {
 }
 
 export default base<{}>({})
+.register('skip', () => {
+  const plugin = (() => {}) as any
+  plugin.init = () => ({test: it.skip})
+  return plugin
+})
+.register('only', () => {
+  const plugin = (() => {}) as any
+  plugin.init = () => ({test: it.only})
+  return plugin
+})

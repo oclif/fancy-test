@@ -59,13 +59,13 @@ import * as os from 'os'
 describe('mock tests', () => {
   fancy()
   .mock(os, 'platform', () => 'foobar')
-  .it('sets os', () => {
+  .end('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
   fancy()
   .mock(os, 'platform', sinon.stub().returns('foobar'))
-  .it('uses sinon', () => {
+  .end('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
     expect(os.platform.called).to.equal(true)
   })
@@ -78,32 +78,26 @@ Catch
 catch errors in a declarative way. By default, ensures they are actually thrown as well.
 
 ```js
-describe('catch', () => {
+describe('catch tests', () => {
   fancy()
+  .run(() => { throw new Error('foobar') })
   .catch(/foo/)
-  .it('uses regex', () => {
-    throw new Error('foobar')
-  })
+  .end('uses regex')
 
   fancy()
+  .run(() => { throw new Error('foobar') })
   .catch('foobar')
-  .it('uses string', () => {
-    throw new Error('foobar')
-  })
+  .end('uses string')
 
   fancy()
-  .catch(err => {
-    expect(err.message).to.match(/foo/)
-  })
-  .it('uses function', () => {
-    throw new Error('foobar')
-  })
+  .run(() => { throw new Error('foobar') })
+  .catch(err => expect(err.message).to.match(/foo/))
+  .end('uses function')
 
   fancy()
+  // this would normally raise because there is no error being thrown
   .catch('foobar', {raiseIfNotThrown: false})
-  .it('do not error if not thrown', () => {
-    // this would raise because there is no error being thrown
-  })
+  .end('do not error if not thrown')
 })
 ```
 
@@ -137,7 +131,7 @@ describe('nock tests', () => {
     .get('/me')
     .reply(200, {name: 'jdxcode'})
   })
-  .it('mocks http call to github', async () => {
+  .end('mocks http call to github', async () => {
     const {body: user} = await HTTP.get('https://api.github.com/me')
     expect(user).to.have.property('name', 'jdxcode')
   })
@@ -153,14 +147,14 @@ Sometimes it's helpful to clear out environment variables before running tests o
 describe('env tests', () => {
   fancy()
   .env({FOO: 'BAR'})
-  .it('mocks FOO', () => {
+  .end('mocks FOO', () => {
     expect(process.env.FOO).to.equal('BAR')
     expect(process.env).to.not.deep.equal({FOO: 'BAR'})
   })
 
   fancy()
   .env({FOO: 'BAR'}, {clear: true})
-  .it('clears all env vars', () => {
+  .end('clears all env vars', () => {
     expect(process.env).to.deep.equal({FOO: 'BAR'})
   })
 })
@@ -177,16 +171,16 @@ describe('run', () => {
   .stdout()
   .run(() => console.log('foo'))
   .run(({stdout}) => expect(stdout).to.equal('foo\n'))
-  .it('runs this callback last', () => {
+  .end('runs this callback last', () => {
     // test code
   })
 
   // add to context object
   fancy()
-  .run({addToContext: true}, () => { return {a: 1}})
-  .run({addToContext: true}, () => { return {b: 2}})
+  .add(() => { return {a: 1}})
+  .add(() => { return {b: 2}})
   // context will be {a: 1, b: 2}
-  .it('does something with context', context => {
+  .end('does something with context', context => {
     // test code
   })
 })
@@ -206,14 +200,14 @@ import chalk from 'chalk'
 describe('stdmock tests', () => {
   fancy()
   .stdout()
-  .it('mocks stdout', output => {
+  .end('mocks stdout', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
   fancy()
   .stderr()
-  .it('mocks stderr', output => {
+  .end('mocks stderr', output => {
     console.error('foobar')
     expect(output.stderr).to.equal('foobar\n')
   })
@@ -221,7 +215,7 @@ describe('stdmock tests', () => {
   fancy()
   .stdout()
   .stderr()
-  .it('mocks stdout and stderr', output => {
+  .end('mocks stdout and stderr', output => {
     console.log('foo')
     console.error('bar')
     expect(output.stdout).to.equal('foo\n')
@@ -241,7 +235,7 @@ import {expect, fancy} from 'fancy-mocha'
 describe('has chai', () => {
   fancy()
   .env({FOO: 'BAR'})
-  .it('expects FOO=bar', () => {
+  .end('expects FOO=bar', () => {
     expect(process.env.FOO).to.equal('BAR')
   })
 })
@@ -262,13 +256,13 @@ describe('my suite', () => {
 
   setupDB
   .stdout()
-  .it('tests with stdout mocked', () => {
+  .end('tests with stdout mocked', () => {
     // test code
   })
 
   setupDB
   .env({BAR: 'BAR'})
-  .it('also mocks the BAR environment variable', () => {
+  .end('also mocks the BAR environment variable', () => {
     // test code
   })
 })
@@ -291,10 +285,10 @@ describe('my suite', () => {
   }
 
   testMyApp({info: 'test run a'})
-  .it('tests a')
+  .end('tests a')
 
   testMyApp({info: 'test run b'})
-  .it('tests b')
+  .end('tests b')
 })
 ```
 
@@ -308,17 +302,11 @@ A plugin is a function that receives a `next` callback that it must call to exec
 Here is an example that creates a counter that could be used to label each test run. See the [actual test](https://github.com/jdxcode/fancy-mocha/blob/master/test/base.test.ts) to see the TypeScript types needed.
 
 ```js
-import {expect, fancy} from '../src'
-
 let count = 0
 
-// next is the callback. It's useful to wrap it in a try/finally for cleanup tasks or try/catch to handle exceptions.
-// context is the result of running Object.assign() on all the previously ran plugins. Used to pass data between plugins.
-// prefix is the first argument passed from the test run
-// we call next() with an object we want extended onto the new context. In this case, it will be: {...context, count: number, testLabel: string}
-const counter = async (next, context, prefix) => {
+const counter = prefix => () => {
   count++
-  await next({count, testLabel: `${prefix}${count}`})
+  return {count, testLabel: `${prefix}${count}`}
 }
 
 // note that .register() MUST be called on a non-instantiated fancy object.
@@ -328,16 +316,17 @@ const myFancy = fancy
 describe('register', () => {
   myFancy()
   .count('test-')
-  .it('is test #1', context => {
+  .end('is test #1', context => {
     expect(context.count).to.equal(1)
     expect(context.testLabel).to.equal('test-1')
   })
 
   myFancy()
   .count('test-')
-  .it('is test #2', context => {
+  .end('is test #2', context => {
     expect(context.count).to.equal(2)
     expect(context.testLabel).to.equal('test-2')
   })
 })
+)
 ```
