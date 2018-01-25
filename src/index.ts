@@ -1,6 +1,6 @@
 import base, {Base, Fancy, Next, Plugin} from './base'
-import _catch from './catch'
-import env from './env'
+import _catch, {CatchOptions} from './catch'
+import env, {EnvOptions} from './env'
 import mock from './mock'
 import {stderr, StdmockOptions, stdout} from './stdmock'
 
@@ -16,6 +16,8 @@ export {
   Fancy,
   Plugin,
   Next,
+  CatchOptions,
+  EnvOptions,
   StdmockOptions,
 }
 export default fancy
