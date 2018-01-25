@@ -56,7 +56,7 @@ module.exports = {
         mocha: hidden(
           unixOrWindows(
             series.nps('test.mocha.junit'),
-            series.nps('test.mocha'),
+            series.nps('test.mocha.coverage'),
           )
         ),
         eslint: hidden(
