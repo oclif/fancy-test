@@ -1,3 +1,11 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/jdxcode/fancy-mocha/compare/2d0f27d787b5ea4e1b0997ffd82009f76d17711e...v0.3.1) (2018-01-25)
+
+
+### Bug Fixes
+
+* **nock:** added nock.cleanAll() ([5c40945](https://github.com/jdxcode/fancy-mocha/commit/5c40945))
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/jdxcode/fancy-mocha/compare/c94e36fc82eaf7ab6cbd1e72b95e5b907a5397dd...v0.3.0) (2018-01-25)
 
