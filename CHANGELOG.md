@@ -1,3 +1,11 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/jdxcode/fancy-mocha/compare/587e6cf2c5f921ff45dec83f1c9f9c9e29abd636...v0.2.0) (2018-01-25)
+
+
+### Features
+
+* added options to stdout/stderr ([c94e36f](https://github.com/jdxcode/fancy-mocha/commit/c94e36f))
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/jdxcode/fancy-mocha/compare/939fb4ab0add85ac9ad97b89e25d7d7b449afff2...v0.1.0) (2018-01-25)
 
