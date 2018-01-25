@@ -274,13 +274,11 @@ Using [run](#run) you can really maximize this ability. In fact, you don't even 
 describe('my suite', () => {
   let setupDB = fancy()
                 .run(() => setupDB())
+                .catch(/spurious db error/)
                 .run(() => setupDeps())
 
   let testMyApp = testInfo => {
     return setupDB.run()
-    .run({addToContext: true}, () => { return {a: 1}})
-    .run({addToContext: true}, () => { return {b: 2}})
-    // context will be {a: 1, b: 2}
     .run(context => myApp(testInfo, context))
   }
 
