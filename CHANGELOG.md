@@ -1,3 +1,11 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/jdxcode/fancy-mocha/compare/c94e36fc82eaf7ab6cbd1e72b95e5b907a5397dd...v0.3.0) (2018-01-25)
+
+
+### Features
+
+* added nock ([8cbc27b](https://github.com/jdxcode/fancy-mocha/commit/8cbc27b))
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/jdxcode/fancy-mocha/compare/587e6cf2c5f921ff45dec83f1c9f9c9e29abd636...v0.2.0) (2018-01-25)
 
