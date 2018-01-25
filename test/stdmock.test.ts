@@ -1,5 +1,7 @@
 // tslint:disable no-console
 
+import chalk from 'chalk'
+
 import {expect, fancy} from '../src'
 
 describe('stdout', () => {
@@ -36,5 +38,51 @@ describe('stdout', () => {
     console.log('bar')
     expect(output.stderr).to.equal('foo\n')
     expect(output.stdout).to.equal('bar\n')
+  })
+
+  fancy()
+  .stdout()
+  .it('strips colors by default', output => {
+    console.log(chalk.red('foobar'))
+    expect(output.stdout).to.equal('foobar\n')
+  })
+
+  // from readme
+  fancy()
+  .stdout()
+  .it('mocks stdout', output => {
+    console.log('foobar')
+    expect(output.stdout).to.equal('foobar\n')
+  })
+
+  fancy()
+  .stdout({print: true})
+  .it('mocks stdout but also prints to screen', output => {
+    console.log('foobar')
+    expect(output.stdout).to.equal('foobar\n')
+  })
+
+  fancy()
+  .stderr()
+  .it('mocks stderr', output => {
+    console.error('foobar')
+    expect(output.stderr).to.equal('foobar\n')
+  })
+
+  fancy()
+  .stdout()
+  .stderr()
+  .it('mocks stdout and stderr', output => {
+    console.log('foo')
+    console.error('bar')
+    expect(output.stdout).to.equal('foo\n')
+    expect(output.stderr).to.equal('bar\n')
+  })
+
+  fancy()
+  .stdout({stripColor: false})
+  .it('mocks stdout but does not strip the color codes', output => {
+    console.log(chalk.red('foobar'))
+    expect(output.stdout).to.contain(chalk.red('foobar'))
   })
 })
