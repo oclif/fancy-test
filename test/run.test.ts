@@ -14,8 +14,8 @@ describe('run', () => {
 
 describe('add', () => {
   fancy()
-  .add(() => Promise.resolve({foo: 'foo'}))
-  .add(() => Promise.resolve({bar: 'bar'}))
+  .add('foo', () => 'foo')
+  .add('bar', () => Promise.resolve('bar'))
   .run(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
   .end('adds the properties')
 })

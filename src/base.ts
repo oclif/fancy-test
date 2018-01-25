@@ -33,7 +33,7 @@ export interface MochaCallback<U> extends Callback<mocha.ITestCallbackContext, U
 export type Fancy<I extends object, T extends Plugins> = {
   end(expectation: string, cb?: (context: I) => any): void
   end(cb?: (context: I) => any): void
-  add<O extends object>(cb: (context: I) => Promise<O> | O): Fancy<I & O, T>
+  add<K extends string, O>(key: K, cb: (context: I) => Promise<O> | O): Fancy<I & {[P in K]: O}, T>
   run(cb: (context: I) => any): Fancy<I, T>
 } & {[P in keyof T]: (arg1?: T[P][2], arg2?: T[P][3], arg3?: T[P][4], arg4?: T[P][5]) => Fancy<I & T[P][0], T>}
 
@@ -53,8 +53,11 @@ const fancy = <I extends object, T extends Plugins>(context: any, plugins: any, 
         await cb(input)
       }])
     },
-    add(cb) {
-      return fancy(context, plugins, [...chain, (input: any) => cb(input)])
+    add(key, cb) {
+      return fancy(context, plugins, [...chain, async (input: any) => {
+        const output = await cb(input)
+        return {[key]: output}
+      }])
     },
     end(arg1: any, cb: any) {
       if (_.isFunction(arg1)) {

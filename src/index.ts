@@ -1,14 +1,14 @@
 import base, {Base, Fancy, Next, Plugin} from './base'
 import _catch, {CatchOptions} from './catch'
 import env, {EnvOptions} from './env'
-import mock from './mock'
 import nock, {NockScope} from './nock'
 import {stderr, StdmockOptions, stdout} from './stdmock'
+import stub from './stub'
 
 export const fancy = base
 .register('catch', _catch)
 .register('env', env)
-.register('mock', mock)
+.register('stub', stub)
 .register('nock', nock)
 .register('stderr', stderr)
 .register('stdout', stdout)

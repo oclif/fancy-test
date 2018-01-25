@@ -35,6 +35,34 @@ Mocha out of the box often requires a lot of setup and teardown code in `beforeE
 
 It might be compatible with other testing libraries as well (e.g. jest), but would require a couple small changes. Let me know if you'd be interested in this.
 
+As an example, here is what a test file might look like for an application setup with fancy-mocha. This chain could partially be stored to a variable for reuse.
+
+```js
+describe('api', () => {
+  fancy()
+  // [custom plugin] initializes the db
+  .initDB({withUser: mockDBUser})
+
+  // [custom plugin] uses nock to mock out github API
+  .mockGithubAPI({user: mockGithubUser})
+
+  // [custom plugin] that calls the API of the app
+  .call('POST', '/api/user/foo', {id: mockDBUser.id})
+
+  // add adds to the context object
+  // fetch the newly created data from the API (can return a promise)
+  .add('user', ctx => ctx.db.fetchUserAsync(mockDBUser.id))
+
+  // run just runs arbitary code
+  // check to ensure the operation was successful
+  .run(ctx => expect(ctx.user.foo).to.equal('bar'))
+
+  // end is essentially mocha's it(expectation, callback)
+  // start the test and provide a description
+  .end('POST /api/user/foo updates the user')
+})
+```
+
 Usage
 =====
 
@@ -47,24 +75,22 @@ import {fancy} from 'fancy-mocha'
 import {expect} from 'chai'
 ```
 
-Mock
+Stub
 ----
 
-(not to be confused with [nock](#nock))
-
-Mock any object. Like all fancy plugins, it ensures that it is reset to normal after the test runs.
+Stub any object. Like all fancy plugins, it ensures that it is reset to normal after the test runs.
 ```js
 import * as os from 'os'
 
-describe('mock tests', () => {
+describe('stub tests', () => {
   fancy()
-  .mock(os, 'platform', () => 'foobar')
+  .stub(os, 'platform', () => 'foobar')
   .end('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
   fancy()
-  .mock(os, 'platform', sinon.stub().returns('foobar'))
+  .stub(os, 'platform', sinon.stub().returns('foobar'))
   .end('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
     expect(os.platform.called).to.equal(true)
@@ -117,8 +143,6 @@ But this has a common flaw, if the test does not error, the test will still pass
 
 Nock
 ----
-
-(not to be confused with [mock](#mock))
 
 Uses [nock](https://github.com/node-nock/nock) to mock out HTTP calls to external APIs. You'll need to also install nock in your `devDependencies`.
 Automatically calls `done()` to ensure the calls were made and `cleanAll()` to remove any pending requests.
@@ -177,8 +201,8 @@ describe('run', () => {
 
   // add to context object
   fancy()
-  .add(() => { return {a: 1}})
-  .add(() => { return {b: 2}})
+  .add('a', () => 1)
+  .add('b', () => 2)
   // context will be {a: 1, b: 2}
   .end('does something with context', context => {
     // test code
@@ -297,7 +321,7 @@ It's easy to create your own plugins to extend fancy. In [dxcli](https://github.
 
 A plugin is a function that receives a `next` callback that it must call to execute the next plugin in the chain.
 
-Here is an example that creates a counter that could be used to label each test run. See the [actual test](https://github.com/jdxcode/fancy-mocha/blob/master/test/base.test.ts) to see the TypeScript types needed.
+Here is an example that creates a counter that could be used to label each test run. See the [actual test](test/base.test.ts) to see the TypeScript types needed.
 
 ```js
 let count = 0
