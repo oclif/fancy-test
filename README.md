@@ -16,11 +16,12 @@ extends mocha with helpful, chainable extensions
 
 - [Why](#why)
 - [Usage](#usage)
-  * [Mock](#mock)
+  * [Stub](#stub)
   * [Catch](#catch)
   * [Nock](#nock)
   * [Environment Variables](#environment-variables)
   * [Run](#run)
+  * [Add](#add)
   * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
   * [Chai](#chai)
 - [Chaining](#chaining)
@@ -207,6 +208,22 @@ describe('run', () => {
   .end('does something with context', context => {
     // test code
   })
+})
+```
+
+Add
+---
+
+Similar to run, but extends the context object with a new property.
+Can return a promise or not.
+
+```js
+describe('add', () => {
+  fancy()
+  .add('foo', () => 'foo')
+  .add('bar', () => Promise.resolve('bar'))
+  .run(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
+  .end('adds the properties')
 })
 ```
 
