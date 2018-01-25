@@ -19,7 +19,9 @@ Table of Contents
 * [Usage](#usage)
 * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
 * [Environment Variables](#environment-variables)
+* [Nock](#nock)
 * [Run](#run)
+* [Mock](#mock)
 * [Catch](#catch)
 * [Chai](#chai)
 * [Chaining](#chaining)
@@ -79,6 +81,29 @@ describe('stdmock tests', () => {
 })
 ```
 
+Nock
+----
+
+(not to be confused with [mock](#mock))
+
+Uses [nock](https://github.com/node-nock/nock) to mock out HTTP calls to external APIs.
+Automatically calls `done()` to ensure the calls were made and `cleanAll()` to remove any pending requests.
+
+```js
+describe('nock tests', () => {
+  fancy()
+  .nock('https://api.github.com', nock => {
+    nock
+    .get('/me')
+    .reply(200, {name: 'jdxcode'})
+  })
+  .it('mocks http call to github', async () => {
+    const {body: user} = await HTTP.get('https://api.github.com/me')
+    expect(user).to.have.property('name', 'jdxcode')
+  })
+})
+```
+
 Environment Variables
 ---------------------
 
@@ -123,6 +148,31 @@ describe('run', () => {
   // context will be {a: 1, b: 2}
   .it('does something with context', context => {
     // test code
+  })
+})
+```
+
+Mock
+----
+
+(not to be confused with [nock](#nock))
+
+Mock any object. Like all fancy plugins, it ensures that it is reset to normal after the test runs.
+```js
+import * as os from 'os'
+
+describe('mock tests', () => {
+  fancy()
+  .mock(os, 'platform', () => 'foobar')
+  .it('sets os', () => {
+    expect(os.platform()).to.equal('foobar')
+  })
+
+  fancy()
+  .mock(os, 'platform', sinon.stub().returns('foobar'))
+  .it('uses sinon', () => {
+    expect(os.platform()).to.equal('foobar')
+    expect(os.platform.called).to.equal(true)
   })
 })
 ```

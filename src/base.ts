@@ -41,7 +41,7 @@ const fancy = <I extends object, T extends Plugins>(plugins: any, chain: Chain =
         ctx = assignWithProps({}, ctx, extra)
         const [next, args] = chain.shift() || [null, null]
         if (next) return next(run, ctx, ...args as any[])
-        if (callback) callback.call(this, ctx)
+        if (callback) return callback.call(this, ctx)
       }
       await run()
     })
