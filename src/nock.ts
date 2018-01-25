@@ -14,3 +14,5 @@ export default async (next: Next<{nock: NockHosts}>, ctx: any, host: string, cb:
   await next({nock: hosts})
   api.done()
 }
+
+export {Scope as NockScope} from 'nock'
