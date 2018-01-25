@@ -26,15 +26,16 @@ extends mocha with helpful, chainable extensions
   * [Chai](#chai)
 - [Chaining](#chaining)
 - [Custom Plugins](#custom-plugins)
+- [TypeScript](#typescript)
 
 <!-- tocstop -->
 
 Why
 ===
 
-Mocha out of the box often requires a lot of setup and teardown code in `beforeEach`/`afterEach` filters. Using this library, you can get rid of those entirely and build your tests declaratively by chaining functionality together. Using the builtin plugins and your own, you create bits of functionality and chain them together with a concise syntax. It will greatly reduce the amount of repetition in your codebase.
+Mocha out of the box often requires a lot of setup and teardown code in `beforeEach/afterEach` filters. Using this library, you can get rid of those entirely and build your tests declaratively by chaining functionality together. Using the builtin plugins and your own, you create bits of functionality and chain them together with a concise syntax. It will greatly reduce the amount of repetition in your codebase.
 
-It might be compatible with other testing libraries as well (e.g. jest), but would require a couple small changes. Let me know if you'd be interested in this.
+It should be compatible with other testing libraries as well (e.g. jest), but may require a couple small changes. If you're interested, try it out and let me know if it works.
 
 As an example, here is what a test file might look like for an application setup with fancy-mocha. This chain could partially be stored to a variable for reuse.
 
@@ -369,3 +370,8 @@ describe('register', () => {
 })
 )
 ```
+
+TypeScript
+==========
+
+This module is built in typescript and exports the typings. Doing something with dynamic chaining like this was [not easy](src/base.ts), but it should be fully typed throughout. Look at the internal plugins to get an idea of how to keep typings for your custom plugins.
