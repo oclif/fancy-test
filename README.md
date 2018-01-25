@@ -33,6 +33,8 @@ Why
 
 Mocha out of the box often requires a lot of setup and teardown code in `beforeEach`/`afterEach` filters. Using this library, you can get rid of those entirely and build your tests declaratively by chaining functionality together. Using the builtin plugins and your own, you create bits of functionality and chain them together with a concise syntax. It will greatly reduce the amount of repetition in your codebase.
 
+It might be compatible with other testing libraries as well (e.g. jest), but would require a couple small changes. Let me know if you'd be interested in this.
+
 Usage
 =====
 
