@@ -73,7 +73,7 @@ Setup is pretty easy, just install mocha and fancy-test, then you can use any of
 Assume the following is before all the examples:
 
 ```js
-import {fancy} from 'fancy-test
+import {fancy} from 'fancy-test'
 import {expect} from 'chai'
 ```
 
@@ -272,7 +272,7 @@ Chai
 This library includes [chai](https://npm.im/chai) preloaded with [chai-as-promised](https://npm.im/chai-as-promised) for convenience:
 
 ```js
-import {expect, fancy} from 'fancy-test
+import {expect, fancy} from 'fancy-test'
 
 describe('has chai', () => {
   fancy
