@@ -1,3 +1,11 @@
+<a name="0.3.7"></a>
+## [0.3.7](https://github.com/jdxcode/fancy-test/compare/01401df6b2b732ede1b827bae775aa5e000d9e85...v0.3.7) (2018-01-26)
+
+
+### Bug Fixes
+
+* no need for tslib ([b0e248a](https://github.com/jdxcode/fancy-test/commit/b0e248a))
+
 <a name="0.3.6"></a>
 ## [0.3.6](https://github.com/jdxcode/fancy-test/compare/00a8333b92e4ad7e4d73602d9fd6e07213819e72...v0.3.6) (2018-01-26)
 
