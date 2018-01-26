@@ -1,9 +1,9 @@
 {
-  "name": "fancy-mocha",
-  "description": "extends mocha with helpful extensions",
+  "name": "fancy-test",
+  "description": "extendable utilities for testing",
   "version": "0.3.3",
   "author": "Jeff Dickey @jdxcode",
-  "bugs": "https://github.com/jdxcode/fancy-mocha/issues",
+  "bugs": "https://github.com/jdxcode/fancy-test/issues",
   "dependencies": {
     "lodash": "^4.17.4",
     "stdout-stderr": "^0.1.4"
@@ -43,13 +43,13 @@
   "files": [
     "/lib"
   ],
-  "homepage": "https://github.com/jdxcode/fancy-mocha",
+  "homepage": "https://github.com/jdxcode/fancy-test",
   "keywords": [
     "dxcli"
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "repository": "jdxcode/fancy-mocha",
+  "repository": "jdxcode/fancy-test",
   "scripts": {
     "commitmsg": "dxcli-dev-commitmsg",
     "precommit": "nps lint",

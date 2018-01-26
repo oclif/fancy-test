@@ -1,16 +1,16 @@
-fancy-mocha
+fancy-test
 ===========
 
-extends mocha with helpful, chainable extensions
+extendable utilities for testing
 
-[![Version](https://img.shields.io/npm/v/fancy-mocha.svg)](https://npmjs.org/package/fancy-mocha)
-[![CircleCI](https://circleci.com/gh/jdxcode/fancy-mocha/tree/master.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-mocha/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/jdxcode/fancy-mocha?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/fancy-mocha/branch/master)
-[![Codecov](https://codecov.io/gh/jdxcode/fancy-mocha/branch/master/graph/badge.svg)](https://codecov.io/gh/jdxcode/fancy-mocha)
-[![Greenkeeper](https://badges.greenkeeper.io/jdxcode/fancy-mocha.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/npm/fancy-mocha/badge.svg)](https://snyk.io/test/npm/fancy-mocha)
-[![Downloads/week](https://img.shields.io/npm/dw/fancy-mocha.svg)](https://npmjs.org/package/fancy-mocha)
-[![License](https://img.shields.io/npm/l/fancy-mocha.svg)](https://github.com/jdxcode/fancy-mocha/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/fancy-test.svg)](https://npmjs.org/package/fancy-test)
+[![CircleCI](https://circleci.com/gh/jdxcode/fancy-test/tree/master.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-test/tree/master)
+[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/jdxcode/fancy-test?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/fancy-test/branch/master)
+[![Codecov](https://codecov.io/gh/jdxcode/fancy-test/branch/master/graph/badge.svg)](https://codecov.io/gh/jdxcode/fancy-test)
+[![Greenkeeper](https://badges.greenkeeper.io/jdxcode/fancy-test.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/npm/fancy-test/badge.svg)](https://snyk.io/test/npm/fancy-test)
+[![Downloads/week](https://img.shields.io/npm/dw/fancy-test.svg)](https://npmjs.org/package/fancy-test)
+[![License](https://img.shields.io/npm/l/fancy-test.svg)](https://github.com/jdxcode/fancy-test/blob/master/package.json)
 
 <!-- toc -->
 
@@ -37,7 +37,7 @@ Mocha out of the box often requires a lot of setup and teardown code in `beforeE
 
 It should be compatible with other testing libraries as well (e.g. jest), but may require a couple small changes. If you're interested, try it out and let me know if it works.
 
-As an example, here is what a test file might look like for an application setup with fancy-mocha. This chain could partially be stored to a variable for reuse.
+As an example, here is what a test file might look like for an application setup with fancy-test. This chain could partially be stored to a variable for reuse.
 
 ```js
 describe('api', () => {
@@ -59,7 +59,7 @@ describe('api', () => {
   // check to ensure the operation was successful
   .run(ctx => expect(ctx.user.foo).to.equal('bar'))
 
-  // end is essentially mocha's it(expectation, callback)
+  // it is essentially mocha's it(expectation, callback)
   // start the test and provide a description
   .it('POST /api/user/foo updates the user')
 })
@@ -68,12 +68,12 @@ describe('api', () => {
 Usage
 =====
 
-Setup is pretty easy, just install mocha and fancy-mocha, then you can use any of the examples below.
+Setup is pretty easy, just install mocha and fancy-test, then you can use any of the examples below.
 
 Assume the following is before all the examples:
 
 ```js
-import {fancy} from 'fancy-mocha'
+import {fancy} from 'fancy-test
 import {expect} from 'chai'
 ```
 
@@ -272,7 +272,7 @@ Chai
 This library includes [chai](https://npm.im/chai) preloaded with [chai-as-promised](https://npm.im/chai-as-promised) for convenience:
 
 ```js
-import {expect, fancy} from 'fancy-mocha'
+import {expect, fancy} from 'fancy-test
 
 describe('has chai', () => {
   fancy
