@@ -1,3 +1,11 @@
+<a name="0.3.10"></a>
+## [0.3.10](https://github.com/jdxcode/fancy-test/compare/38bbfa27cb55f8fc2864da4c6c83ae47d76ea356...v0.3.10) (2018-01-26)
+
+
+### Bug Fixes
+
+* allow do to modify context ([d997f3a](https://github.com/jdxcode/fancy-test/commit/d997f3a))
+
 <a name="0.3.9"></a>
 ## [0.3.9](https://github.com/jdxcode/fancy-test/compare/716d3b92271b06e3492f9306b318555fb42dc996...v0.3.9) (2018-01-26)
 
