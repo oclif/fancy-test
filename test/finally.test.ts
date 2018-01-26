@@ -13,5 +13,5 @@ describe('finally', () => {
   fancy
   // not sure how to actually test this
   .finally(() => {})
-  .end('finally')
+  .it('finally')
 })

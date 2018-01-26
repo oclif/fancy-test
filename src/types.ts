@@ -25,15 +25,14 @@ export interface PluginDef {
 
 export interface Plugins {[k: string]: PluginDef}
 
+export interface It<I> {
+  (expectation: string, cb?: (context: I, done?: MochaDone) => any): void
+  (cb?: (context: I, done?: MochaDone) => any): void
+}
+
 export type Base<I extends Context, T extends Plugins> = {
-  it: {
-    (expectation: string, cb?: (context: I) => any): void
-    (cb?: (context: I) => any): void
-  }
-  end: {
-    (expectation: string, cb?: (context: I) => any): void
-    (cb?: (context: I) => any): void
-  }
+  it: It<I>
+  end: It<I>
   add<K extends string, O>(key: K, cb: (context: I) => Promise<O> | O): Base<I & {[P in K]: O}, T>
   do<O>(cb: (context: I & O) => any): Base<O & I, T>
   finally(cb: (context: I) => any): Base<I, T>
@@ -45,3 +44,5 @@ export interface EnvOptions {
 }
 
 export interface Env extends Plugin<{envs: (typeof process.env)[]}> {}
+
+export type MochaDone = (error?: any) => any

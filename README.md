@@ -281,6 +281,22 @@ describe('stdmock tests', () => {
 })
 ```
 
+Done
+----
+
+You can get the mocha `done()` callback by passing in a second argument.
+
+```js
+import {expect, fancy} from 'fancy-test'
+
+describe('calls done', () => {
+  fancy
+  .it('expects FOO=bar', (_, done) => {
+    done()
+  })
+})
+```
+
 Chai
 ----
 

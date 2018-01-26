@@ -19,14 +19,14 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       arg1 = undefined
     }
     if (!arg1) arg1 = context.expectation || 'test'
-    if (cb) {
-      context.chain = [...context.chain, {
-        run: async (input: any) => {
-          await cb(input)
-        }
-      }]
-    }
-    return context.test(arg1, async function () {
+    async function run(done?: Types.MochaDone) {
+      if (cb) {
+        context.chain = [...context.chain, {
+          run: async (input: any) => {
+            await cb(input, done)
+          }
+        }]
+      }
       for (let i = 0; i < context.chain.length; i++) {
         const handleError = async (err: Error): Promise<boolean> => {
           context.error = err
@@ -52,7 +52,8 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
         if (p.finally) await p.finally(context)
       }
       if (context.error) throw context.error
-    })
+    }
+    return context.test(arg1, (cb && cb.length === 2) ? done => run(done) : () => run())
   }
   return {
     ...Object.entries(context.plugins)
