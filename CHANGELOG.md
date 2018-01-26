@@ -1,3 +1,11 @@
+<a name="0.3.8"></a>
+## [0.3.8](https://github.com/jdxcode/fancy-test/compare/b0e248a8ddcc7753247d54465fc22df01078ec51...v0.3.8) (2018-01-26)
+
+
+### Bug Fixes
+
+* export types as FancyTypes ([716d3b9](https://github.com/jdxcode/fancy-test/commit/716d3b9))
+
 <a name="0.3.7"></a>
 ## [0.3.7](https://github.com/jdxcode/fancy-test/compare/01401df6b2b732ede1b827bae775aa5e000d9e85...v0.3.7) (2018-01-26)
 
