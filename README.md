@@ -147,7 +147,7 @@ But this has a common flaw, if the test does not error, the test will still pass
 Finally
 -------
 
-Run a tasks even if the test errors out.
+Run a task even if the test errors out.
 
 ```js
 describe('finally tests', () => {
