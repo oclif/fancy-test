@@ -1,4 +1,4 @@
-import base, {Context, Fancy, Plugin} from './base'
+import base, {Base, Context, Plugin} from './base'
 import _catch from './catch'
 import env, {EnvOptions} from './env'
 import nock, {NockScope} from './nock'
@@ -13,9 +13,11 @@ export const fancy = base
 .register('stderr', stderr)
 .register('stdout', stdout)
 
+export type Fancy = typeof fancy
+
 export {
   Context,
-  Fancy,
+  Base,
   Plugin,
   EnvOptions,
   NockScope,

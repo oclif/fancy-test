@@ -26,9 +26,17 @@ const context: Context = {
   chain: [],
 }
 
-export interface Plugins {[k: string]: [object, any, any, any, any]}
+export interface PluginDef {
+  output: object
+  a1: any
+  a2: any
+  a3: any
+  a4: any
+}
 
-export type Fancy<I extends Context, T extends Plugins> = {
+export interface Plugins {[k: string]: PluginDef}
+
+export type Base<I extends Context, T extends Plugins> = {
   it: {
     (expectation: string, cb?: (context: I) => any): void
     (cb?: (context: I) => any): void
@@ -37,12 +45,12 @@ export type Fancy<I extends Context, T extends Plugins> = {
     (expectation: string, cb?: (context: I) => any): void
     (cb?: (context: I) => any): void
   }
-  add<K extends string, O>(key: K, cb: (context: I) => Promise<O> | O): Fancy<I & {[P in K]: O}, T>
-  do(cb: (context: I) => any): Fancy<I, T>
-  register<K extends string, O, A1, A2, A3, A4>(key: K, plugin: (arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4) => Plugin<O & I>): Fancy<I, T & {[P in K]: [O, A1, A2, A3, A4]}>
-} & {[P in keyof T]: (arg1?: T[P][1], arg2?: T[P][2], arg3?: T[P][3], arg4?: T[P][4]) => Fancy<T[P][0] & I, T>}
+  add<K extends string, O>(key: K, cb: (context: I) => Promise<O> | O): Base<I & {[P in K]: O}, T>
+  do(cb: (context: I) => any): Base<I, T>
+  register<K extends string, O, A1, A2, A3, A4>(key: K, plugin: (arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4) => Plugin<O & I>): Base<I, T & {[P in K]: {output: O, a1: A1, a2: A2, a3: A3, a4: A4}}>
+} & {[P in keyof T]: (arg1?: T[P]['a1'], arg2?: T[P]['a2'], arg3?: T[P]['a3'], arg4?: T[P]['a4']) => Base<T[P]['output'] & I, T>}
 
-const base = <I extends Context>(context: I): Fancy<I, {}> => {
+const base = <I extends Context>(context: I): Base<I, {}> => {
   const end = (arg1: any, cb: any) => {
     context = assignWithProps({}, context)
     if (_.isFunction(arg1)) {
