@@ -1,10 +1,4 @@
-import {Plugin} from './base'
-
-export interface EnvOptions {
-  clear?: boolean
-}
-
-export interface Env extends Plugin<{envs: (typeof process.env)[]}> {}
+import {Env, EnvOptions} from './types'
 
 export default (env: {[k: string]: string | undefined}, opts: EnvOptions = {}) => ({
   run(ctx) {

@@ -1,7 +1,7 @@
-import base, {Base, Context, Plugin} from './base'
+import base from './base'
 import _catch from './catch'
 import {expect} from './chai'
-import env, {EnvOptions} from './env'
+import env from './env'
 import nock, {NockScope} from './nock'
 import {stderr, stdout} from './stdmock'
 import stub from './stub'
@@ -19,12 +19,8 @@ export const fancy = base
 export type Fancy = typeof fancy
 
 export {
-  FancyTypes,
-  Base,
-  Context,
-  EnvOptions,
-  NockScope,
-  Plugin,
   expect,
+  FancyTypes,
+  NockScope,
 }
 export default fancy

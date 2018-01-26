@@ -1,5 +1,7 @@
 import * as Nock from 'nock'
 
+export {Scope as NockScope} from 'nock'
+
 export default (host: string, cb: (nock: Nock.Scope) => any) => {
   const nock: typeof Nock = require('nock')
   const intercepter = nock(host)
@@ -16,5 +18,3 @@ export default (host: string, cb: (nock: Nock.Scope) => any) => {
     },
   }
 }
-
-export {Scope as NockScope} from 'nock'
