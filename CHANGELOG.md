@@ -1,3 +1,11 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/jdxcode/fancy-test/compare/efd646be6d8d7449acbe47472c4f6f6323ba7737...v0.5.1) (2018-01-26)
+
+
+### Bug Fixes
+
+* fixed done callbacks ([5ef8df8](https://github.com/jdxcode/fancy-test/commit/5ef8df8))
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/jdxcode/fancy-test/compare/75264f1f71a8cbd65abfc00466f37bfa90da299f...v0.5.0) (2018-01-26)
 
