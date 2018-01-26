@@ -18,6 +18,7 @@ extendable utilities for testing
 - [Usage](#usage)
   * [Stub](#stub)
   * [Catch](#catch)
+  * [Finally](#finally)
   * [Nock](#nock)
   * [Environment Variables](#environment-variables)
   * [Run](#run)
@@ -142,6 +143,20 @@ it('dont do this', () => {
 ```
 
 But this has a common flaw, if the test does not error, the test will still pass. Chai and other assertion libraries have helpers for this, but they still end up with somewhat messy code.
+
+Finally
+-------
+
+Run a tasks even if the test errors out.
+
+```js
+describe('finally tests', () => {
+  fancy
+  .do(() => { throw new Error('x') })
+  .finally(() => { /* always called */ })
+  .end('always calls finally')
+})
+```
 
 Nock
 ----

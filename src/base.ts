@@ -82,6 +82,12 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
         chain: [...context.chain, {run: (input: any) => cb(input)}]
       })
     },
+    finally(cb) {
+      return base({
+        ...context as any,
+        chain: [...context.chain, {finally: (input: any) => cb(input)}]
+      })
+    },
     add(key, cb) {
       return base({
         ...context as any,
