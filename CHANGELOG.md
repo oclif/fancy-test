@@ -1,3 +1,13 @@
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/jdxcode/fancy-test/compare/1ea41aa9a0f9c68e4fdde571229cf63314d4c8b4...v0.3.4) (2018-01-26)
+
+
+### Bug Fixes
+
+* readme ([7e248fb](https://github.com/jdxcode/fancy-test/commit/7e248fb))
+* rename to fancy-test ([44b8a76](https://github.com/jdxcode/fancy-test/commit/44b8a76))
+* rename to fancy-test ([07f3142](https://github.com/jdxcode/fancy-test/commit/07f3142))
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/jdxcode/fancy-mocha/compare/2ac92c3b7bdcd95a0af033ad580dfe8b258ee628...v0.3.3) (2018-01-25)
 
