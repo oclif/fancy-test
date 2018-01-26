@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import {expect, fancy} from '../src'
 
 describe('stdout', () => {
-  fancy()
+  fancy
   .stderr()
   .stdout()
   .end('logs', output => {
@@ -14,7 +14,7 @@ describe('stdout', () => {
     expect(output.stdout).to.equal('foo\n')
   })
 
-  fancy()
+  fancy
   .stdout()
   .end('logs twice', output => {
     console.log('foo')
@@ -23,14 +23,14 @@ describe('stdout', () => {
     expect(output.stdout).to.equal('foo\nbar\n')
   })
 
-  fancy()
+  fancy
   .stderr()
   .end('writes to stderr', output => {
     console.error('foo')
     expect(output.stderr).to.equal('foo\n')
   })
 
-  fancy()
+  fancy
   .stdout()
   .stderr()
   .end('writes to both', output => {
@@ -40,7 +40,7 @@ describe('stdout', () => {
     expect(output.stdout).to.equal('bar\n')
   })
 
-  fancy()
+  fancy
   .stdout()
   .end('strips colors by default', output => {
     console.log(chalk.red('foobar'))
@@ -48,28 +48,28 @@ describe('stdout', () => {
   })
 
   // from readme
-  fancy()
+  fancy
   .stdout()
   .end('mocks stdout', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
-  fancy()
+  fancy
   .stdout({print: true})
   .end('mocks stdout but also prints to screen', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
-  fancy()
+  fancy
   .stderr()
   .end('mocks stderr', output => {
     console.error('foobar')
     expect(output.stderr).to.equal('foobar\n')
   })
 
-  fancy()
+  fancy
   .stdout()
   .stderr()
   .end('mocks stdout and stderr', output => {
@@ -79,7 +79,7 @@ describe('stdout', () => {
     expect(output.stderr).to.equal('bar\n')
   })
 
-  fancy()
+  fancy
   .stdout({stripColor: false})
   .end('mocks stdout but does not strip the color codes', output => {
     console.log(chalk.red('foobar'))

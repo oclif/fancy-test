@@ -4,7 +4,7 @@ import {expect, fancy} from '../src'
 
 describe('nock', () => {
   // from readme
-  fancy()
+  fancy
   .nock('https://api.github.com', nock => {
     nock
     .get('/me')

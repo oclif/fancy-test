@@ -9,13 +9,13 @@ const platform = os.platform()
 
 describe('stub', () => {
   // from readme
-  fancy()
+  fancy
   .stub(os, 'platform', () => 'foobar')
   .end('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
-  fancy()
+  fancy
   .stub(os, 'platform', sinon.stub().returns('foobar'))
   .end('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
@@ -23,7 +23,7 @@ describe('stub', () => {
   })
   // from readme
 
-  fancy()
+  fancy
   .stdout()
   .end('resets os', output => {
     console.log(os.platform())

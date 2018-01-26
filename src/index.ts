@@ -1,8 +1,8 @@
-import base, {Base, Fancy, Next, Plugin} from './base'
-import _catch, {CatchOptions} from './catch'
+import base, {Context, Fancy, Plugin} from './base'
+import _catch from './catch'
 import env, {EnvOptions} from './env'
 import nock, {NockScope} from './nock'
-import {stderr, StdmockOptions, stdout} from './stdmock'
+import {stderr, stdout} from './stdmock'
 import stub from './stub'
 
 export const fancy = base
@@ -14,14 +14,11 @@ export const fancy = base
 .register('stdout', stdout)
 
 export {
-  Base,
+  Context,
   Fancy,
   Plugin,
-  Next,
-  CatchOptions,
   EnvOptions,
   NockScope,
-  StdmockOptions,
 }
 export default fancy
 export * from './chai'

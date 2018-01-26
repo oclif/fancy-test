@@ -41,7 +41,7 @@ As an example, here is what a test file might look like for an application setup
 
 ```js
 describe('api', () => {
-  fancy()
+  fancy
   // [custom plugin] initializes the db
   .initDB({withUser: mockDBUser})
 
@@ -61,7 +61,7 @@ describe('api', () => {
 
   // end is essentially mocha's it(expectation, callback)
   // start the test and provide a description
-  .end('POST /api/user/foo updates the user')
+  .it('POST /api/user/foo updates the user')
 })
 ```
 
@@ -85,15 +85,15 @@ Stub any object. Like all fancy plugins, it ensures that it is reset to normal a
 import * as os from 'os'
 
 describe('stub tests', () => {
-  fancy()
+  fancy
   .stub(os, 'platform', () => 'foobar')
-  .end('sets os', () => {
+  .it('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
-  fancy()
+  fancy
   .stub(os, 'platform', sinon.stub().returns('foobar'))
-  .end('uses sinon', () => {
+  .it('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
     expect(os.platform.called).to.equal(true)
   })
@@ -107,25 +107,25 @@ catch errors in a declarative way. By default, ensures they are actually thrown 
 
 ```js
 describe('catch tests', () => {
-  fancy()
+  fancy
   .run(() => { throw new Error('foobar') })
   .catch(/foo/)
-  .end('uses regex')
+  .it('uses regex')
 
-  fancy()
+  fancy
   .run(() => { throw new Error('foobar') })
   .catch('foobar')
-  .end('uses string')
+  .it('uses string')
 
-  fancy()
+  fancy
   .run(() => { throw new Error('foobar') })
   .catch(err => expect(err.message).to.match(/foo/))
-  .end('uses function')
+  .it('uses function')
 
-  fancy()
+  fancy
   // this would normally raise because there is no error being thrown
   .catch('foobar', {raiseIfNotThrown: false})
-  .end('do not error if not thrown')
+  .it('do not error if not thrown')
 })
 ```
 
@@ -151,13 +151,13 @@ Automatically calls `done()` to ensure the calls were made and `cleanAll()` to r
 
 ```js
 describe('nock tests', () => {
-  fancy()
+  fancy
   .nock('https://api.github.com', nock => {
     nock
     .get('/me')
     .reply(200, {name: 'jdxcode'})
   })
-  .end('mocks http call to github', async () => {
+  .it('mocks http call to github', async () => {
     const {body: user} = await HTTP.get('https://api.github.com/me')
     expect(user).to.have.property('name', 'jdxcode')
   })
@@ -171,16 +171,16 @@ Sometimes it's helpful to clear out environment variables before running tests o
 
 ```js
 describe('env tests', () => {
-  fancy()
+  fancy
   .env({FOO: 'BAR'})
-  .end('mocks FOO', () => {
+  .it('mocks FOO', () => {
     expect(process.env.FOO).to.equal('BAR')
     expect(process.env).to.not.deep.equal({FOO: 'BAR'})
   })
 
-  fancy()
+  fancy
   .env({FOO: 'BAR'}, {clear: true})
-  .end('clears all env vars', () => {
+  .it('clears all env vars', () => {
     expect(process.env).to.deep.equal({FOO: 'BAR'})
   })
 })
@@ -193,20 +193,20 @@ Run some arbitrary code within the pipeline. Useful to create custom logic and d
 
 ```js
 describe('run', () => {
-  fancy()
+  fancy
   .stdout()
   .run(() => console.log('foo'))
   .run(({stdout}) => expect(stdout).to.equal('foo\n'))
-  .end('runs this callback last', () => {
+  .it('runs this callback last', () => {
     // test code
   })
 
   // add to context object
-  fancy()
+  fancy
   .add('a', () => 1)
   .add('b', () => 2)
   // context will be {a: 1, b: 2}
-  .end('does something with context', context => {
+  .it('does something with context', context => {
     // test code
   })
 })
@@ -220,11 +220,11 @@ Can return a promise or not.
 
 ```js
 describe('add', () => {
-  fancy()
+  fancy
   .add('foo', () => 'foo')
   .add('bar', () => Promise.resolve('bar'))
   .run(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
-  .end('adds the properties')
+  .it('adds the properties')
 })
 ```
 
@@ -240,24 +240,24 @@ You can use the library [stdout-stderr](https://npm.im/stdout-stderr) directly f
 import chalk from 'chalk'
 
 describe('stdmock tests', () => {
-  fancy()
+  fancy
   .stdout()
-  .end('mocks stdout', output => {
+  .it('mocks stdout', output => {
     console.log('foobar')
     expect(output.stdout).to.equal('foobar\n')
   })
 
-  fancy()
+  fancy
   .stderr()
-  .end('mocks stderr', output => {
+  .it('mocks stderr', output => {
     console.error('foobar')
     expect(output.stderr).to.equal('foobar\n')
   })
 
-  fancy()
+  fancy
   .stdout()
   .stderr()
-  .end('mocks stdout and stderr', output => {
+  .it('mocks stdout and stderr', output => {
     console.log('foo')
     console.error('bar')
     expect(output.stdout).to.equal('foo\n')
@@ -275,9 +275,9 @@ This library includes [chai](https://npm.im/chai) preloaded with [chai-as-promis
 import {expect, fancy} from 'fancy-mocha'
 
 describe('has chai', () => {
-  fancy()
+  fancy
   .env({FOO: 'BAR'})
-  .end('expects FOO=bar', () => {
+  .it('expects FOO=bar', () => {
     expect(process.env.FOO).to.equal('BAR')
   })
 })
@@ -292,19 +292,19 @@ For example:
 
 ```js
 describe('my suite', () => {
-  let setupDB = fancy()
+  let setupDB = fancy
                 .run(() => setupDB())
                 .env({FOO: 'FOO'})
 
   setupDB
   .stdout()
-  .end('tests with stdout mocked', () => {
+  .it('tests with stdout mocked', () => {
     // test code
   })
 
   setupDB
   .env({BAR: 'BAR'})
-  .end('also mocks the BAR environment variable', () => {
+  .it('also mocks the BAR environment variable', () => {
     // test code
   })
 })
@@ -314,7 +314,7 @@ Using [run](#run) you can really maximize this ability. In fact, you don't even 
 
 ```js
 describe('my suite', () => {
-  let setupDB = fancy()
+  let setupDB = fancy
                 .run(() => setupDB())
                 .catch(/spurious db error/)
                 .run(() => setupDeps())
@@ -325,10 +325,10 @@ describe('my suite', () => {
   }
 
   testMyApp({info: 'test run a'})
-  .end('tests a')
+  .it('tests a')
 
   testMyApp({info: 'test run b'})
-  .end('tests b')
+  .it('tests b')
 })
 ```
 
@@ -337,38 +337,36 @@ Custom Plugins
 
 It's easy to create your own plugins to extend fancy. In [dxcli](https://github.com/dxcli/dxcli) we use fancy to create [custom command testers](https://github.com/dxcli/example-multi-cli-typescript/blob/master/test/commands/hello.test.ts).
 
-A plugin is a function that receives a `next` callback that it must call to execute the next plugin in the chain.
-
 Here is an example that creates a counter that could be used to label each test run. See the [actual test](test/base.test.ts) to see the TypeScript types needed.
 
 ```js
 let count = 0
 
-const counter = prefix => () => {
-  count++
-  return {count, testLabel: `${prefix}${count}`}
-}
-
-// note that .register() MUST be called on a non-instantiated fancy object.
-const myFancy = fancy
-.register('count', counter)
+fancy = fancy
+.register('count', prefix => {
+  return {
+    run(ctx) {
+      ctx.count = ++count
+      ctx.testLabel = `${prefix}${count}`
+    }
+  }
+})
 
 describe('register', () => {
-  myFancy()
+  fancy
   .count('test-')
-  .end('is test #1', context => {
+  .it('is test #1', context => {
     expect(context.count).to.equal(1)
     expect(context.testLabel).to.equal('test-1')
   })
 
-  myFancy()
+  fancy
   .count('test-')
-  .end('is test #2', context => {
+  .it('is test #2', context => {
     expect(context.count).to.equal(2)
     expect(context.testLabel).to.equal('test-2')
   })
 })
-)
 ```
 
 TypeScript

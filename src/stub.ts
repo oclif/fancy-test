@@ -1,19 +1,16 @@
 import * as _ from 'lodash'
 
-import {Plugin} from './base'
-
 /**
  * mocks an object's property
  */
-export default (object: any, path: string, value: any) => {
-  let original = _.get(object, path)
-  const plugin = (() => {
+export default (object: any, path: string, value: any) => ({
+  run(ctx: {stubs: any[]}) {
+    ctx.stubs = ctx.stubs || []
+    ctx.stubs.push(_.get(object, path))
     _.set(object, path, value)
-  }) as Plugin
-
-  plugin.finally = () => {
-    _.set(object, path, original)
-  }
-
-  return plugin
-}
+  },
+  finally(ctx: {stubs: any[]}) {
+    const stub = ctx.stubs.pop()
+    _.set(object, path, stub)
+  },
+})
