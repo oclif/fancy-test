@@ -1,3 +1,11 @@
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/jdxcode/fancy-test/compare/7e248fb75fa2ad9a11cc8dbc9ee0ea96be0abbfb...v0.3.5) (2018-01-26)
+
+
+### Bug Fixes
+
+* refactor to save an export ([00a8333](https://github.com/jdxcode/fancy-test/commit/00a8333))
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/jdxcode/fancy-test/compare/1ea41aa9a0f9c68e4fdde571229cf63314d4c8b4...v0.3.4) (2018-01-26)
 
