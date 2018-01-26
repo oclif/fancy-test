@@ -53,7 +53,10 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       }
       if (context.error) throw context.error
     }
-    return context.test(arg1, (cb && cb.length === 2) ? done => run(done) : () => run())
+    function runWithDone(done: MochaDone) {
+      run(done).catch(done)
+    }
+    return context.test(arg1, (cb && cb.length === 2) ? runWithDone : () => run())
   }
   return {
     ...Object.entries(context.plugins)

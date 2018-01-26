@@ -26,8 +26,8 @@ export interface PluginDef {
 export interface Plugins {[k: string]: PluginDef}
 
 export interface It<I> {
-  (expectation: string, cb?: (context: I, done?: MochaDone) => any): void
-  (cb?: (context: I, done?: MochaDone) => any): void
+  (expectation: string, cb?: (context: I, done: MochaDone) => any): void
+  (cb?: (context: I, done: MochaDone) => any): void
 }
 
 export type Base<I extends Context, T extends Plugins> = {

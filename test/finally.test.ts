@@ -15,3 +15,19 @@ describe('finally', () => {
   .finally(() => {})
   .it('finally')
 })
+
+describe('done', () => {
+  // fancy
+  // .do(() => {throw new Error('x')})
+  // .it('calls done', (_, done) => {
+  //   done('foo')
+  // })
+  // fancy
+  // .it('calls done', (_, done) => {
+  //   done('foo')
+  // })
+  fancy
+  .it('calls done', (_, done) => {
+    done()
+  })
+})
