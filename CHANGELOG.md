@@ -1,3 +1,11 @@
+<a name="0.3.9"></a>
+## [0.3.9](https://github.com/jdxcode/fancy-test/compare/716d3b92271b06e3492f9306b318555fb42dc996...v0.3.9) (2018-01-26)
+
+
+### Bug Fixes
+
+* consolidate types ([38bbfa2](https://github.com/jdxcode/fancy-test/commit/38bbfa2))
+
 <a name="0.3.8"></a>
 ## [0.3.8](https://github.com/jdxcode/fancy-test/compare/b0e248a8ddcc7753247d54465fc22df01078ec51...v0.3.8) (2018-01-26)
 
