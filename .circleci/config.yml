@@ -41,7 +41,7 @@ jobs:
 
 workflows:
   version: 2
-  "fancy-mocha":
+  "fancy-test":
     jobs:
       - node-latest
       - node-8
