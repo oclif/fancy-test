@@ -6,6 +6,8 @@ import nock, {NockScope} from './nock'
 import {stderr, stdout} from './stdmock'
 import stub from './stub'
 
+import * as FancyTypes from './types'
+
 export const fancy = base
 .register('catch', _catch)
 .register('env', env)
@@ -17,6 +19,7 @@ export const fancy = base
 export type Fancy = typeof fancy
 
 export {
+  FancyTypes,
   Base,
   Context,
   EnvOptions,
