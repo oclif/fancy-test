@@ -2,6 +2,8 @@
 
 import {expect, fancy} from '../src'
 
+process.env.PREDEFINED = '1'
+
 describe('env', () => {
   // from readme
   fancy
@@ -23,5 +25,11 @@ describe('env', () => {
   .end('works with stdout', output => {
     console.log(process.env.FOO)
     expect(output.stdout).to.equal('BAR\n')
+  })
+
+  fancy
+  .env({PREDEFINED: undefined})
+  .end('can set things to be undefined', () => {
+    expect(process.env.PREDEFINED).to.equal(undefined)
   })
 })
