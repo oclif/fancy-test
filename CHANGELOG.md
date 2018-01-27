@@ -1,3 +1,12 @@
+<a name="0.5.5"></a>
+## [0.5.5](https://github.com/jdxcode/fancy-test/compare/72c35888193e0240962162fe2b2d275647ee69fc...v0.5.5) (2018-01-27)
+
+
+### Bug Fixes
+
+* allow resetting stdmock ([ceabe22](https://github.com/jdxcode/fancy-test/commit/ceabe22))
+* throw error if no chai ([84b4c18](https://github.com/jdxcode/fancy-test/commit/84b4c18))
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/jdxcode/fancy-test/compare/48ee57cfb2b3d366dd2efb8e32ea538e44762ff0...v0.5.4) (2018-01-27)
 
