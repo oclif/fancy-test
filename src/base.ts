@@ -14,15 +14,14 @@ const context: Types.Context = {
 
 const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
   const end = (arg1: any, cb: Types.MochaCallback<I>) => {
-    context = assignWithProps({}, context)
+    const originalContext = context
     if (_.isFunction(arg1)) {
       cb = arg1
       arg1 = undefined
     }
     if (!arg1) arg1 = context.expectation || 'test'
     async function run(this: mocha.ITestCallbackContext, done?: Types.MochaDone) {
-      // reset error if retrying
-      delete context.error
+      context = assignWithProps({}, originalContext)
       if (context.retries) this.retries(context.retries)
       if (cb) {
         context.chain = [...context.chain, {
