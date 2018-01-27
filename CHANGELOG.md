@@ -1,3 +1,11 @@
+<a name="0.5.4"></a>
+## [0.5.4](https://github.com/jdxcode/fancy-test/compare/48ee57cfb2b3d366dd2efb8e32ea538e44762ff0...v0.5.4) (2018-01-27)
+
+
+### Bug Fixes
+
+* always reset full context when retrying ([72c3588](https://github.com/jdxcode/fancy-test/commit/72c3588))
+
 <a name="0.5.3"></a>
 ## [0.5.3](https://github.com/jdxcode/fancy-test/compare/59680287ed001eb1a95732881553cdc12757be01...v0.5.3) (2018-01-27)
 
