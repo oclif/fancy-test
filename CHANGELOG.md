@@ -1,3 +1,11 @@
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/jdxcode/fancy-test/compare/5ef8df8a23ae1d6eab219413c08936ae49d7b9e5...v0.5.2) (2018-01-27)
+
+
+### Bug Fixes
+
+* set this on mocha callback ([5968028](https://github.com/jdxcode/fancy-test/commit/5968028))
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/jdxcode/fancy-test/compare/efd646be6d8d7449acbe47472c4f6f6323ba7737...v0.5.1) (2018-01-26)
 
