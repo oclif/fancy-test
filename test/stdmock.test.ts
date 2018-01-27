@@ -85,4 +85,13 @@ describe('stdout', () => {
     console.log(chalk.red('foobar'))
     expect(output.stdout).to.contain(chalk.red('foobar'))
   })
+
+  fancy
+  .stdout()
+  .do(() => console.log('foo'))
+  .do(c => expect(c.stdout).to.equal('foo\n'))
+  .stdout()
+  .do(() => console.log('bar'))
+  .do(c => expect(c.stdout).to.equal('bar\n'))
+  .it('resets stdout')
 })

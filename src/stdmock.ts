@@ -5,6 +5,7 @@ const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: {print?: boolea
     mock[std].start()
     mock[std].print = opts.print === true
     mock[std].stripColor = opts.stripColor !== false
+    if (ctx[std] as any !== undefined) return
     Object.defineProperty(ctx, std, {
       get: () => mock[std].output
     })
