@@ -9,32 +9,17 @@
     "stdout-stderr": "^0.1.4"
   },
   "devDependencies": {
-    "@dxcli/dev-nyc-config": "^0.0.3",
-    "@dxcli/dev-semantic-release": "^0.1.0",
-    "@dxcli/dev-tslint": "^0.0.17",
-    "@types/chai": "^4.1.2",
-    "@types/chai-as-promised": "^7.1.0",
-    "@types/lodash": "^4.14.97",
-    "@types/mocha": "^2.2.47",
-    "@types/nock": "^9.1.2",
-    "@types/node": "^9.4.0",
+    "@dxcli/dev": "^2.0.4",
     "@types/sinon": "^4.1.3",
     "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
     "chalk": "^2.3.0",
-    "eslint": "^4.16.0",
-    "eslint-config-dxcli": "^1.1.4",
     "http-call": "^5.0.2",
     "husky": "^0.14.3",
     "mocha": "^5.0.0",
-    "mocha-junit-reporter": "^1.17.0",
     "nock": "^9.1.6",
     "nps": "^5.7.1",
     "nps-utils": "^1.5.0",
-    "nyc": "^11.4.1",
-    "sinon": "^4.2.2",
-    "ts-node": "^4.1.0",
-    "typescript": "^2.6.2"
+    "sinon": "^4.2.2"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -51,9 +36,9 @@
   "repository": "jdxcode/fancy-test",
   "scripts": {
     "commitmsg": "dxcli-dev-commitmsg",
-    "precommit": "nps lint",
-    "prepare": "nps build",
-    "test": "nps test"
+    "precommit": "nps lint -l warn",
+    "prepare": "rm -rf lib && tsc",
+    "test": "nps test -l warn"
   },
   "types": "lib/index.d.ts"
 }

@@ -115,16 +115,18 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@dxcli/dev-nyc-config/-/dev-nyc-config-0.0.3.tgz#3ff59cf561663710f025a41f64d608d2977a3d3b"
 
-"@dxcli/dev-semantic-release@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@dxcli/dev-semantic-release/-/dev-semantic-release-0.1.0.tgz#adc88f1eaee862b73ae824496d4076f3fcc5c7c9"
+"@dxcli/dev-semantic-release@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@dxcli/dev-semantic-release/-/dev-semantic-release-0.2.0.tgz#a749272f0d8809ff4aa687b097924b43ce315ce2"
   dependencies:
     "@dxcli/dev-commitmsg" "^0.0.4"
     "@semantic-release/changelog" "^1.0.0"
-    "@semantic-release/git" "^2.0.2"
+    "@semantic-release/exec" "^1.0.2"
+    "@semantic-release/git" "^2.0.3"
     "@semantic-release/github" "^3.0.3"
     "@semantic-release/npm" "^2.6.4"
-    semantic-release "^12.2.2"
+    semantic-release "^12.2.5"
+    shelljs "^0.8.1"
 
 "@dxcli/dev-tslint@^0.0.17":
   version "0.0.17"
@@ -132,6 +134,30 @@
   dependencies:
     tslint "^5.9.1"
     tslint-xo "^0.5.0"
+
+"@dxcli/dev@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@dxcli/dev/-/dev-2.0.4.tgz#a86a2ad1ee98a533468bd16a711af3cd6597d58a"
+  dependencies:
+    "@dxcli/dev-nyc-config" "^0.0.3"
+    "@dxcli/dev-semantic-release" "^0.2.0"
+    "@dxcli/dev-tslint" "^0.0.17"
+    "@types/ansi-styles" "^2.0.30"
+    "@types/chai" "^4.1.2"
+    "@types/lodash" "^4.14.97"
+    "@types/mocha" "^2.2.47"
+    "@types/nock" "^9.1.2"
+    "@types/node" "^9.4.0"
+    "@types/node-notifier" "^0.0.28"
+    "@types/read-pkg" "^3.0.0"
+    "@types/strip-ansi" "^3.0.0"
+    "@types/supports-color" "^3.1.0"
+    eslint "^4.16.0"
+    eslint-config-dxcli "^1.1.5"
+    mocha-junit-reporter "^1.17.0"
+    nyc "^11.4.1"
+    ts-node "^4.1.0"
+    typescript "^2.6.2"
 
 "@marionebl/sander@^0.6.0":
   version "0.6.1"
@@ -176,7 +202,17 @@
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.1.0.tgz#44771f676f5b148da309111285a97901aa95a6e0"
 
-"@semantic-release/git@^2.0.2":
+"@semantic-release/exec@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-1.0.2.tgz#655405003d7e694b66ffcb7658dfa59ce9b141bc"
+  dependencies:
+    "@semantic-release/error" "^2.1.0"
+    debug "^3.1.0"
+    execa "^0.9.0"
+    lodash "^4.17.4"
+    parse-json "^4.0.0"
+
+"@semantic-release/git@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-2.0.3.tgz#4348a525ec6dfeb9c43ab4ee8d06813583d05644"
   dependencies:
@@ -237,13 +273,11 @@
     into-stream "^3.1.0"
     lodash "^4.17.4"
 
-"@types/chai-as-promised@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@types/chai-as-promised/-/chai-as-promised-7.1.0.tgz#010b04cde78eacfb6e72bfddb3e58fe23c2e78b9"
-  dependencies:
-    "@types/chai" "*"
+"@types/ansi-styles@^2.0.30":
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/@types/ansi-styles/-/ansi-styles-2.0.30.tgz#9a645299020a224afc6a8cd055195850b3c2af85"
 
-"@types/chai@*", "@types/chai@^4.1.2":
+"@types/chai@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.2.tgz#f1af664769cfb50af805431c407425ed619daa21"
 
@@ -261,13 +295,33 @@
   dependencies:
     "@types/node" "*"
 
+"@types/node-notifier@^0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@types/node-notifier/-/node-notifier-0.0.28.tgz#86ba3d3aa8d918352cc3191d88de328b20dc93c1"
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*", "@types/node@^9.4.0":
   version "9.4.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.0.tgz#b85a0bcf1e1cc84eb4901b7e96966aedc6f078d1"
 
+"@types/normalize-package-data@*":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
+
+"@types/read-pkg@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/read-pkg/-/read-pkg-3.0.0.tgz#17ab6f0b396a58a5567ee387f558f2caedc8ae53"
+  dependencies:
+    "@types/normalize-package-data" "*"
+
 "@types/sinon@^4.1.3":
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.1.3.tgz#2ee25e0e302f31e78a945650a60029e08878eaf8"
+
+"@types/strip-ansi@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/strip-ansi/-/strip-ansi-3.0.0.tgz#9b63d453a6b54aa849182207711a08be8eea48ae"
 
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
@@ -276,6 +330,10 @@
 "@types/strip-json-comments@0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz#9aa30c04db212a9a0649d6ae6fd50accc40748a1"
+
+"@types/supports-color@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/supports-color/-/supports-color-3.1.0.tgz#3584b6b54f45333e988da2c29e6797eff5a20f8c"
 
 JSONStream@^1.0.4:
   version "1.3.2"
@@ -721,12 +779,6 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chai-as-promised@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
-  dependencies:
-    check-error "^1.0.2"
-
 "chai@>=1.9.2 <4.0.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-3.5.0.tgz#4d02637b067fe958bdbfdd3a40ec56fef7373247"
@@ -782,7 +834,7 @@ charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
-check-error@^1.0.1, check-error@^1.0.2:
+check-error@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
@@ -1364,9 +1416,9 @@ eslint-ast-utils@^1.0.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-dxcli@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-dxcli/-/eslint-config-dxcli-1.1.4.tgz#e74a6be724d4de72f116d87f300afb5aacd25fe9"
+eslint-config-dxcli@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-dxcli/-/eslint-config-dxcli-1.1.5.tgz#ac7bf9acaef94bbeb34bb57ff4ffbcbc71ea475a"
   dependencies:
     eslint-config-xo-space "^0.17.0"
     eslint-plugin-node "^5.2.1"
@@ -3886,7 +3938,7 @@ samsam@1.x:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/samsam/-/samsam-1.3.0.tgz#8d1d9350e25622da30de3e44ba692b5221ab7c50"
 
-semantic-release@^12.2.2:
+semantic-release@^12.2.5:
   version "12.2.5"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-12.2.5.tgz#595cdffc4226a1974c3257052b6ee259c2353568"
   dependencies:
@@ -3964,6 +4016,14 @@ shebang-regex@^1.0.0:
 shelljs@0.7.6:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.7.6.tgz#379cccfb56b91c8601e4793356eb5382924de9ad"
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
+shelljs@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.1.tgz#729e038c413a2254c4078b95ed46e0397154a9f1"
   dependencies:
     glob "^7.0.0"
     interpret "^1.0.0"

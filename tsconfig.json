@@ -16,6 +16,6 @@
     "target": "esnext"
   },
   "include": [
-    "src/**/*"
+    "./src/**/*"
   ]
 }
