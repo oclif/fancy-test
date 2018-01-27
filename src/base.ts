@@ -21,6 +21,9 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
     }
     if (!arg1) arg1 = context.expectation || 'test'
     async function run(this: mocha.ITestCallbackContext, done?: Types.MochaDone) {
+      // reset error if retrying
+      delete context.error
+      if (context.retries) this.retries(context.retries)
       if (cb) {
         context.chain = [...context.chain, {
           run: async (input: any) => {
@@ -94,12 +97,12 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
         chain: [...context.chain, {finally: (input: any) => cb(input)}]
       })
     },
-    add(key, cb) {
+    add(key, v) {
       return base({
         ...context as any,
         chain: [...context.chain, {
           run: async (ctx: any) => {
-            ctx[key] = await cb(ctx)
+            ctx[key] = await (_.isFunction(v) ? v(ctx) : v)
           }
         }]
       })
@@ -134,4 +137,7 @@ export default base(context)
 }))
 .register('only', () => ({
   init: ctx => {ctx.test = it.only}
+}))
+.register('retries', (count: number) => ({
+  init: ctx => ctx.retries = count
 }))

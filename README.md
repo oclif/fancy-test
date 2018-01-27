@@ -24,6 +24,8 @@ extendable utilities for testing
   * [Run](#run)
   * [Add](#add)
   * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
+  * [Done](#done)
+  * [Retries](#retries)
   * [Chai](#chai)
 - [Chaining](#chaining)
 - [Custom Plugins](#custom-plugins)
@@ -287,13 +289,30 @@ Done
 You can get the mocha `done()` callback by passing in a second argument.
 
 ```js
-import {expect, fancy} from 'fancy-test'
-
 describe('calls done', () => {
   fancy
   .it('expects FOO=bar', (_, done) => {
     done()
   })
+})
+```
+
+Retries
+-------
+
+Retry the test n times.
+
+```js
+let count = 3
+
+describe('test retries', () => {
+  fancy
+  .retries(2)
+  .do(() => {
+    count--
+    if (count > 0) throw new Error('x')
+  })
+  .it('retries 3 times')
 })
 ```
 
