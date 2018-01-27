@@ -1,3 +1,11 @@
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/jdxcode/fancy-test/compare/59680287ed001eb1a95732881553cdc12757be01...v0.5.3) (2018-01-27)
+
+
+### Bug Fixes
+
+* fixed retries ([48ee57c](https://github.com/jdxcode/fancy-test/commit/48ee57c))
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/jdxcode/fancy-test/compare/5ef8df8a23ae1d6eab219413c08936ae49d7b9e5...v0.5.2) (2018-01-27)
 
