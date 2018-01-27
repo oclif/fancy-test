@@ -2,6 +2,7 @@
 // tslint:disable no-unused
 
 import * as _ from 'lodash'
+import * as mocha from 'mocha'
 
 import * as Types from './types'
 
@@ -12,18 +13,18 @@ const context: Types.Context = {
 }
 
 const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
-  const end = (arg1: any, cb: any) => {
+  const end = (arg1: any, cb: Types.MochaCallback<I>) => {
     context = assignWithProps({}, context)
     if (_.isFunction(arg1)) {
       cb = arg1
       arg1 = undefined
     }
     if (!arg1) arg1 = context.expectation || 'test'
-    async function run(done?: Types.MochaDone) {
+    async function run(this: mocha.ITestCallbackContext, done?: Types.MochaDone) {
       if (cb) {
         context.chain = [...context.chain, {
           run: async (input: any) => {
-            await cb(input, done)
+            await cb.call(this, input, done)
           }
         }]
       }
@@ -53,10 +54,11 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       }
       if (context.error) throw context.error
     }
-    function runWithDone(done: MochaDone) {
-      run(done).catch(done)
-    }
-    return context.test(arg1, (cb && cb.length === 2) ? runWithDone : () => run())
+    return context.test(arg1, (cb && cb.length === 2) ? function (done) {
+      run.call(this, done).catch(done)
+    } : function () {
+      return run.call(this)
+    })
   }
   return {
     ...Object.entries(context.plugins)

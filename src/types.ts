@@ -1,3 +1,5 @@
+import * as mocha from 'mocha'
+
 export type PluginBuilder<I, A1 = undefined, A2 = undefined, A3 = undefined, A4 = undefined> = (arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4) => Plugin<I>
 
 export interface Context {
@@ -25,9 +27,10 @@ export interface PluginDef {
 
 export interface Plugins {[k: string]: PluginDef}
 
+export type MochaCallback<I> = (this: mocha.ITestCallbackContext, context: I, done: MochaDone) => any
 export interface It<I> {
-  (expectation: string, cb?: (context: I, done: MochaDone) => any): void
-  (cb?: (context: I, done: MochaDone) => any): void
+  (expectation: string, cb?: MochaCallback<I>): void
+  (cb?: MochaCallback<I>): void
 }
 
 export type Base<I extends Context, T extends Plugins> = {
