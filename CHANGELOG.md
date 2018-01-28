@@ -1,3 +1,11 @@
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/jdxcode/fancy-test/compare/21a2334339bb5b7edc06c288ea59b65fb0425107...v0.6.2) (2018-01-28)
+
+
+### Bug Fixes
+
+* updated semantic-release ([460043e](https://github.com/jdxcode/fancy-test/commit/460043e))
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/jdxcode/fancy-test/compare/b40e4bd454ed9bcb749ad53760994656ac71edf3...v0.6.1) (2018-01-28)
 
