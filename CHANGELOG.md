@@ -1,3 +1,11 @@
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/jdxcode/fancy-test/compare/33db7edbb2cf97b178c4490bbff6740abcd28840...v0.6.4) (2018-01-28)
+
+
+### Bug Fixes
+
+* close over envs ([16de1b4](https://github.com/jdxcode/fancy-test/commit/16de1b4))
+
 <a name="0.6.3"></a>
 ## [0.6.3](https://github.com/jdxcode/fancy-test/compare/460043efd4a967ac07a5efadcc421211627c9e6c...v0.6.3) (2018-01-28)
 
