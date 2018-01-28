@@ -125,9 +125,9 @@
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@dxcli/nyc-config/-/nyc-config-0.0.4.tgz#bd60c089aaa6d5da34e415bab6bc527d8c35a210"
 
-"@dxcli/semantic-release@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@dxcli/semantic-release/-/semantic-release-0.2.4.tgz#a63405c690fbdbcd9b9b21a8c865976b5faaf4b0"
+"@dxcli/semantic-release@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@dxcli/semantic-release/-/semantic-release-0.3.0.tgz#2e5a7785161ba058daa6db9b7ba661dce3017554"
   dependencies:
     "@commitlint/cli" "^6.0.2"
     "@commitlint/config-conventional" "^6.0.2"
