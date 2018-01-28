@@ -159,6 +159,13 @@
     ts-node "^4.1.0"
     typescript "^2.6.2"
 
+"@dxcli/tslint@^0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@dxcli/tslint/-/tslint-0.0.23.tgz#c9877ec9927bb958c1a71edac3263007ce64b22d"
+  dependencies:
+    tslint "^5.9.1"
+    tslint-xo "^0.5.0"
+
 "@marionebl/sander@^0.6.0":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@marionebl/sander/-/sander-0.6.1.tgz#1958965874f24bc51be48875feb50d642fc41f7b"

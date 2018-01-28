@@ -30,6 +30,12 @@ describe('env', () => {
   fancy
   .env({PREDEFINED: undefined})
   .end('can set things to be undefined', () => {
-    expect(process.env.PREDEFINED).to.equal(undefined)
+    expect(process.env).to.not.have.property('PREDEFINED')
+  })
+
+  fancy
+  .env({PREDEFINED: null})
+  .end('can set things to be null', () => {
+    expect(process.env).to.not.have.property('PREDEFINED')
   })
 })
