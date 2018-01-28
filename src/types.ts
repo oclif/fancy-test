@@ -47,6 +47,4 @@ export interface EnvOptions {
   clear?: boolean
 }
 
-export interface Env extends Plugin<{envs: (typeof process.env)[]}> {}
-
 export type MochaDone = (error?: any) => any
