@@ -9,9 +9,11 @@
     "stdout-stderr": "^0.1.4"
   },
   "devDependencies": {
-    "@dxcli/dev": "^2.0.12",
-    "@dxcli/semantic-release": "^0.3.3",
-    "@dxcli/tslint": "^0.0.23",
+    "@commitlint/cli": "^6.0.2",
+    "@commitlint/config-conventional": "^6.0.2",
+    "@dxcli/dev": "^2.0.16",
+    "@dxcli/nyc-config": "^0.0.4",
+    "@dxcli/tslint": "^0.1.3",
     "@types/sinon": "^4.1.3",
     "chai": "^4.1.2",
     "chalk": "^2.3.0",
@@ -41,9 +43,9 @@
   "main": "lib/index.js",
   "repository": "jdxcode/fancy-test",
   "scripts": {
-    "commitmsg": "dxcli-commitlint",
+    "commitmsg": "commitlint -x @commitlint/config-conventional -e $GIT_PARAMS",
     "precommit": "nps lint -l warn",
-    "prepublishOnly": "rm -rf lib && nps build",
+    "prepublishOnly": "nps build",
     "test": "nps test -l warn"
   },
   "types": "lib/index.d.ts"
