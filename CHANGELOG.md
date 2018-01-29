@@ -1,3 +1,11 @@
+<a name="0.6.5"></a>
+## [0.6.5](https://github.com/jdxcode/fancy-test/compare/16de1b478c9634c926aeca618dc786ed777a7e6f...v0.6.5) (2018-01-29)
+
+
+### Bug Fixes
+
+* ran generator ([ca9b837](https://github.com/jdxcode/fancy-test/commit/ca9b837))
+
 <a name="0.6.4"></a>
 ## [0.6.4](https://github.com/jdxcode/fancy-test/compare/33db7edbb2cf97b178c4490bbff6740abcd28840...v0.6.4) (2018-01-28)
 
