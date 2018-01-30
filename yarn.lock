@@ -2639,9 +2639,9 @@ starts-with@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/starts-with/-/starts-with-1.0.2.tgz#16793a729d89d4cf3d4fb2eda2f908ae357f196f"
 
-stdout-stderr@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/stdout-stderr/-/stdout-stderr-0.1.4.tgz#57aae28cf19bbc0faddcf75a7464389d813faa9f"
+stdout-stderr@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/stdout-stderr/-/stdout-stderr-0.1.5.tgz#adf87b96bb715b692fc62c727050d313ac832c23"
   dependencies:
     debug "*"
     strip-ansi "^4.0.0"

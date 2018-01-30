@@ -6,7 +6,7 @@
   "bugs": "https://github.com/jdxcode/fancy-test/issues",
   "dependencies": {
     "lodash": "^4.17.4",
-    "stdout-stderr": "^0.1.4"
+    "stdout-stderr": "^0.1.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
