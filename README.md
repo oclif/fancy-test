@@ -249,13 +249,11 @@ Stdout/Stderr Mocking
 ---------------------
 
 This is used for tests that ensure that certain stdout/stderr messages are made.
-By default this also trims the output from the screen.
+By default this also trims the output from the screen. See the output by setting `TEST_OUTPUT=1` or `DEBUG=stdout|stderr`, or by setting `{print: true}` in the options passed.
 
 You can use the library [stdout-stderr](https://npm.im/stdout-stderr) directly for doing this, but you have to be careful to always reset it after the tests run. We do that work for you so you don't have to worry about mocha's output being hidden.
 
 ```js
-import chalk from 'chalk'
-
 describe('stdmock tests', () => {
   fancy
   .stdout()
