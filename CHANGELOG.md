@@ -1,3 +1,11 @@
+<a name="0.6.6"></a>
+## [0.6.6](https://github.com/jdxcode/fancy-test/compare/ca9b837d71e17e705d5e048ee9b0d2157bad36a1...v0.6.6) (2018-02-01)
+
+
+### Bug Fixes
+
+* add TEST_OUTPUT flag ([8de6fb7](https://github.com/jdxcode/fancy-test/commit/8de6fb7))
+
 <a name="0.6.5"></a>
 ## [0.6.5](https://github.com/jdxcode/fancy-test/compare/16de1b478c9634c926aeca618dc786ed777a7e6f...v0.6.5) (2018-01-29)
 
