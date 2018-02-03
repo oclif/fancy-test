@@ -68,11 +68,11 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       plugins[k] = (...args: any[]) => {
         const plugin = v(...args)
         // clone context first
-        context = {...context as any}
-        if (plugin.init) plugin.init(context)
+        let c = {...context as any}
+        if (plugin.init) plugin.init(c)
         return base({
-          ...context as any,
-          chain: [...context.chain, plugin],
+          ...c,
+          chain: [...c.chain, plugin],
         })
       }
       return plugins
