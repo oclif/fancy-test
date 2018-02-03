@@ -1,3 +1,11 @@
+<a name="0.6.7"></a>
+## [0.6.7](https://github.com/jdxcode/fancy-test/compare/8de6fb7feb0fffb2d3dd91b3af402e403310e89f...v0.6.7) (2018-02-03)
+
+
+### Bug Fixes
+
+* clone context before running plugin ([81a13b7](https://github.com/jdxcode/fancy-test/commit/81a13b7))
+
 <a name="0.6.6"></a>
 ## [0.6.6](https://github.com/jdxcode/fancy-test/compare/ca9b837d71e17e705d5e048ee9b0d2157bad36a1...v0.6.6) (2018-02-01)
 
