@@ -1,3 +1,11 @@
+<a name="0.6.10"></a>
+## [0.6.10](https://github.com/jdxcode/fancy-test/compare/07988acff811e4cedd5afc753e8a139002a74160...v0.6.10) (2018-02-03)
+
+
+### Bug Fixes
+
+* added nock scope back ([6f30e60](https://github.com/jdxcode/fancy-test/commit/6f30e60))
+
 <a name="0.6.9"></a>
 ## [0.6.9](https://github.com/jdxcode/fancy-test/compare/1c40e4c6aa4cc89e587191285706bcc66dcd7ed9...v0.6.9) (2018-02-03)
 
