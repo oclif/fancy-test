@@ -67,6 +67,8 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
     .reduce((plugins, [k, v]) => {
       plugins[k] = (...args: any[]) => {
         const plugin = v(...args)
+        // clone context first
+        context = {...context as any}
         if (plugin.init) plugin.init(context)
         return base({
           ...context as any,
