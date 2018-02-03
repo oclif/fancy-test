@@ -1,3 +1,11 @@
+<a name="0.6.8"></a>
+## [0.6.8](https://github.com/jdxcode/fancy-test/compare/81a13b7ca0c7f6d3bf0cac4610a7a045ec83284b...v0.6.8) (2018-02-03)
+
+
+### Bug Fixes
+
+* fixed skipping when first task in chain ([1c40e4c](https://github.com/jdxcode/fancy-test/commit/1c40e4c))
+
 <a name="0.6.7"></a>
 ## [0.6.7](https://github.com/jdxcode/fancy-test/compare/8de6fb7feb0fffb2d3dd91b3af402e403310e89f...v0.6.7) (2018-02-03)
 
