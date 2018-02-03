@@ -1,7 +1,7 @@
 import * as _ from 'lodash'
 import * as Nock from 'nock'
 
-export function nock(host?: string, cb?: (nock: nock.Scope) => any) {
+export function nock(host?: string, cb?: (nock: NockScope) => any) {
   if (_.isUndefined(host)) throw new Error('host is undefined')
   if (_.isUndefined(cb)) throw new Error('callback is undefined')
 
@@ -21,6 +21,4 @@ export function nock(host?: string, cb?: (nock: nock.Scope) => any) {
   }
 }
 
-export namespace nock {
-  export interface Scope extends Nock.Scope {}
-}
+export interface NockScope extends Nock.Scope {}

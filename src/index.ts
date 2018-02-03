@@ -2,7 +2,7 @@ import base from './base'
 import _catch from './catch'
 import {expect} from './chai'
 import env from './env'
-import {nock} from './nock'
+import {nock, NockScope} from './nock'
 import {stderr, stdout} from './stdmock'
 import stub from './stub'
 
@@ -21,5 +21,6 @@ export type Fancy = typeof fancy
 export {
   expect,
   FancyTypes,
+  NockScope,
 }
 export default fancy
