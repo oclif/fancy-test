@@ -4,7 +4,7 @@ let count = 0
 
 // note that .register() MUST be called on a non-instantiated fancy object.
 const myFancy = fancy
-.register('count', (prefix: string) => {
+.register('count', (prefix?: string) => {
   return {
     run(ctx: {count: number, testLabel: string}) {
       ctx.count = ++count

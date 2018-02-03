@@ -139,6 +139,6 @@ export default base(context)
 .register('only', () => ({
   init: ctx => {ctx.test = it.only}
 }))
-.register('retries', (count: number) => ({
+.register('retries', (count?: number) => ({
   init: ctx => ctx.retries = count
 }))

@@ -2,7 +2,7 @@ import * as _ from 'lodash'
 
 import {expect} from './chai'
 
-export default (arg: RegExp | string | ((err: Error) => any), opts: {raiseIfNotThrown?: boolean} = {}) => ({
+export default (arg?: RegExp | string | ((err: Error) => any), opts: {raiseIfNotThrown?: boolean} = {}) => ({
   run() {
     if (opts.raiseIfNotThrown !== false) {
       throw new Error('expected error to be thrown')
