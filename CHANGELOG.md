@@ -1,3 +1,12 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/jdxcode/fancy-test/compare/d88f065c5b708a4faa8b15e3b90232243ee9652d...v1.0.1) (2018-02-05)
+
+
+### Bug Fixes
+
+* remove unused dev dep ([ece8ec6](https://github.com/jdxcode/fancy-test/commit/ece8ec6))
+* remove unused dev dep ([95b4051](https://github.com/jdxcode/fancy-test/commit/95b4051))
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/jdxcode/fancy-test/compare/6f30e606fd68ce4c84eb2001eef16b54e28e9bc3...v1.0.0) (2018-02-05)
 
