@@ -20,7 +20,6 @@
     "concurrently": "^3.5.1",
     "eslint": "^4.17.0",
     "eslint-config-anycli": "^1.3.2",
-    "http-call": "^5.0.2",
     "mocha": "^5.0.0",
     "sinon": "^4.2.2",
     "ts-node": "^4.1.0",
