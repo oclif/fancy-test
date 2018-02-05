@@ -167,6 +167,9 @@ Uses [nock](https://github.com/node-nock/nock) to mock out HTTP calls to externa
 Automatically calls `done()` to ensure the calls were made and `cleanAll()` to remove any pending requests.
 
 ```js
+const fancy = require('fancy-test')
+.register('nock', require('@fancy-test/nock'))
+
 describe('nock tests', () => {
   fancy
   .nock('https://api.github.com', nock => {

@@ -4,7 +4,7 @@ import * as _ from 'lodash'
  * mocks an object's property
  */
 export default function (object?: any, path?: string, value?: any) {
-  if (_.isUndefined(object) || _.isUndefined(path))throw new Error('should not be undefined')
+  if (object === undefined || path === undefined) throw new Error('should not be undefined')
   return {
     run(ctx: {stubs: any[]}) {
       ctx.stubs = ctx.stubs || []
