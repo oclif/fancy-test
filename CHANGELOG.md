@@ -1,3 +1,16 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/jdxcode/fancy-test/compare/6f30e606fd68ce4c84eb2001eef16b54e28e9bc3...v1.0.0) (2018-02-05)
+
+
+### Bug Fixes
+
+* move nock to other module ([d88f065](https://github.com/jdxcode/fancy-test/commit/d88f065))
+
+
+### BREAKING CHANGES
+
+* nock is now in @fancy-test/nock
+
 <a name="0.6.10"></a>
 ## [0.6.10](https://github.com/jdxcode/fancy-test/compare/07988acff811e4cedd5afc753e8a139002a74160...v0.6.10) (2018-02-03)
 
