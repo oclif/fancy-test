@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/jdxcode/fancy-test/compare/4f6f5d908c6b6e67fb25bfdb30c51f4a3afa585f...v1.0.3) (2018-04-06)
+
+
+### Bug Fixes
+
+* add tslib ([2555310](https://github.com/jdxcode/fancy-test/commit/2555310))
+* fixed tslint ([113a1d8](https://github.com/jdxcode/fancy-test/commit/113a1d8))
+* updated deps ([63b0ac5](https://github.com/jdxcode/fancy-test/commit/63b0ac5))
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/jdxcode/fancy-test/compare/ece8ec6352b6e5f506b03291d127ab792155f677...v1.0.2) (2018-04-06)
 
