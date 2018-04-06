@@ -6,7 +6,7 @@
   "bugs": "https://github.com/jdxcode/fancy-test/issues",
   "dependencies": {
     "lodash": "^4.17.5",
-    "stdout-stderr": "^0.1.7"
+    "stdout-stderr": "^0.1.8"
   },
   "devDependencies": {
     "@oclif/tslint": "^1.1.0",

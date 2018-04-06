@@ -178,7 +178,7 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-debug@3.1.0:
+debug@3.1.0, debug@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -443,10 +443,11 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-stdout-stderr@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/stdout-stderr/-/stdout-stderr-0.1.7.tgz#f3f69391f3e721c2c52aa92fbfa18b8a6e9ce3df"
+stdout-stderr@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/stdout-stderr/-/stdout-stderr-0.1.8.tgz#de36d08765c79f2bcb28c150485e69eca70a9fbe"
   dependencies:
+    debug "^3.1.0"
     strip-ansi "^4.0.0"
 
 strip-ansi@^3.0.0:
