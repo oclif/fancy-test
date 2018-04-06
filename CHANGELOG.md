@@ -1,3 +1,11 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/jdxcode/fancy-test/compare/113a1d8f30f34699ae118361d04d5a32a4eb2975...v1.0.4) (2018-04-06)
+
+
+### Bug Fixes
+
+* remove mention of DEBUG for stdout/stderr ([f511c16](https://github.com/jdxcode/fancy-test/commit/f511c16))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/jdxcode/fancy-test/compare/4f6f5d908c6b6e67fb25bfdb30c51f4a3afa585f...v1.0.3) (2018-04-06)
 
