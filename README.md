@@ -58,9 +58,9 @@ describe('api', () => {
   // fetch the newly created data from the API (can return a promise)
   .add('user', ctx => ctx.db.fetchUserAsync(mockDBUser.id))
 
-  // run just runs arbitary code
+  // do just runs arbitary code
   // check to ensure the operation was successful
-  .run(ctx => expect(ctx.user.foo).to.equal('bar'))
+  .do(ctx => expect(ctx.user.foo).to.equal('bar'))
 
   // it is essentially mocha's it(expectation, callback)
   // start the test and provide a description
@@ -111,17 +111,17 @@ catch errors in a declarative way. By default, ensures they are actually thrown 
 ```js
 describe('catch tests', () => {
   fancy
-  .run(() => { throw new Error('foobar') })
+  .do(() => { throw new Error('foobar') })
   .catch(/foo/)
   .it('uses regex')
 
   fancy
-  .run(() => { throw new Error('foobar') })
+  .do(() => { throw new Error('foobar') })
   .catch('foobar')
   .it('uses string')
 
   fancy
-  .run(() => { throw new Error('foobar') })
+  .do(() => { throw new Error('foobar') })
   .catch(err => expect(err.message).to.match(/foo/))
   .it('uses function')
 
@@ -206,7 +206,7 @@ describe('env tests', () => {
 })
 ```
 
-Run
+Do
 ---
 
 Run some arbitrary code within the pipeline. Useful to create custom logic and debugging.
@@ -215,8 +215,8 @@ Run some arbitrary code within the pipeline. Useful to create custom logic and d
 describe('run', () => {
   fancy
   .stdout()
-  .run(() => console.log('foo'))
-  .run(({stdout}) => expect(stdout).to.equal('foo\n'))
+  .do(() => console.log('foo'))
+  .do(({stdout}) => expect(stdout).to.equal('foo\n'))
   .it('runs this callback last', () => {
     // test code
   })
@@ -243,7 +243,7 @@ describe('add', () => {
   fancy
   .add('foo', () => 'foo')
   .add('bar', () => Promise.resolve('bar'))
-  .run(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
+  .do(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
   .it('adds the properties')
 })
 ```
@@ -344,7 +344,7 @@ For example:
 ```js
 describe('my suite', () => {
   let setupDB = fancy
-                .run(() => setupDB())
+                .do(() => setupDB())
                 .env({FOO: 'FOO'})
 
   setupDB
@@ -361,18 +361,18 @@ describe('my suite', () => {
 })
 ```
 
-Using [run](#run) you can really maximize this ability. In fact, you don't even need to pass a callback to it if you prefer this syntax:
+Using [do](#do) you can really maximize this ability. In fact, you don't even need to pass a callback to it if you prefer this syntax:
 
 ```js
 describe('my suite', () => {
   let setupDB = fancy
-                .run(() => setupDB())
+                .do(() => setupDB())
                 .catch(/spurious db error/)
-                .run(() => setupDeps())
+                .do(() => setupDeps())
 
   let testMyApp = testInfo => {
     return setupDB.run()
-    .run(context => myApp(testInfo, context))
+    .do(context => myApp(testInfo, context))
   }
 
   testMyApp({info: 'test run a'})
