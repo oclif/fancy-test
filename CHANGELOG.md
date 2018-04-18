@@ -1,3 +1,11 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/jdxcode/fancy-test/compare/f511c164eed0eb07840f610375ebdbebc2df488b...v1.0.5) (2018-04-18)
+
+
+### Bug Fixes
+
+* updated deps ([1c58539](https://github.com/jdxcode/fancy-test/commit/1c58539))
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/jdxcode/fancy-test/compare/113a1d8f30f34699ae118361d04d5a32a4eb2975...v1.0.4) (2018-04-06)
 
