@@ -1,3 +1,11 @@
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/jdxcode/fancy-test/compare/449c8cae506bb10f7fffaf03a65a8e3120b6977f...v1.0.7) (2018-05-07)
+
+
+### Bug Fixes
+
+* bring ITestCallbackContext in from mocha ([d011192](https://github.com/jdxcode/fancy-test/commit/d011192))
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/jdxcode/fancy-test/compare/1c58539a9d81889f29a66b1a15b27fa015f9e718...v1.0.6) (2018-05-01)
 
