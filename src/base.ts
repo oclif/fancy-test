@@ -2,7 +2,6 @@
 // tslint:disable no-unused
 
 import * as _ from 'lodash'
-import * as mocha from 'mocha'
 
 import * as Types from './types'
 
@@ -20,7 +19,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       arg1 = undefined
     }
     if (!arg1) arg1 = context.expectation || 'test'
-    async function run(this: mocha.ITestCallbackContext, done?: Types.MochaDone) {
+    async function run(this: Types.ITestCallbackContext, done?: Types.MochaDone) {
       context = assignWithProps({}, originalContext)
       if (context.retries) this.retries(context.retries)
       if (cb) {
