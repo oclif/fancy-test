@@ -1,3 +1,11 @@
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/jdxcode/fancy-test/compare/d0111928df307a7435d8e23645e529d39e648adf...v1.0.8) (2018-05-07)
+
+
+### Bug Fixes
+
+* remove mocha type reference ([3998b46](https://github.com/jdxcode/fancy-test/commit/3998b46))
+
 <a name="1.0.7"></a>
 ## [1.0.7](https://github.com/jdxcode/fancy-test/compare/449c8cae506bb10f7fffaf03a65a8e3120b6977f...v1.0.7) (2018-05-07)
 
