@@ -386,7 +386,7 @@ describe('my suite', () => {
 Custom Plugins
 ==============
 
-It's easy to create your own plugins to extend fancy. In [dxcli](https://github.com/dxcli/dxcli) we use fancy to create [custom command testers](https://github.com/dxcli/example-multi-cli-typescript/blob/master/test/commands/hello.test.ts).
+It's easy to create your own plugins to extend fancy. In [oclif](https://github.com/oclif/oclif) we use fancy to create [custom command testers](https://github.com/oclif/example-multi-ts/blob/master/test/commands/hello.test.ts).
 
 Here is an example that creates a counter that could be used to label each test run. See the [actual test](test/base.test.ts) to see the TypeScript types needed.
 
