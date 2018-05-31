@@ -1,3 +1,11 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/jdxcode/fancy-test/compare/3998b469fd2dd4a2c3b3b1dfb8129ce7ee20fd70...v1.0.9) (2018-05-31)
+
+
+### Bug Fixes
+
+* typescript 2.9 ([c114080](https://github.com/jdxcode/fancy-test/commit/c114080))
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/jdxcode/fancy-test/compare/d0111928df307a7435d8e23645e529d39e648adf...v1.0.8) (2018-05-07)
 
