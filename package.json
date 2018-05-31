@@ -1,7 +1,7 @@
 {
   "name": "fancy-test",
   "description": "extendable utilities for testing",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/jdxcode/fancy-test/issues",
   "dependencies": {
