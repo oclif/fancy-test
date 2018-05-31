@@ -8,12 +8,24 @@ export default function (object?: any, path?: string, value?: any) {
   return {
     run(ctx: {stubs: any[]}) {
       ctx.stubs = ctx.stubs || []
-      ctx.stubs.push(_.get(object, path))
-      _.set(object, path, value)
-    },
-    finally(ctx: {stubs: any[]}) {
+      const descriptor = Object.getOwnPropertyDescriptor(object, path)
+      if (descriptor && descriptor.get) {
+        ctx.stubs.push(descriptor.get)
+        descriptor.get = value
+        Object.defineProperty(object, path, descriptor)
+      } else {
+        ctx.stubs.push(_.get(object, path))
+        _.set(object, path, value)
+      }
+    }, finally(ctx: {stubs: any[]}) {
       const stub = ctx.stubs.pop()
-      _.set(object, path, stub)
+      const descriptor = Object.getOwnPropertyDescriptor(object, path)
+      if (descriptor && descriptor.get) {
+        descriptor.get = stub
+        Object.defineProperty(object, path, descriptor)
+      } else {
+        _.set(object, path, stub)
+      }
     },
   }
 }
