@@ -168,15 +168,13 @@ Automatically calls `done()` to ensure the calls were made and `cleanAll()` to r
 
 ```js
 const fancy = require('fancy-test')
-.register('nock', require('@fancy-test/nock'))
 
 describe('nock tests', () => {
   fancy
-  .nock('https://api.github.com', nock => {
-    nock
+  .nock('https://api.github.com', api => api
     .get('/me')
     .reply(200, {name: 'jdxcode'})
-  })
+  )
   .it('mocks http call to github', async () => {
     const {body: user} = await HTTP.get('https://api.github.com/me')
     expect(user).to.have.property('name', 'jdxcode')

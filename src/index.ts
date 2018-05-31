@@ -2,6 +2,7 @@ import base from './base'
 import _catch from './catch'
 import {expect} from './chai'
 import env from './env'
+import * as Nock from './nock'
 import {stderr, stdout} from './stdmock'
 import stub from './stub'
 
@@ -13,6 +14,7 @@ export const fancy = base
 .register('stub', stub)
 .register('stderr', stderr)
 .register('stdout', stdout)
+.register('nock', Nock.nock)
 
 export type Fancy = typeof fancy
 
