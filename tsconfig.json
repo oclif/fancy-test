@@ -3,11 +3,10 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "module": "commonjs",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "outDir": "./lib",
-    "pretty": true,
     "rootDirs": [
       "./src"
     ],
