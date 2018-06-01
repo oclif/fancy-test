@@ -1,6 +1,6 @@
 import Nock = require('nock')
 
-export function nock(host?: string, options?: nock.Callback | nock.Options, cb?: nock.Callback) {
+export function nock(host?: string, options?: Callback | Options, cb?: Callback) {
   if (host === undefined) throw new Error('host is undefined')
   if (typeof options === 'function') {
     cb = options
@@ -33,8 +33,6 @@ export function nock(host?: string, options?: nock.Callback | nock.Options, cb?:
   }
 }
 
-export namespace nock {
-  export interface Scope extends Nock.Scope {}
-  export interface Options extends Nock.Options {}
-  export type Callback = (nock: Scope) => any
-}
+export interface Scope extends Nock.Scope {}
+export interface Options extends Nock.Options {}
+export type Callback = (nock: Scope) => any
