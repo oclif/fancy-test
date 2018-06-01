@@ -1,4 +1,4 @@
-import Nock from 'nock'
+import Nock = require('nock')
 
 export function nock(host?: string, options?: nock.Callback | nock.Options, cb?: nock.Callback) {
   if (host === undefined) throw new Error('host is undefined')
