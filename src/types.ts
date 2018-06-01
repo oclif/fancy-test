@@ -1,4 +1,5 @@
 export type PluginBuilder<I, A1 = undefined, A2 = undefined, A3 = undefined, A4 = undefined> = (arg1?: A1, arg2?: A2, arg3?: A3, arg4?: A4) => Plugin<I>
+import Nock = require('nock')
 
 export interface Context {
   test: (typeof it | typeof it.skip)
@@ -54,3 +55,7 @@ export interface EnvOptions {
 }
 
 export type MochaDone = (error?: any) => any
+
+export interface NockScope extends Nock.Scope {}
+export interface NockOptions extends Nock.Options {}
+export type NockCallback = (nock: NockScope) => any
