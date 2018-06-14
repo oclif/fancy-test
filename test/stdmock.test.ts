@@ -95,3 +95,25 @@ describe('stdout', () => {
   .do(c => expect(c.stdout).to.equal('bar\n'))
   .it('resets stdout')
 })
+
+describe('stdin', () => {
+  fancy
+  .stdin('whoa there, broseph\n')
+  .stdout()
+  .it('mocks', (_, done) => {
+    process.stdin.setEncoding('utf8')
+    process.stdin.once('data', data => {
+      done(data === 'whoa there, broseph\n' ? undefined : 'invalid stdin')
+    })
+  })
+
+  fancy
+  .stdin('whoa there again, broseph\n')
+  .stdout()
+  .it('mocks again', (_, done) => {
+    process.stdin.setEncoding('utf8')
+    process.stdin.once('data', data => {
+      done(data === 'whoa there again, broseph\n' ? undefined : 'invalid stdin')
+    })
+  })
+})

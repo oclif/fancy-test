@@ -21,8 +21,9 @@ extendable utilities for testing
   * [Finally](#finally)
   * [Nock](#nock)
   * [Environment Variables](#environment-variables)
-  * [Run](#run)
+  * [Do](#do)
   * [Add](#add)
+  * [Stdin Mocking](#stdin-mocking)
   * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
   * [Done](#done)
   * [Retries](#retries)
@@ -243,6 +244,25 @@ describe('add', () => {
   .add('bar', () => Promise.resolve('bar'))
   .do(ctx => expect(ctx).to.include({foo: 'foo', bar: 'bar'}))
   .it('adds the properties')
+})
+```
+
+Stdin Mocking
+-------------
+
+Mocks stdin. You may have to pass a delay to have it wait a bit until it sends the event.
+
+```js
+describe('stdin test', () => {
+  fancy
+  .stdin('whoa there!\n')
+  .stdout()
+  .it('mocks', () => {
+    process.stdin.setEncoding('utf8')
+    process.stdin.once('data', data => {
+      // data === 'whoa there!\n'
+    })
+  })
 })
 ```
 
