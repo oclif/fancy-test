@@ -1,3 +1,11 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/jdxcode/fancy-test/compare/v1.1.4...v1.2.0) (2018-06-14)
+
+
+### Features
+
+* stdin ([2d34b74](https://github.com/jdxcode/fancy-test/commit/2d34b74))
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/jdxcode/fancy-test/compare/3998b469fd2dd4a2c3b3b1dfb8129ce7ee20fd70...v1.0.9) (2018-05-31)
 
