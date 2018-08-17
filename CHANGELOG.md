@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/jdxcode/fancy-test/compare/2d34b74f73be92b3890352010bcc6ea189891adf...v1.3.0) (2018-08-17)
+
+
+### Features
+
+* typescript 3.0 ([3f88180](https://github.com/jdxcode/fancy-test/commit/3f88180))
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/jdxcode/fancy-test/compare/v1.1.4...v1.2.0) (2018-06-14)
 
