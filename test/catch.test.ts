@@ -27,12 +27,12 @@ describe('catch', () => {
 
   fancy
     .do(() => { throw new Error('foobar') })
-    .catch()
+    .catch(undefined as any)
     .catch('no arg provided to catch')
     .end('errors if no args passed')
 
   fancy
-    .catch()
+    .catch(undefined as any)
     .catch('expected error to be thrown')
     .end('errors if no error thrown')
 

@@ -17,7 +17,7 @@ const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: {print?: boolea
 
 export const stdout = create('stdout')
 export const stderr = create('stderr')
-export const stdin = (input?: string, delay = 0) => {
+export const stdin = (input: string, delay = 0) => {
   let stdin: any
   return {
     run: () => {

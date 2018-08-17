@@ -2,8 +2,7 @@ import Nock = require('nock')
 
 import {NockCallback, NockOptions} from './types'
 
-export function nock(host?: string, options?: NockCallback | NockOptions, cb?: NockCallback) {
-  if (host === undefined) throw new Error('host is undefined')
+export function nock(host: string, options: NockCallback | NockOptions, cb?: NockCallback) {
   if (typeof options === 'function') {
     cb = options
     options = {}
