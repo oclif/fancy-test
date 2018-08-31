@@ -8,6 +8,7 @@ export interface Context {
   chain: Plugin<any>[]
   error?: Error & {code?: string}
   retries?: number
+  timeout?: number
 }
 
 export interface Plugin<I> {

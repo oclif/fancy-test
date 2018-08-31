@@ -56,8 +56,10 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       if (context.error) throw context.error
     }
     return context.test(arg1, (cb && cb.length === 2) ? function (done) {
+      if (context.timeout) this.timeout(context.timeout)
       run.call(this, done).catch(done)
     } : function () {
+      if (context.timeout) this.timeout(context.timeout)
       return run.call(this)
     })
   }

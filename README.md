@@ -335,6 +335,23 @@ describe('test retries', () => {
 })
 ```
 
+Timeout
+-------
+
+Set mocha timeout duration.
+
+```js
+const wait = (ms = 10) => new Promise(resolve => setTimeout(resolve, ms))
+
+describe('timeout', () => {
+  fancy
+  .timeout(50)
+  .it('times out after 50ms', async () => {
+    await wait(100)
+  })
+})
+```
+
 Chai
 ----
 

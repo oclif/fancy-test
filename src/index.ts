@@ -5,6 +5,7 @@ import env from './env'
 import * as Nock from './nock'
 import {stderr, stdin, stdout} from './stdmock'
 import stub from './stub'
+import timeout from './timeout'
 
 import * as FancyTypes from './types'
 
@@ -16,6 +17,7 @@ export const fancy = base
 .register('stderr', stderr)
 .register('stdout', stdout)
 .register('nock', Nock.nock)
+.register('timeout', timeout)
 
 export type Fancy = typeof fancy
 
