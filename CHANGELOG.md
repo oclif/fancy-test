@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/jdxcode/fancy-test/compare/v1.3.0...v1.4.0) (2018-08-31)
+
+
+### Features
+
+* timeout() ([#17](https://github.com/jdxcode/fancy-test/issues/17)) ([4b12390](https://github.com/jdxcode/fancy-test/commit/4b12390))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/jdxcode/fancy-test/compare/2d34b74f73be92b3890352010bcc6ea189891adf...v1.3.0) (2018-08-17)
 

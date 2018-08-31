@@ -27,6 +27,7 @@ extendable utilities for testing
   * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
   * [Done](#done)
   * [Retries](#retries)
+  * [Timeout](#timeout)
   * [Chai](#chai)
 - [Chaining](#chaining)
 - [Custom Plugins](#custom-plugins)
