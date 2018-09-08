@@ -16,7 +16,7 @@
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
-    "@oclif/tslint": "^2.0.0",
+    "@oclif/tslint": "^3.1.0",
     "chai": "^4.1.2",
     "chalk": "^2.4.1",
     "http-call": "^5.2.2",
