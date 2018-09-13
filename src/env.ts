@@ -17,8 +17,8 @@ export default (env?: {[k: string]: string | null | undefined}, opts: EnvOptions
       } else {
         process.env = {...process.env, ...normalizedEnv}
         Object.entries(normalizedEnv)
-        .filter(([, v]) => v === undefined)
-        .forEach(([k]) => { delete process.env[k] })
+          .filter(([, v]) => v === undefined)
+          .forEach(([k]) => { delete process.env[k] })
       }
     },
     finally() {

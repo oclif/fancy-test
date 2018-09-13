@@ -65,19 +65,19 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
   }
   return {
     ...Object.entries(context.plugins)
-    .reduce((plugins, [k, v]) => {
-      plugins[k] = (...args: any[]) => {
-        const plugin = v(...args)
+      .reduce((plugins, [k, v]) => {
+        plugins[k] = (...args: any[]) => {
+          const plugin = v(...args)
         // clone context first
-        let c = {...context as any}
-        if (plugin.init) plugin.init(c)
-        return base({
-          ...c,
-          chain: [...c.chain, plugin],
-        })
-      }
-      return plugins
-    }, {} as any),
+          let c = {...context as any}
+          if (plugin.init) plugin.init(c)
+          return base({
+            ...c,
+            chain: [...c.chain, plugin],
+          })
+        }
+        return plugins
+      }, {} as any),
     register(k: any, v: any) {
       return base({
         ...context as any,
@@ -134,12 +134,12 @@ function assignWithProps(target: any, ...sources: any[]) {
 }
 
 export default base(context)
-.register('skip', () => ({
-  init: ctx => {ctx.test = it.skip}
-}))
-.register('only', () => ({
-  init: ctx => {ctx.test = it.only}
-}))
-.register('retries', (count?: number) => ({
-  init: ctx => ctx.retries = count
-}))
+  .register('skip', () => ({
+    init: ctx => { ctx.test = it.skip }
+  }))
+  .register('only', () => ({
+    init: ctx => { ctx.test = it.only }
+  }))
+  .register('retries', (count?: number) => ({
+    init: ctx => ctx.retries = count
+  }))

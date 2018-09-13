@@ -15,16 +15,16 @@ const myFancy = fancy
 
 describe('register', () => {
   myFancy
-  .count('test-')
-  .it('is test #1', context => {
-    expect(context.count).to.equal(1)
-    expect(context.testLabel).to.equal('test-1')
-  })
+    .count('test-')
+    .it('is test #1', context => {
+      expect(context.count).to.equal(1)
+      expect(context.testLabel).to.equal('test-1')
+    })
 
   myFancy
-  .count('test-')
-  .it('is test #2', context => {
-    expect(context.count).to.equal(2)
-    expect(context.testLabel).to.equal('test-2')
-  })
+    .count('test-')
+    .it('is test #2', context => {
+      expect(context.count).to.equal(2)
+      expect(context.testLabel).to.equal('test-2')
+    })
 })
