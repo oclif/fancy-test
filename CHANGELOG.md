@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/jdxcode/fancy-test/compare/v1.4.0...v1.4.1) (2018-09-14)
+
+
+### Bug Fixes
+
+* use generic tuples from ts3 ([d89fed0](https://github.com/jdxcode/fancy-test/commit/d89fed0))
+
 # [1.4.0](https://github.com/jdxcode/fancy-test/compare/v1.3.0...v1.4.0) (2018-08-31)
 
 
