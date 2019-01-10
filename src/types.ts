@@ -33,7 +33,7 @@ export interface ITestCallbackContext {
   [index: string]: any
 }
 
-export type MochaCallback<I> = (this: ITestCallbackContext, context: I, done: MochaDone) => any
+export type MochaCallback<I> = (this: ITestCallbackContext, context: I, done: Mocha.Done) => any
 export interface It<I> {
   (expectation: string, cb?: MochaCallback<I>): void
   (cb?: MochaCallback<I>): void
@@ -51,8 +51,6 @@ export type Base<I extends Context, T extends Plugins> = {
 export interface EnvOptions {
   clear?: boolean
 }
-
-export type MochaDone = (error?: any) => any
 
 export interface NockScope extends Nock.Scope {}
 export interface NockOptions extends Nock.Options {}

@@ -5,29 +5,29 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/jdxcode/fancy-test/issues",
   "dependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/lodash": "^4.14.116",
-    "@types/mocha": "^5.2.5",
-    "@types/nock": "^9.3.0",
-    "@types/node": "^10.9.4",
-    "@types/sinon": "^5.0.2",
+    "@types/chai": "*",
+    "@types/lodash": "*",
+    "@types/mocha": "*",
+    "@types/nock": "*",
+    "@types/node": "*",
+    "@types/sinon": "*",
     "lodash": "^4.17.11",
     "mock-stdin": "^0.3.1",
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
-    "@oclif/tslint": "^3.1.0",
-    "chai": "^4.1.2",
-    "chalk": "^2.4.1",
-    "http-call": "^5.2.2",
+    "@oclif/tslint": "^3.1.1",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.2",
+    "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.2.0",
-    "nock": "^9.6.1",
-    "sinon": "^6.3.2",
+    "nock": "^10.0.6",
+    "sinon": "^7.2.2",
     "ts-node": "^7.0.1",
     "tslib": "^1.9.3",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.3"
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   },
   "engines": {
     "node": ">=8.0.0"

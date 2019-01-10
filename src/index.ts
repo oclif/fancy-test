@@ -6,7 +6,6 @@ import * as Nock from './nock'
 import {stderr, stdin, stdout} from './stdmock'
 import stub from './stub'
 import timeout from './timeout'
-
 import * as FancyTypes from './types'
 
 export const fancy = base
