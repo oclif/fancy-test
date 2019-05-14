@@ -22,7 +22,10 @@ export const stdin = (input: string, delay = 0) => {
   return {
     run: () => {
       stdin = require('mock-stdin').stdin()
-      setTimeout(() => stdin.send(input), delay)
+      setTimeout(() => {
+        stdin.send(input)
+        stdin.end()
+      }, delay)
     },
     finally() {
       stdin.restore()

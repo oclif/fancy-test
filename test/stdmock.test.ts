@@ -101,9 +101,12 @@ describe('stdin', () => {
     .stdin('whoa there, broseph\n')
     .stdout()
     .it('mocks', (_, done) => {
+      let input: string
       process.stdin.setEncoding('utf8')
-      process.stdin.once('data', data => {
-        done(data === 'whoa there, broseph\n' ? undefined : 'invalid stdin')
+      process.stdin.once("data", data => input = data)
+      process.stdin.on("end", () => {
+        expect(input).to.eq('whoa there, broseph\n')
+        done()
       })
     })
 
@@ -111,9 +114,12 @@ describe('stdin', () => {
     .stdin('whoa there again, broseph\n')
     .stdout()
     .it('mocks again', (_, done) => {
+      let input: string
       process.stdin.setEncoding('utf8')
-      process.stdin.once('data', data => {
-        done(data === 'whoa there again, broseph\n' ? undefined : 'invalid stdin')
+      process.stdin.once("data", data => input = data)
+      process.stdin.on("end", () => {
+        expect(input).to.eq('whoa there again, broseph\n')
+        done()
       })
     })
 })
