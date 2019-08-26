@@ -38,7 +38,7 @@ describe('stub', () => {
 
   fancy
     .stdout()
-    .stub(mrGetter, 'foo', () => 2)
+    .stub(mrGetter, 'foo', 2)
     .end('resets getter', output => {
       console.log(mrGetter.foo)
       expect(output.stdout).to.equal('2\n')
