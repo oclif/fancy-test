@@ -23,10 +23,14 @@ jobs:
           curl -s https://codecov.io/bash | bash
       - store_test_results: &store_test_results
           path: ~/cli/reports
-  node-8:
+  node-12:
     <<: *test
     docker:
-      - image: node:8
+      - image: node:12
+  node-10:
+    <<: *test
+    docker:
+      - image: node:10
   release:
     <<: *test
     steps:
@@ -50,11 +54,13 @@ workflows:
   "fancy-test":
     jobs:
       - node-latest
-      - node-8
+      - node-12
+      - node-10
       # - release:
       #     context: org-global
       #     filters:
       #       branches: {only: master}
       #     requires:
       #       - node-latest
-      #       - node-8
+      #       - node-12
+      #       - node-10
