@@ -1,5 +1,6 @@
 import * as _ from 'lodash'
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * mocks an object's property
  */
