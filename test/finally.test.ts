@@ -12,8 +12,8 @@ describe('finally', () => {
 
   fancy
   // not sure how to actually test this
-    .finally(() => {})
-    .it('finally')
+  .finally(() => {})
+  .it('finally')
 })
 
 describe('done', () => {
@@ -27,7 +27,7 @@ describe('done', () => {
   //   done('foo')
   // })
   fancy
-    .it('calls done', (_, done) => {
-      done()
-    })
+  .it('calls done', (_, done) => {
+    done()
+  })
 })

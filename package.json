@@ -16,9 +16,11 @@
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
-    "@oclif/tslint": "^3.1.1",
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
+    "eslint": "^6.6.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.1.0",
     "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.2.0",
@@ -26,7 +28,6 @@
     "sinon": "^7.2.2",
     "ts-node": "^8.0.2",
     "tslib": "^1.9.3",
-    "tslint": "^5.12.0",
     "typescript": "^3.2.2"
   },
   "engines": {
@@ -44,11 +45,12 @@
   "repository": "jdxcode/fancy-test",
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "lint": "tsc -p test --noEmit && tslint -p test -t stylish",
-    "posttest": "yarn run lint",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "posttest": "yarn lint",
     "prepublishOnly": "yarn run build",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "markdown-toc -i README.md && git add README.md"
+    "version": "markdown-toc -i README.md && git add README.md",
+    "pretest": "tsc -p test --noEmit"
   },
   "types": "lib/index.d.ts"
 }

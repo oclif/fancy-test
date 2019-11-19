@@ -1,13 +1,13 @@
 import * as mock from 'stdout-stderr'
 
-const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: {print?: boolean, stripColor?: boolean} = {}) => ({
+const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: {print?: boolean; stripColor?: boolean} = {}) => ({
   run(ctx: {readonly [P in T]: string}) {
     mock[std].start()
     mock[std].print = opts.print || process.env.TEST_OUTPUT === '1'
     mock[std].stripColor = opts.stripColor !== false
     if (ctx[std] as any !== undefined) return
     Object.defineProperty(ctx, std, {
-      get: () => mock[std].output
+      get: () => mock[std].output,
     })
   },
   finally() {

@@ -9,4 +9,6 @@ const tryRequire = (module: string) => {
 
 const chai: Chai.ChaiStatic = tryRequire('chai')
 
-export const expect = (chai && chai.expect) || (() => { throw new Error('install chai') })
+export const expect = (chai && chai.expect) || (() => {
+  throw new Error('install chai')
+})
