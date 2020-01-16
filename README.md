@@ -356,7 +356,7 @@ describe('timeout', () => {
 Chai
 ----
 
-This library includes [chai](https://npm.im/chai) preloaded with [chai-as-promised](https://npm.im/chai-as-promised) for convenience:
+This library includes [chai](https://npm.im/chai) for convenience:
 
 ```js
 import {expect, fancy} from 'fancy-test'
