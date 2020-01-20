@@ -98,22 +98,22 @@ describe('stdout', () => {
 
 describe('stdin', () => {
   fancy
-  .stdin('whoa there, broseph\n')
+  .stdin('whoa there!\n')
   .stdout()
   .it('mocks', (_, done) => {
     process.stdin.setEncoding('utf8')
     process.stdin.once('data', data => {
-      done(data === 'whoa there, broseph\n' ? undefined : 'invalid stdin')
+      done(data.toString()  === 'whoa there!\n' ? undefined : 'invalid stdin')
     })
   })
 
   fancy
-  .stdin('whoa there again, broseph\n')
+  .stdin('whoa there again!\n')
   .stdout()
   .it('mocks again', (_, done) => {
     process.stdin.setEncoding('utf8')
     process.stdin.once('data', data => {
-      done(data === 'whoa there again, broseph\n' ? undefined : 'invalid stdin')
+      done(data.toString() === 'whoa there again!\n' ? undefined : 'invalid stdin')
     })
   })
 })
