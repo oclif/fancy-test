@@ -20,7 +20,7 @@ export interface Plugin<I> {
 }
 
 export interface PluginDef {
-  output: object;
+  output: object | unknown;
   args: any[];
 }
 
