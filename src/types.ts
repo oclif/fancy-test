@@ -34,7 +34,7 @@ export interface ITestCallbackContext {
   [index: string]: any;
 }
 
-export type MochaCallback<I> = (this: ITestCallbackContext, context: I, done: Mocha.Done) => any
+export type MochaCallback<I> = (this: ITestCallbackContext, context: I, done: MochaDone) => any
 export interface It<I> {
   (expectation: string, cb?: MochaCallback<I>): void;
   (cb?: MochaCallback<I>): void;
@@ -52,6 +52,8 @@ export type Base<I extends Context, T extends Plugins> = {
 export interface EnvOptions {
   clear?: boolean;
 }
+
+export type MochaDone = (err?: any) => void
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NockScope extends Nock.Scope {}

@@ -7,7 +7,6 @@
   "dependencies": {
     "@types/chai": "*",
     "@types/lodash": "*",
-    "@types/mocha": "*",
     "@types/node": "*",
     "@types/sinon": "*",
     "lodash": "^4.17.13",
@@ -15,6 +14,7 @@
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
+    "@types/mocha": "*",
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
     "eslint": "^6.6.0",
