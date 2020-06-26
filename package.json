@@ -17,7 +17,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "eslint": "^6.6.0",
+    "eslint": "^7.3.1",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "http-call": "^5.2.3",
