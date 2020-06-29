@@ -5,24 +5,18 @@ jobs:
     docker:
       - image: node:latest
     working_directory: ~/cli
-    environment:
-      NYC: "yarn exec nyc -- --nycrc-path node_modules/@oclif/nyc-config/.nycrc"
-      MOCHA_FILE: "reports/mocha.xml"
     steps:
       - checkout
       - restore_cache: &restore_cache
           keys:
-            - v0-yarn-{{checksum ".circleci/config.yml"}}-{{ checksum "yarn.lock"}}
-            - v0-yarn-{{checksum ".circleci/config.yml"}}
-      - run: .circleci/greenkeeper
-      - run: yarn add -D nyc@13 @oclif/nyc-config@0
-      - run: |
-          mkdir -p reports
-          $NYC yarn test
-          $NYC report --reporter text-lcov > coverage.lcov
-          curl -s https://codecov.io/bash | bash
-      - store_test_results: &store_test_results
-          path: ~/cli/reports
+            - v1-npm-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+            - v1-npm-{{checksum ".circleci/config.yml"}}
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Run tests
+          command: yarn test
   node-12:
     <<: *test
     docker:
@@ -37,13 +31,18 @@ jobs:
       - add_ssh_keys
       - checkout
       - restore_cache: *restore_cache
-      - run: yarn global add @oclif/semantic-release@3 semantic-release@15
-      - run: yarn --frozen-lockfile
-      - run: |
-          export PATH=/usr/local/share/.config/yarn/global/node_modules/.bin:$PATH
-          semantic-release -e @oclif/semantic-release
+      - run:
+          name: Install release dependencies
+          command: |
+            yarn global add @oclif/semantic-release@3 semantic-release@17
+            yarn --frozen-lockfile
+      - run:
+          name: Cut release
+          command: |
+            export PATH=/usr/local/share/.config/yarn/global/node_modules/.bin:$PATH
+            semantic-release -e @oclif/semantic-release
       - save_cache:
-          key: v0-yarn-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
+          key: v1-yarn-{{checksum ".circleci/config.yml"}}-{{checksum "yarn.lock"}}
           paths:
             - ~/cli/node_modules
             - /usr/local/share/.cache/yarn
@@ -56,11 +55,11 @@ workflows:
       - node-latest
       - node-12
       - node-10
-      # - release:
-      #     context: org-global
-      #     filters:
-      #       branches: {only: master}
-      #     requires:
-      #       - node-latest
-      #       - node-12
-      #       - node-10
+      - release:
+          context: org-global
+          filters:
+            branches: {only: master}
+          requires:
+            - node-latest
+            - node-12
+            - node-10
