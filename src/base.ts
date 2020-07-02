@@ -35,7 +35,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       arg1 = undefined
     }
     if (!arg1) arg1 = context.expectation || 'test'
-    async function run(this: Types.ITestCallbackContext, done?: Mocha.Done) {
+    async function run(this: Types.ITestCallbackContext, done?: Types.MochaDone) {
       context = assignWithProps({}, originalContext)
       if (context.retries) this.retries(context.retries)
       if (cb) {
