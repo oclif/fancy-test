@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/jdxcode/fancy-test/compare/v1.4.8...v1.4.9) (2020-07-02)
+
+
+### Bug Fixes
+
+* bring Done in from mocha ([#50](https://github.com/jdxcode/fancy-test/issues/50)) ([49c3c77](https://github.com/jdxcode/fancy-test/commit/49c3c77d9858b129ce55415b1a215009f26e27f9))
+
 ## [1.4.1](https://github.com/jdxcode/fancy-test/compare/v1.4.0...v1.4.1) (2018-09-14)
 
 
