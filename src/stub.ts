@@ -6,20 +6,21 @@ import * as sinon from 'sinon'
 export default function <T extends object, K extends keyof T> (
   object: T,
   path: K,
-  value: any,
+  fn: (stub: sinon.SinonStub) => sinon.SinonStub,
 ) {
   if (object === undefined || path === undefined)
     throw new Error('should not be undefined')
 
+  let stub: sinon.SinonStub
   return {
     run(ctx: { sandbox: sinon.SinonSandbox }) {
       if (!ctx.sandbox) {
         ctx.sandbox = sinon.createSandbox()
       }
-      ctx.sandbox.stub(object, path).value(value)
+      stub = fn(ctx.sandbox.stub(object, path))
     },
-    finally(ctx: { sandbox: sinon.SinonSandbox }) {
-      ctx.sandbox.restore()
+    finally() {
+      stub.restore()
     },
   }
 }
