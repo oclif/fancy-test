@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/jdxcode/fancy-test/compare/v1.4.9...v1.4.10) (2020-12-02)
+
+
+### Bug Fixes
+
+* **nock:** include nock as a dependency ([#88](https://github.com/jdxcode/fancy-test/issues/88)) ([38132f0](https://github.com/jdxcode/fancy-test/commit/38132f0d7c4d615ff88d64dba8cf753d56fc154a)), closes [#42](https://github.com/jdxcode/fancy-test/issues/42)
+
 ## [1.4.9](https://github.com/jdxcode/fancy-test/compare/v1.4.8...v1.4.9) (2020-07-02)
 
 
