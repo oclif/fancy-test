@@ -23,7 +23,7 @@
     "eslint-config-oclif-typescript": "^0.2.0",
     "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
-    "mocha": "^5.2.0",
+    "mocha": "^8.4.0",
     "sinon": "^9.0.2",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.0",
