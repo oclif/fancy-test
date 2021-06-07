@@ -6,7 +6,6 @@ extendable utilities for testing
 [![Version](https://img.shields.io/npm/v/fancy-test.svg)](https://npmjs.org/package/fancy-test)
 [![CircleCI](https://circleci.com/gh/jdxcode/fancy-test/tree/master.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-test/tree/master)
 [![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/jdxcode/fancy-test?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/fancy-test/branch/master)
-[![Codecov](https://codecov.io/gh/jdxcode/fancy-test/branch/master/graph/badge.svg)](https://codecov.io/gh/jdxcode/fancy-test)
 [![Greenkeeper](https://badges.greenkeeper.io/jdxcode/fancy-test.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/npm/fancy-test/badge.svg)](https://snyk.io/test/npm/fancy-test)
 [![Downloads/week](https://img.shields.io/npm/dw/fancy-test.svg)](https://npmjs.org/package/fancy-test)
