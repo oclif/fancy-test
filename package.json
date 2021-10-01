@@ -20,7 +20,7 @@
     "chalk": "^4.1.0",
     "eslint": "^7.3.1",
     "eslint-config-oclif": "^3.1.0",
-    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-config-oclif-typescript": "^1.0.2",
     "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.2.0",
