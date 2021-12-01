@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/mocha": "*",
     "chai": "^4.2.0",
-    "chalk": "^4.1.0",
+    "chalk": "^5.0.0",
     "eslint": "^7.3.1",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
