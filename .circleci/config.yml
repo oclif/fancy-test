@@ -13,16 +13,11 @@ workflows:
             parameters:
               os:
                 - linux
-                # - windows
+                - windows
               node_version:
                 - latest
                 - lts
                 - maintenance
-            exclude:
-              - os: windows
-                node_version: lts
-              - os: windows
-                node_version: maintenance
       - release-management/release-package:
           context: SF-CLI-RELEASE-PROCESS
           filters:
@@ -32,3 +27,13 @@ workflows:
           requires:
             - release-management/test-package
           tag: core-v1
+  dependabot-automerge:
+    triggers:
+      - schedule:
+          cron: '0 2,5,8,11 * * *'
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - release-management/dependabot-automerge
