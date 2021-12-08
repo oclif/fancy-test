@@ -2,8 +2,8 @@
   "name": "fancy-test",
   "description": "extendable utilities for testing",
   "version": "2.0.0",
-  "author": "Jeff Dickey @jdxcode",
-  "bugs": "https://github.com/jdxcode/fancy-test/issues",
+  "author": "Salesforce",
+  "bugs": "https://github.com/oclif/fancy-test/issues",
   "dependencies": {
     "@types/chai": "*",
     "@types/lodash": "*",
@@ -35,13 +35,13 @@
   "files": [
     "/lib"
   ],
-  "homepage": "https://github.com/jdxcode/fancy-test",
+  "homepage": "https://github.com/oclif/fancy-test",
   "keywords": [
     "mocha"
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "repository": "jdxcode/fancy-test",
+  "repository": "oclif/fancy-test",
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "eslint . --ext .ts --config .eslintrc",
