@@ -4,30 +4,31 @@ fancy-test
 extendable utilities for testing
 
 [![Version](https://img.shields.io/npm/v/fancy-test.svg)](https://npmjs.org/package/fancy-test)
-[![CircleCI](https://circleci.com/gh/jdxcode/fancy-test/tree/master.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-test/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/jdxcode/fancy-test?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/fancy-test/branch/master)
+[![CircleCI](https://circleci.com/gh/jdxcode/fancy-test/tree/main.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-test/tree/main)
+[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/jdxcode/fancy-test?branch=main&svg=true)](https://ci.appveyor.com/project/heroku/fancy-test/branch/main)
 [![Greenkeeper](https://badges.greenkeeper.io/jdxcode/fancy-test.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/npm/fancy-test/badge.svg)](https://snyk.io/test/npm/fancy-test)
 [![Downloads/week](https://img.shields.io/npm/dw/fancy-test.svg)](https://npmjs.org/package/fancy-test)
-[![License](https://img.shields.io/npm/l/fancy-test.svg)](https://github.com/jdxcode/fancy-test/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/fancy-test.svg)](https://github.com/jdxcode/fancy-test/blob/main/package.json)
 
 <!-- toc -->
 
+- [fancy-test](#fancy-test)
 - [Why](#why)
 - [Usage](#usage)
-  * [Stub](#stub)
-  * [Catch](#catch)
-  * [Finally](#finally)
-  * [Nock](#nock)
-  * [Environment Variables](#environment-variables)
-  * [Do](#do)
-  * [Add](#add)
-  * [Stdin Mocking](#stdin-mocking)
-  * [Stdout/Stderr Mocking](#stdoutstderr-mocking)
-  * [Done](#done)
-  * [Retries](#retries)
-  * [Timeout](#timeout)
-  * [Chai](#chai)
+  - [Stub](#stub)
+  - [Catch](#catch)
+  - [Finally](#finally)
+  - [Nock](#nock)
+  - [Environment Variables](#environment-variables)
+  - [Do](#do)
+  - [Add](#add)
+  - [Stdin Mocking](#stdin-mocking)
+  - [Stdout/Stderr Mocking](#stdoutstderr-mocking)
+  - [Done](#done)
+  - [Retries](#retries)
+  - [Timeout](#timeout)
+  - [Chai](#chai)
 - [Chaining](#chaining)
 - [Custom Plugins](#custom-plugins)
 - [TypeScript](#typescript)
@@ -421,7 +422,7 @@ describe('my suite', () => {
 Custom Plugins
 ==============
 
-It's easy to create your own plugins to extend fancy. In [oclif](https://github.com/oclif/oclif) we use fancy to create [custom command testers](https://github.com/oclif/example-multi-ts/blob/master/test/commands/hello.test.ts).
+It's easy to create your own plugins to extend fancy. In [oclif](https://github.com/oclif/oclif) we use fancy to create [custom command testers](https://github.com/oclif/example-multi-ts/blob/main/test/commands/hello.test.ts).
 
 Here is an example that creates a counter that could be used to label each test run. See the [actual test](test/base.test.ts) to see the TypeScript types needed.
 
