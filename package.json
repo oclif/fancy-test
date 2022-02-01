@@ -11,7 +11,7 @@
     "@types/sinon": "*",
     "lodash": "^4.17.13",
     "mock-stdin": "^1.0.0",
-    "nock": "^13.0.0",
+    "nock": "^13.2.2",
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
