@@ -8,3 +8,5 @@ jobs:
   automerge:
     uses: oclif/github-workflows/.github/workflows/automerge.yml@main
     secrets: inherit
+    with:
+      mergeMethod: squash
