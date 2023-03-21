@@ -1,3 +1,12 @@
+## [2.0.15](https://github.com/oclif/fancy-test/compare/2.0.14...2.0.15) (2023-03-21)
+
+
+### Bug Fixes
+
+* **deps:** bump remarkable from 1.7.1 to 1.7.4 ([#298](https://github.com/oclif/fancy-test/issues/298)) ([d9b2c55](https://github.com/oclif/fancy-test/commit/d9b2c553057a50d1e485e06d1b7ef48364bed6fc))
+
+
+
 ## [2.0.14](https://github.com/oclif/fancy-test/compare/2.0.13...2.0.14) (2023-03-19)
 
 
