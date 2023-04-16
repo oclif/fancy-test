@@ -1,3 +1,12 @@
+## [2.0.19](https://github.com/oclif/fancy-test/compare/2.0.18...2.0.19) (2023-04-16)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/lodash from 4.14.192 to 4.14.194 ([#302](https://github.com/oclif/fancy-test/issues/302)) ([56b088e](https://github.com/oclif/fancy-test/commit/56b088ef33f22425c703c3f7af9a58fdd0abed0f))
+
+
+
 ## [2.0.18](https://github.com/oclif/fancy-test/compare/2.0.17...2.0.18) (2023-04-02)
 
 
