@@ -1,3 +1,12 @@
+## [2.0.28](https://github.com/oclif/fancy-test/compare/2.0.27...2.0.28) (2023-07-02)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/node from 14.18.51 to 14.18.53 ([#314](https://github.com/oclif/fancy-test/issues/314)) ([6764f30](https://github.com/oclif/fancy-test/commit/6764f3018b89a7c6084a268acbff3a7b9ef0833e))
+
+
+
 ## [2.0.27](https://github.com/oclif/fancy-test/compare/2.0.26...2.0.27) (2023-06-18)
 
 
