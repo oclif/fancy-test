@@ -1,3 +1,12 @@
+## [2.0.29](https://github.com/oclif/fancy-test/compare/2.0.28...2.0.29) (2023-07-12)
+
+
+### Bug Fixes
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([#315](https://github.com/oclif/fancy-test/issues/315)) ([c99450b](https://github.com/oclif/fancy-test/commit/c99450b2dd173a407e27b205d1cd342c840a365c))
+
+
+
 ## [2.0.28](https://github.com/oclif/fancy-test/compare/2.0.27...2.0.28) (2023-07-02)
 
 
