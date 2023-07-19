@@ -1,3 +1,12 @@
+## [2.0.31](https://github.com/oclif/fancy-test/compare/2.0.30...2.0.31) (2023-07-19)
+
+
+### Bug Fixes
+
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([#317](https://github.com/oclif/fancy-test/issues/317)) ([ed53061](https://github.com/oclif/fancy-test/commit/ed53061fb2551f15bdb2f2f0d47ad1270fe04b3b))
+
+
+
 ## [2.0.30](https://github.com/oclif/fancy-test/compare/2.0.29...2.0.30) (2023-07-16)
 
 
