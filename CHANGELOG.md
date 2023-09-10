@@ -1,3 +1,12 @@
+## [2.0.39](https://github.com/oclif/fancy-test/compare/2.0.38...2.0.39) (2023-09-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @types/chai from 4.3.5 to 4.3.6 ([#330](https://github.com/oclif/fancy-test/issues/330)) ([95d6f22](https://github.com/oclif/fancy-test/commit/95d6f229368170bccad16ee2acb91b27fb7e60ed))
+
+
+
 ## [2.0.38](https://github.com/oclif/fancy-test/compare/2.0.37...2.0.38) (2023-09-03)
 
 
