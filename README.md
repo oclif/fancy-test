@@ -13,6 +13,7 @@ extendable utilities for testing
 
 - [fancy-test](#fancy-test)
 - [Why](#why)
+- [V3 Breaking Changes](#v3-breaking-changes)
 - [Usage](#usage)
   - [Stub](#stub)
   - [Catch](#catch)
@@ -68,6 +69,23 @@ describe('api', () => {
 })
 ```
 
+V3 Breaking Changes
+=====
+
+Version 3 now uses `sinon` under the hood to manage stubs. Because of this stubs are now set like this:
+
+```js
+import * as os from 'os'
+
+describe('stub tests', () => {
+  fancy
+  .stub(os, 'platform', stub => stub.returns('foobar'))
+  .it('sets os', () => {
+    expect(os.platform()).to.equal('foobar')
+  })
+})
+```
+
 Usage
 =====
 
@@ -89,16 +107,9 @@ import * as os from 'os'
 
 describe('stub tests', () => {
   fancy
-  .stub(os, 'platform', () => 'foobar')
+  .stub(os, 'platform', stub => stub.returns('foobar'))
   .it('sets os', () => {
     expect(os.platform()).to.equal('foobar')
-  })
-
-  fancy
-  .stub(os, 'platform', sinon.stub().returns('foobar'))
-  .it('uses sinon', () => {
-    expect(os.platform()).to.equal('foobar')
-    expect(os.platform.called).to.equal(true)
   })
 })
 ```
