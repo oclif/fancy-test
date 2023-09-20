@@ -1,4 +1,4 @@
-import * as sinon from 'sinon'
+import {SinonStub, SinonSandbox, createSandbox} from 'sinon'
 
 /**
  * mocks an object's property
@@ -6,16 +6,16 @@ import * as sinon from 'sinon'
 export default function <T extends Record<string, unknown>, K extends keyof T> (
   object: T,
   path: K,
-  fn: (stub: sinon.SinonStub) => sinon.SinonStub,
+  fn: (stub: SinonStub) => SinonStub,
 ) {
   if (object === undefined || path === undefined)
     throw new Error('should not be undefined')
 
-  let stub: sinon.SinonStub
+  let stub: SinonStub
   return {
-    run(ctx: { sandbox: sinon.SinonSandbox }) {
+    run(ctx: { sandbox: SinonSandbox }) {
       if (!ctx.sandbox) {
-        ctx.sandbox = sinon.createSandbox()
+        ctx.sandbox = createSandbox()
       }
 
       stub = fn(ctx.sandbox.stub(object, path))

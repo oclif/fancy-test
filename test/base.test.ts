@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import {expect, fancy} from '../src'
 
 let count = 0

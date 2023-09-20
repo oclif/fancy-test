@@ -54,8 +54,7 @@ export interface EnvOptions {
 
 export type MochaDone = (err?: any) => void
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NockScope extends Nock.Scope {}
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+
 export interface NockOptions extends Nock.Options {}
 export type NockCallback = (nock: NockScope) => any

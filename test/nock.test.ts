@@ -1,4 +1,4 @@
-import HTTP from 'http-call'
+import {HTTP} from 'http-call'
 
 import {expect, fancy} from '../src'
 

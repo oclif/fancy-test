@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import {isFunction} from 'lodash'
 
 import * as Types from './types'
 
@@ -31,7 +31,7 @@ function assignWithProps(target: any, ...sources: any[]) {
 const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
   const end = (arg1: any, cb: Types.MochaCallback<I>) => {
     const originalContext = context
-    if (_.isFunction(arg1)) {
+    if (isFunction(arg1)) {
       cb = arg1
       arg1 = undefined
     }
@@ -131,8 +131,8 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       return base({
         ...context as any,
         chain: [...context.chain, {
-          run: async (ctx: any) => {
-            ctx[key] = await (_.isFunction(v) ? v(ctx) : v)
+          async run(ctx: any) {
+            ctx[key] = await (isFunction(v) ? v(ctx) : v)
           },
         }],
       })
@@ -144,17 +144,17 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
 
 export default base(context)
 .register('skip', () => ({
-  init: ctx => {
+  init(ctx) {
     ctx.test = it.skip
   },
 }))
 .register('only', () => ({
-  init: ctx => {
+  init(ctx) {
     ctx.test = it.only
   },
 }))
-.register('retries', (count: number) => ({
-  init: ctx => {
+.register<'retries', unknown, any[]>('retries', (count: number) => ({
+  init(ctx) {
     ctx.retries = count
   },
 }))
