@@ -4,7 +4,6 @@ fancy-test
 extendable utilities for testing
 
 [![Version](https://img.shields.io/npm/v/fancy-test.svg)](https://npmjs.org/package/fancy-test)
-[![CircleCI](https://circleci.com/gh/jdxcode/fancy-test/tree/main.svg?style=svg)](https://circleci.com/gh/jdxcode/fancy-test/tree/main)
 [![Known Vulnerabilities](https://snyk.io/test/npm/fancy-test/badge.svg)](https://snyk.io/test/npm/fancy-test)
 [![Downloads/week](https://img.shields.io/npm/dw/fancy-test.svg)](https://npmjs.org/package/fancy-test)
 [![License](https://img.shields.io/npm/l/fancy-test.svg)](https://github.com/jdxcode/fancy-test/blob/main/package.json)
