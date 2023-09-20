@@ -1,9 +1,9 @@
 {
   "name": "fancy-test",
   "description": "extendable utilities for testing",
-  "version": "1.4.9",
-  "author": "Jeff Dickey @jdxcode",
-  "bugs": "https://github.com/jdxcode/fancy-test/issues",
+  "version": "2.0.42",
+  "author": "Salesforce",
+  "bugs": "https://github.com/oclif/fancy-test/issues",
   "dependencies": {
     "@types/chai": "*",
     "@types/lodash": "*",
@@ -12,36 +12,36 @@
     "sinon": "^9.0.2",
     "lodash": "^4.17.13",
     "mock-stdin": "^1.0.0",
+    "nock": "^13.3.3",
     "stdout-stderr": "^0.1.9"
   },
   "devDependencies": {
     "@types/mocha": "*",
-    "chai": "^4.2.0",
-    "chalk": "^2.4.2",
+    "chai": "^4.3.8",
+    "chalk": "^4.1.0",
     "eslint": "^7.3.1",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.2.0",
-    "nock": "^13.0.0",
-    "ts-node": "^8.0.2",
-    "tslib": "^2.0.0",
-    "typescript": "3.8.3"
+    "ts-node": "^9.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "4.4.3"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=12.0.0"
   },
   "files": [
     "/lib"
   ],
-  "homepage": "https://github.com/jdxcode/fancy-test",
+  "homepage": "https://github.com/oclif/fancy-test",
   "keywords": [
     "mocha"
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "repository": "jdxcode/fancy-test",
+  "repository": "oclif/fancy-test",
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "eslint . --ext .ts --config .eslintrc",

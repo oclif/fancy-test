@@ -55,7 +55,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
             await handler.catch(context)
             delete context.error
             return true
-          } catch (error) {
+          } catch (error: any) {
             return handleError(error)
           }
         }
@@ -63,7 +63,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
         try {
           // eslint-disable-next-line no-await-in-loop
           if (next.run) await next.run(context)
-        } catch (error) {
+        } catch (error: any) {
           // eslint-disable-next-line no-await-in-loop
           if (!await handleError(error)) break
         }
