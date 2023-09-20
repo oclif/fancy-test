@@ -1,32 +1,26 @@
-import * as _ from 'lodash'
+import * as sinon from 'sinon'
 
-// eslint-disable-next-line valid-jsdoc
 /**
  * mocks an object's property
  */
-export default function<T extends object, K extends keyof T> (object: T, path: K, value: () => T[K]) {
-  if (object === undefined || path === undefined) throw new Error('should not be undefined')
+export default function <T extends object, K extends keyof T> (
+  object: T,
+  path: K,
+  fn: (stub: sinon.SinonStub) => sinon.SinonStub,
+) {
+  if (object === undefined || path === undefined)
+    throw new Error('should not be undefined')
+
+  let stub: sinon.SinonStub
   return {
-    run(ctx: {stubs: any[]}) {
-      ctx.stubs = ctx.stubs || []
-      const descriptor = Object.getOwnPropertyDescriptor(object, path)
-      if (descriptor && descriptor.get) {
-        ctx.stubs.push(descriptor.get)
-        descriptor.get = value
-        Object.defineProperty(object, path, descriptor)
-      } else {
-        ctx.stubs.push(_.get(object, path))
-        _.set(object, path, value)
+    run(ctx: { sandbox: sinon.SinonSandbox }) {
+      if (!ctx.sandbox) {
+        ctx.sandbox = sinon.createSandbox()
       }
-    }, finally(ctx: {stubs: any[]}) {
-      const stub = ctx.stubs.pop()
-      const descriptor = Object.getOwnPropertyDescriptor(object, path)
-      if (descriptor && descriptor.get) {
-        descriptor.get = stub
-        Object.defineProperty(object, path, descriptor)
-      } else {
-        _.set(object, path, stub)
-      }
+      stub = fn(ctx.sandbox.stub(object, path))
+    },
+    finally() {
+      stub.restore()
     },
   }
 }
