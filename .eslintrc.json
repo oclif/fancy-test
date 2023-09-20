@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript"
+  ],
+  "rules": {
+    "unicorn/no-array-reduce": "off",
+    "unicorn/prefer-object-from-entries": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/prefer-module": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "valid-jsdoc": "off",
+    "unicorn/import-style": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/interface-name-prefix": "off"
+  }
+}

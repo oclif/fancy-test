@@ -20,8 +20,8 @@
     "chai": "^4.3.8",
     "chalk": "^4.1.0",
     "eslint": "^7.3.1",
-    "eslint-config-oclif": "^3.1.0",
-    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1",
     "http-call": "^5.2.3",
     "markdown-toc": "^1.2.0",
     "mocha": "^5.2.0",
@@ -30,7 +30,7 @@
     "typescript": "4.4.3"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=18.0.0"
   },
   "files": [
     "/lib"
@@ -44,7 +44,7 @@
   "repository": "oclif/fancy-test",
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "lint": "eslint . --ext .ts --config .eslintrc",
+    "lint": "eslint . --ext .ts",
     "posttest": "yarn lint",
     "prepublishOnly": "yarn run build",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/interface-name-prefix */
 export type PluginBuilder<I, Args extends any[]> = (...args: Args) => Plugin<I>
 import Nock = require('nock')
 
@@ -20,7 +19,7 @@ export interface Plugin<I> {
 }
 
 export interface PluginDef {
-  output: object | unknown;
+  output: Record<string, unknown> | unknown;
   args: any[];
 }
 

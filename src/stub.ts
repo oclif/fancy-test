@@ -3,7 +3,7 @@ import * as sinon from 'sinon'
 /**
  * mocks an object's property
  */
-export default function <T extends object, K extends keyof T> (
+export default function <T extends Record<string, unknown>, K extends keyof T> (
   object: T,
   path: K,
   fn: (stub: sinon.SinonStub) => sinon.SinonStub,
@@ -17,6 +17,7 @@ export default function <T extends object, K extends keyof T> (
       if (!ctx.sandbox) {
         ctx.sandbox = sinon.createSandbox()
       }
+
       stub = fn(ctx.sandbox.stub(object, path))
     },
     finally() {

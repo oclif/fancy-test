@@ -27,6 +27,7 @@ function assignWithProps(target: any, ...sources: any[]) {
   return target
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
   const end = (arg1: any, cb: Types.MochaCallback<I>) => {
     const originalContext = context
@@ -34,6 +35,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       cb = arg1
       arg1 = undefined
     }
+
     if (!arg1) arg1 = context.expectation || 'test'
     async function run(this: Types.ITestCallbackContext, done?: Types.MochaDone) {
       context = assignWithProps({}, originalContext)
@@ -45,6 +47,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
           },
         }]
       }
+
       for (let i = 0; i < context.chain.length; i++) {
         const handleError = async (err: Error): Promise<boolean> => {
           context.error = err
@@ -59,6 +62,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
             return handleError(error)
           }
         }
+
         const next = context.chain[i]
         try {
           // eslint-disable-next-line no-await-in-loop
@@ -68,12 +72,15 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
           if (!await handleError(error)) break
         }
       }
+
       for (const p of context.chain.reverse()) {
         // eslint-disable-next-line no-await-in-loop
         if (p.finally) await p.finally(context)
       }
+
       if (context.error) throw context.error
     }
+
     return context.test(arg1, (cb && cb.length === 2) ? function (done) {
       if (context.timeout) this.timeout(context.timeout)
       run.call(this, done).catch(done)
@@ -82,6 +89,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
       return run.call(this)
     })
   }
+
   return {
     ...Object.entries(context.plugins)
     .reduce((plugins, [k, v]) => {
@@ -95,6 +103,7 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
           chain: [...c.chain, plugin],
         })
       }
+
       return plugins
     }, {} as any),
     register(k: any, v: any) {
@@ -123,7 +132,6 @@ const base = <I extends Types.Context>(context: I): Types.Base<I, {}> => {
         ...context as any,
         chain: [...context.chain, {
           run: async (ctx: any) => {
-            // eslint-disable-next-line require-atomic-updates
             ctx[key] = await (_.isFunction(v) ? v(ctx) : v)
           },
         }],

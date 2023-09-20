@@ -7,6 +7,7 @@ export function nock(host: string, options: NockCallback | NockOptions, cb?: Noc
     cb = options
     options = {}
   }
+
   if (cb === undefined) throw new Error('callback is undefined')
 
   let nock: typeof Nock
@@ -19,6 +20,7 @@ export function nock(host: string, options: NockCallback | NockOptions, cb?: Noc
       },
     }
   }
+
   const intercepter = nock(host, options)
   return {
     async run(ctx: {nock: number}) {
