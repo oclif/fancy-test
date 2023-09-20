@@ -1,0 +1,15 @@
+{
+  "recursive": true,
+  "reporter": "spec",
+  "require": [
+    "ts-node/register"
+  ],
+  "timeout": 60000,
+  "watch-extensions": [
+    "ts"
+  ],
+  "watch-files": [
+    "src",
+    "test"
+  ]
+}
