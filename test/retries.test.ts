@@ -1,5 +1,3 @@
-// tslint:disable no-console
-
 import {fancy} from '../src'
 
 let count = 3

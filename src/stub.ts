@@ -21,7 +21,7 @@ export default function <T extends Record<string, unknown>, K extends keyof T> (
       stub = fn(ctx.sandbox.stub(object, path))
     },
     finally() {
-      stub.restore()
+      stub?.restore()
     },
   }
 }

@@ -1,5 +1,3 @@
-// tslint:disable no-unused
-
 const tryRequire = (module: string) => {
   try {
     return require(module)

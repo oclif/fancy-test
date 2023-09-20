@@ -1,5 +1,3 @@
-// tslint:disable no-console
-
 import {expect, fancy} from '../src'
 
 const os = require('node:os')
