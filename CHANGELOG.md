@@ -1,3 +1,7 @@
+## [3.0.1](https://github.com/oclif/fancy-test/compare/2.0.42...3.0.1) (2023-09-25)
+
+
+
 ## [2.0.42](https://github.com/oclif/fancy-test/compare/2.0.41...2.0.42) (2023-09-17)
 
 
