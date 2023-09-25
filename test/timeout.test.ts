@@ -1,6 +1,6 @@
 import {expect, fancy} from '../src'
 
-// tslint:disable-next-line no-string-based-set-timeout
+// eslint-disable-next-line no-promise-executor-return
 const wait = (ms = 10) => new Promise(resolve => setTimeout(resolve, ms))
 
 describe('timeout', () => {

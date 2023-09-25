@@ -1,10 +1,7 @@
-// tslint:disable no-unused
-
 const tryRequire = (module: string) => {
   try {
     return require(module)
-  } catch (_) {
-  }
+  } catch {}
 }
 
 const chai: Chai.ChaiStatic = tryRequire('chai')

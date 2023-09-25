@@ -1,10 +1,6 @@
-// tslint:disable no-console
-
-import * as sinon from 'sinon'
-
 import {expect, fancy} from '../src'
 
-const os = require('os')
+const os = require('node:os')
 const platform = os.platform()
 
 const mrGetter = {
@@ -16,13 +12,13 @@ const mrGetter = {
 describe('stub', () => {
   // from readme
   fancy
-  .stub(os, 'platform', () => 'foobar')
+  .stub(os, 'platform', stub => stub.callsFake(() => 'foobar'))
   .end('sets os', () => {
     expect(os.platform()).to.equal('foobar')
   })
 
   fancy
-  .stub(os, 'platform', sinon.stub().returns('foobar'))
+  .stub(os, 'platform', stub => stub.callsFake(() => 'foobar'))
   .end('uses sinon', () => {
     expect(os.platform()).to.equal('foobar')
     expect(os.platform.called).to.equal(true)
@@ -38,7 +34,7 @@ describe('stub', () => {
 
   fancy
   .stdout()
-  .stub(mrGetter, 'foo', () => 2)
+  .stub(mrGetter, 'foo', stub => stub.get(() => 2))
   .end('resets getter', output => {
     console.log(mrGetter.foo)
     expect(output.stdout).to.equal('2\n')

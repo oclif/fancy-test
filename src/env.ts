@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import {mapValues} from 'lodash'
 
 import {EnvOptions} from './types'
 
@@ -7,7 +7,7 @@ export default (env: {[k: string]: string | null | undefined}, opts: EnvOptions 
   return {
     run() {
       // normalize to undefined
-      const normalizedEnv = _.mapValues(env, v => v === null ? undefined : v)
+      const normalizedEnv = mapValues(env, v => v === null ? undefined : v)
 
       // store previous env for finally
       envs.push(process.env)

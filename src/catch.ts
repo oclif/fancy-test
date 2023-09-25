@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import {isString, isRegExp} from 'lodash'
 
 import {expect} from './chai'
 
@@ -10,9 +10,9 @@ export default (arg: RegExp | string | ((err: Error) => any), opts: {raiseIfNotT
   },
   catch(ctx: {error: Error}) {
     const err = ctx.error
-    if (_.isRegExp(arg)) {
+    if (isRegExp(arg)) {
       expect(err.message).to.match(arg)
-    } else if (_.isString(arg)) {
+    } else if (isString(arg)) {
       expect(err.message).to.equal(arg)
     } else if (arg) {
       arg(err)
