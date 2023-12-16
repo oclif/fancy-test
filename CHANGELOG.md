@@ -1,3 +1,12 @@
+## [3.0.4](https://github.com/oclif/fancy-test/compare/3.0.3...3.0.4) (2023-12-16)
+
+
+### Bug Fixes
+
+* **deps:** bump minimist from 1.2.0 to 1.2.8 ([#342](https://github.com/oclif/fancy-test/issues/342)) ([9f86f44](https://github.com/oclif/fancy-test/commit/9f86f4479e78a9e9dcd3fc0cfab17aa65dae69ac))
+
+
+
 ## [3.0.3](https://github.com/oclif/fancy-test/compare/3.0.2...3.0.3) (2023-12-16)
 
 
