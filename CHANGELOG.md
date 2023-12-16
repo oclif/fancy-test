@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/oclif/fancy-test/compare/3.0.2...3.0.3) (2023-12-16)
+
+
+### Bug Fixes
+
+* **deps:** bump minimatch from 3.0.4 to 3.1.2 ([#343](https://github.com/oclif/fancy-test/issues/343)) ([883738b](https://github.com/oclif/fancy-test/commit/883738b065c2cf6b3f9d019869550664ab986152))
+
+
+
 ## [3.0.2](https://github.com/oclif/fancy-test/compare/3.0.1...3.0.2) (2023-12-16)
 
 
