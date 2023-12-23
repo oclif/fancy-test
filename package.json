@@ -9,7 +9,7 @@
     "@types/lodash": "*",
     "@types/node": "*",
     "@types/sinon": "*",
-    "sinon": "^16.0.0",
+    "sinon": "^16.1.3",
     "lodash": "^4.17.13",
     "mock-stdin": "^1.0.0",
     "nock": "^13.4.0",
