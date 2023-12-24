@@ -1,3 +1,12 @@
+## [3.0.7](https://github.com/oclif/fancy-test/compare/3.0.6...3.0.7) (2023-12-24)
+
+
+### Bug Fixes
+
+* **deps:** bump sinon from 16.0.0 to 16.1.3 ([#351](https://github.com/oclif/fancy-test/issues/351)) ([6bed7ce](https://github.com/oclif/fancy-test/commit/6bed7ce948c3e74cfc1e9f146246bfac7a6eb561))
+
+
+
 ## [3.0.6](https://github.com/oclif/fancy-test/compare/3.0.5...3.0.6) (2023-12-17)
 
 
