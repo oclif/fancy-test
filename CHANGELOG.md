@@ -1,3 +1,12 @@
+## [3.0.9](https://github.com/oclif/fancy-test/compare/3.0.8...3.0.9) (2024-01-21)
+
+
+### Bug Fixes
+
+* **deps:** bump nock from 13.4.0 to 13.5.0 ([#354](https://github.com/oclif/fancy-test/issues/354)) ([8413f25](https://github.com/oclif/fancy-test/commit/8413f25516aa2ef54a382f799520493089c8021f))
+
+
+
 ## [3.0.8](https://github.com/oclif/fancy-test/compare/3.0.7...3.0.8) (2023-12-24)
 
 
