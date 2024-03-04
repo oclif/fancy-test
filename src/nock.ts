@@ -24,7 +24,7 @@ export function nock(host: string, options: NockCallback | NockOptions, cb?: Noc
   const intercepter = nock(host, options)
   return {
     async run(ctx: {nock: number}) {
-      ctx.nock = ctx.nock || 0
+      ctx.nock ||= 0
       await cb!(intercepter)
       ctx.nock++
     },

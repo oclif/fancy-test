@@ -14,9 +14,7 @@ export default function <T extends Record<string, unknown>, K extends keyof T> (
   let stub: SinonStub
   return {
     run(ctx: { sandbox: SinonSandbox }) {
-      if (!ctx.sandbox) {
-        ctx.sandbox = createSandbox()
-      }
+      ctx.sandbox ||= createSandbox()
 
       stub = fn(ctx.sandbox.stub(object, path))
     },
