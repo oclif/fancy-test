@@ -1,3 +1,12 @@
+## [3.0.13](https://github.com/oclif/fancy-test/compare/3.0.12...3.0.13) (2024-03-11)
+
+
+### Bug Fixes
+
+* bump deps ([#363](https://github.com/oclif/fancy-test/issues/363)) ([4aeae41](https://github.com/oclif/fancy-test/commit/4aeae41ca96e34501e97d18dd52eb190cd8ee938))
+
+
+
 ## [3.0.12](https://github.com/oclif/fancy-test/compare/3.0.11...3.0.12) (2024-03-03)
 
 
