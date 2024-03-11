@@ -1,7 +1,7 @@
 /* eslint-disable import/namespace */
 import * as mock from 'stdout-stderr'
 
-const create = <T extends 'stdout' | 'stderr'>(std: T) => (opts: {print?: boolean; stripColor?: boolean} = {}) => ({
+const create = <T extends 'stderr' | 'stdout'>(std: T) => (opts: {print?: boolean; stripColor?: boolean} = {}) => ({
   run(ctx: {readonly [P in T]: string}) {
     mock[std].start()
     mock[std].print = opts.print || process.env.TEST_OUTPUT === '1'

@@ -1,6 +1,5 @@
 import base from './base'
 import _catch from './catch'
-
 import env from './env'
 import * as Nock from './nock'
 import {stderr, stdin, stdout} from './stdmock'

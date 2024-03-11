@@ -1,4 +1,4 @@
-import {SinonStub, SinonSandbox, createSandbox} from 'sinon'
+import {SinonSandbox, SinonStub, createSandbox} from 'sinon'
 
 /**
  * mocks an object's property
