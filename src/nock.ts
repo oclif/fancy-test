@@ -1,6 +1,6 @@
-import Nock = require('nock')
-
 import {NockCallback, NockOptions} from './types'
+
+import Nock = require('nock')
 
 export function nock(host: string, options: NockCallback | NockOptions, cb?: NockCallback) {
   if (typeof options === 'function') {

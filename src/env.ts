@@ -2,7 +2,7 @@ import {mapValues} from 'lodash'
 
 import {EnvOptions} from './types'
 
-export default (env: {[k: string]: string | null | undefined}, opts: EnvOptions = {}) => {
+export default (env: {[k: string]: null | string | undefined}, opts: EnvOptions = {}) => {
   const envs: (typeof process.env)[] = []
   return {
     run() {

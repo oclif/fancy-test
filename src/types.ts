@@ -42,7 +42,7 @@ export interface It<I> {
 export type Base<I extends Context, T extends Plugins> = {
   it: It<I>;
   end: It<I>;
-  add<K extends string, O>(key: K, cb: ((context: I) => Promise<O> | O) | Promise<O> | O): Base<I & {[P in K]: O}, T>;
+  add<K extends string, O>(key: K, cb: ((context: I) => O | Promise<O>) | O | Promise<O>): Base<I & {[P in K]: O}, T>;
   do<O>(cb: (context: I & O) => any): Base<O & I, T>;
   finally(cb: (context: I) => any): Base<I, T>;
   register<K extends string, O, A extends any[]>(key: K, plugin: (...args: A) => Plugin<O & I>): Base<I, T & {[P in K]: {output: O; args: A}}>;
