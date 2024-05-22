@@ -1,6 +1,10 @@
 fancy-test
 ===========
 
+⚠️ **This library has been deprecated.** ⚠️
+
+As of [v4](https://github.com/oclif/test/releases/tag/4.0.1) `@oclif/test` no longer depends on fancy-test so we've deprecated the npm package.
+
 extendable utilities for testing
 
 [![Version](https://img.shields.io/npm/v/fancy-test.svg)](https://npmjs.org/package/fancy-test)
